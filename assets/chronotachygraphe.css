@@ -1,0 +1,297 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   CHRONOTACHYGRAPHE — charte du site CTRM, passe de validation.
+   Le temps est la matière réglementée de ce métier : la page se lit comme
+   une journée de conduite. La frise que `site.py` sort déjà — des périodes
+   numérotées dont certaines vides — devient la bande horaire, sans toucher
+   au générateur. Écrit le 8 septembre 2026.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400 900;font-display:swap;src:url(polices/chivo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo';font-style:normal;font-weight:400 900;font-display:swap;src:url(polices/chivo-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Chivo Mono';font-style:normal;font-weight:400 600;font-display:swap;src:url(polices/chivo-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Chivo Mono';font-style:normal;font-weight:400 600;font-display:swap;src:url(polices/chivo-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  --fond:#e7e2d6;          /* le carton du disque */
+  --carte:#f3efe6;         /* le papier, là où l'on écrit */
+  --carte2:#eae4d7;
+  --encre:#1a1a18;
+  --encre2:#57534a;
+  --trait:#b8b1a1;
+  --trait2:#d5cec0;
+  --froid:#2f5d7c;
+  --tiede:#8a5a12;
+  --chaud:#b4322b;         /* la trace du stylet */
+  --vert:#2e6e4e;          /* le repos */
+  --violet:#5b4a86;
+  --ombre:0 1px 0 rgba(26,26,24,.14);
+  --r:0px;                 /* un enregistreur n'a pas d'angles arrondis */
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fond:#12110f;--carte:#1b1a17;--carte2:#232019;--encre:#f0ece1;--encre2:#a9a290;
+    --trait:#3a362c;--trait2:#2a271f;--chaud:#e2705f;--vert:#59b784;--froid:#7aa8c8;
+    --ombre:0 1px 0 rgba(0,0,0,.6);
+  }
+}
+
+/* ─── les polices, reposées sélecteur par sélecteur ─── */
+body{font-family:Chivo,"Helvetica Neue",Arial,sans-serif}
+h1,h2,h3,h4,.gro{font-family:Chivo,"Helvetica Neue",Arial,sans-serif}
+.mono,code{font-family:"Chivo Mono",ui-monospace,monospace}
+header.tete .num{font-family:Chivo,sans-serif}
+.sur{font-family:"Chivo Mono",monospace}
+/* ce que la page contient — la meme information que sur les cartes de la frise */ .contenu{font-family:"Chivo Mono",monospace}
+.k-savoirs{font-family:"Chivo Mono",monospace}
+.tag{font-family:"Chivo Mono",monospace}
+nav.somm a{font-family:Chivo,sans-serif}
+.formule>p:first-child{font-family:"Chivo Mono",monospace}
+.formule li strong:first-child{font-family:"Chivo Mono",monospace}
+.piege::before{font-family:Chivo,sans-serif}
+.etapes li::before{font-family:"Chivo Mono",monospace}
+.mission>p:first-child strong{font-family:Chivo,sans-serif}
+figcaption{font-family:Chivo,sans-serif}
+.s-nom{font-family:Chivo,sans-serif}
+.s-pet{font-family:"Chivo Mono",monospace}
+.s-lab{font-family:"Chivo Mono",monospace}
+.s-tit{font-family:Chivo,sans-serif}
+.replis>.chapeau{font-family:Chivo,sans-serif}
+.titre-appro{font-family:Chivo,sans-serif}
+.etiq{font-family:"Chivo Mono",monospace}
+th{font-family:Chivo,sans-serif}
+.quiz>.chapeau{font-family:Chivo,sans-serif}
+.qq button{font-family:"Chivo Mono",monospace}
+.score{font-family:"Chivo Mono",monospace}
+.outil .k{font-family:"Chivo Mono",monospace}
+.chaine{font-family:"Chivo Mono",monospace}
+.champ .v{font-family:"Chivo Mono",monospace}
+input[type=number],select{font-family:"Chivo Mono",monospace}
+.bt{font-family:Chivo,sans-serif}
+.lignec .rr{font-family:"Chivo Mono",monospace}
+.entete-c{font-family:Chivo,sans-serif}
+.res .gros{font-family:"Chivo Mono",monospace}
+.res .gros b{font-family:Chivo,sans-serif}
+.barre .p{font-family:"Chivo Mono",monospace}
+.case-sym span{font-family:Chivo,sans-serif}
+.s-sym{font-family:"Chivo Mono",monospace}
+.s-rep{font-family:"Chivo Mono",monospace}
+.exo>.k{font-family:"Chivo Mono",monospace}
+.exo input[type=text]{font-family:"Chivo Mono",monospace}
+.exo textarea{font-family:Chivo,"Helvetica Neue",Arial,sans-serif}
+.exo .unite{font-family:"Chivo Mono",monospace}
+.exo .btn{font-family:Chivo,sans-serif}
+.exo .indice::before{font-family:Chivo,sans-serif}
+.bilan-epreuve .compte{font-family:Chivo,sans-serif}
+/* ═══════════════════════════════════════════════════════════════════════    SITE — l'enveloppe de navigation autour des pages du kit.    Elle vient APRES kit.css et n'en redefinit aucune variable : les couleurs,    les polices et le mode sombre sont ceux du kit. Ne pas la dupliquer dans    un sous-projet. Voir GUIDE-SITE.md.    ═══════════════════════════════════════════════════════════════════════ */  /* ─────────────────────────────────────────────── barre de site    Elle defile avec la page : le sommaire de seance, lui, est colle en haut    (kit.css). Deux barres collantes se marchent dessus.     Elle s'appelait « barre » tout court, et kit.css nomme deja ainsi les    barres de ses graphiques : site.css etant chargee ensuite, elle ecrasait    leur grille a trois colonnes. Un nom de classe partage entre deux feuilles    ne pardonne pas — d'ou le suffixe. */ .barre-site{font-family:Chivo,sans-serif}
+/* .pas-pas : remplace par .fleches, plus bas */ .barre-site .lu{font-family:inherit}
+.chercher input{font-family:Chivo,sans-serif}
+.resultats a{font-family:Chivo,sans-serif}
+.resultats .ou{font-family:"Chivo Mono",monospace}
+.raccourcis a{font-family:Chivo,sans-serif}
+.espace>.compte{font-family:"Chivo Mono",monospace}
+.frise .n{font-family:"Chivo Mono",monospace}
+.frise .t{font-family:Chivo,sans-serif}
+.frise .meta{font-family:"Chivo Mono",monospace}
+.recap{font-family:Chivo,sans-serif}
+.outils-grille .t{font-family:Chivo,sans-serif}
+.outils-grille .ou{font-family:"Chivo Mono",monospace}
+/* ─────────────────────────────────────────────── banque d'exercices    Un repertoire, pas une copie : chaque ligne renvoie a la seance qui porte    l'exercice. */ .filtres{font-family:Chivo,sans-serif}
+.filtres select{font-family:inherit}
+.exo-ligne a{font-family:Chivo,sans-serif}
+.exo-ligne .ou{font-family:"Chivo Mono",monospace}
+.exo-ligne .etat{font-family:"Chivo Mono",monospace}
+.partie .n{font-family:"Chivo Mono",monospace}
+.partie .t{font-family:Chivo,sans-serif}
+.partie .meta{font-family:"Chivo Mono",monospace}
+.partie .sv{font-family:"Chivo Mono",monospace}
+.partie .rep{font-family:"Chivo Mono",monospace}
+.chiffres b{font-family:Chivo,sans-serif}
+.chiffres span{font-family:"Chivo Mono",monospace}
+.porte .n{font-family:"Chivo Mono",monospace}
+.porte .t{font-family:Chivo,sans-serif}
+/* ─────────────────────────────────────────────── reprendre la lecture */ .reprendre{font-family:Chivo,sans-serif}
+.sequence .rang{font-family:"Chivo Mono",monospace}
+/* l'avancement de lecture, posé par site.js */ .sequence .jauge{font-family:"Chivo Mono",monospace}
+.chapeau-f{font-family:"Chivo Mono",monospace}
+.grille-f .k{font-family:"Chivo Mono",monospace}
+.grille-f .t{font-family:Chivo,sans-serif}
+/* ─────────────────────────────────────────────── le fil de séquence */ .barre-site .fil{font-family:"Chivo Mono",monospace}
+.chapeau-s{font-family:"Chivo Mono",monospace}
+.pas-a-pas .k{font-family:"Chivo Mono",monospace}
+.pas-a-pas .t{font-family:Chivo,sans-serif}
+.vers-recap{font-family:Chivo,sans-serif}
+.theme-outils .rang{font-family:"Chivo Mono",monospace}
+/* ─────────────────────────────────────────────── exercices, par savoir */ .avancee{font-family:"Chivo Mono",monospace}
+.seg{font-family:Chivo,sans-serif}
+.titre-savoir .code{font-family:"Chivo Mono",monospace}
+.exo-ligne .genre{font-family:"Chivo Mono",monospace}
+.exo-ligne a{font-family:Chivo,sans-serif}
+.suggestions .ou{font-family:"Chivo Mono",monospace}
+.recap.tenu{font-family:Chivo,sans-serif}
+
+/* ─── les chiffres sont l'objet : partout tabulaires ─── */
+.page,.frise .n,.partie .n,table,.res,.champ .v,.compteur,.espace>.compte{
+  font-variant-numeric:tabular-nums;
+}
+
+/* ─── la plaque du disque ─── */
+header.tete{
+  background:var(--carte);border:2px solid var(--encre);
+  padding:24px 22px 20px;margin-top:16px;position:relative;
+}
+header.tete .sur{
+  position:absolute;top:8px;right:12px;
+  font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--encre2);
+}
+header.tete h1{letter-spacing:-.02em}
+header.tete h1 span{color:var(--encre2)}
+
+/* ─── la bande horaire ───
+   Chaque séance est une période : son numéro en repère d'heure dans une
+   gouttière fixe, une ligne de base qui traverse tout, et l'état dessiné. */
+.frise{
+  position:relative;margin-top:18px;padding-left:0;border-top:2px solid var(--encre);
+}
+.frise::before{
+  content:"";position:absolute;left:72px;top:0;bottom:0;width:1px;
+  background:var(--trait);
+}
+.frise li{
+  position:relative;margin:0;border-bottom:1px solid var(--trait2);
+}
+.frise li:last-child{border-bottom:2px solid var(--encre)}
+.frise a,.frise .vide{
+  display:grid;grid-template-columns:72px 1fr;align-items:baseline;
+  gap:0 18px;padding:13px 8px 13px 0;border:0;border-radius:0;background:none;
+  box-shadow:none;text-decoration:none;
+}
+.frise a:hover{background:var(--carte2)}
+.frise .n{
+  grid-column:1;justify-self:end;padding-right:12px;
+  font-family:"Chivo Mono",monospace;font-size:13px;font-weight:600;
+  letter-spacing:.02em;color:var(--encre);
+}
+.frise .t{grid-column:2;font-weight:600;font-size:16px;color:var(--encre)}
+.frise .meta{grid-column:2;font-size:12px;color:var(--encre2)}
+
+/* la trace : une période lue est tracée au stylet, pas colorisée */
+.frise li.lu::after{
+  content:"";position:absolute;left:72px;right:8px;top:50%;height:3px;
+  background:var(--chaud);
+}
+.frise li.lu .t{color:var(--encre2)}
+
+/* le temps non encore couru : hachure, jamais un lien mort */
+.frise .vide{
+  background:repeating-linear-gradient(
+    45deg,var(--trait2) 0 6px,transparent 6px 12px);
+}
+.frise .vide .t{color:var(--encre2);font-weight:500}
+.frise .vide .meta{
+  display:inline-block;background:var(--carte);padding:1px 6px;
+  border:1px solid var(--trait);
+}
+
+/* ─── les trois modes d'activité ───
+   Le tachygraphe n'a pas de rubriques, il a des modes. Les trois espaces du
+   site en prennent les pictogrammes : conduite, pause, autre tâche. */
+.espace>h2{
+  display:flex;align-items:center;gap:12px;
+  padding-bottom:9px;border-bottom:2px solid var(--encre);
+}
+.espace>h2::before{
+  content:"";flex:none;width:30px;height:30px;
+  border:2px solid var(--encre);background-repeat:no-repeat;
+  background-position:center;background-size:20px 20px;
+}
+#cours>h2::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a18' stroke-width='1.6'><circle cx='12' cy='12' r='9'/><circle cx='12' cy='12' r='2.6'/><path d='M3.4 12h6M14.6 12h6M12 14.6V21'/></svg>")}
+#aide>h2::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a18' stroke-width='1.6'><path d='M2 19v-8M2 15h20v4M22 19v-4'/><circle cx='7' cy='12' r='2.2'/><path d='M10.5 15h9a3 3 0 0 0-3-3h-6z'/></svg>")}
+#defis>h2::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a1a18' stroke-width='1.6'><path d='M4 20 L14 10M20 4l-6 6'/><path d='M3 17l4 4M17 3l4 4'/></svg>")}
+
+/* ─── les fiches d'aide et les défis : des périodes courtes ─── */
+.grille-f{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0}
+.grille-f a{
+  border:0;border-bottom:1px solid var(--trait2);border-radius:0;
+  background:none;box-shadow:none;padding:13px 14px 13px 0;
+}
+.grille-f a:hover{background:var(--carte2)}
+.grille-f a .k{
+  font-family:"Chivo Mono",monospace;font-size:12px;letter-spacing:.06em;
+  color:var(--encre2);
+}
+.grille-f a .t{font-weight:600;font-size:16px;color:var(--encre)}
+.grille-f a .d{color:var(--encre2);font-size:14px}
+.chapeau-f{
+  font-family:"Chivo Mono",monospace;font-size:12px;letter-spacing:.06em;
+  text-transform:none;color:var(--encre);border-bottom:2px solid var(--encre);
+  display:block;padding-bottom:6px;margin-bottom:0;
+}
+
+/* ─── la recherche et les portes ─── */
+.chercher input{
+  min-height:52px;font-size:17px;background:var(--carte);
+  border:2px solid var(--encre);border-radius:0;padding:0 15px;color:var(--encre);
+}
+.chercher input::placeholder{color:var(--encre2);opacity:1}
+.chercher input:focus{outline:none;box-shadow:inset 0 0 0 2px var(--chaud)}
+nav.portes .porte{
+  background:none;border:2px solid var(--encre);border-radius:0;box-shadow:none;
+}
+nav.portes .porte:hover{background:var(--carte2)}
+
+/* ─── marquer comme lu = fermer la période au stylet ─── */
+.barre-site .lu{
+  border:2px solid var(--encre);border-radius:0;color:var(--encre);
+  background:var(--carte);min-height:38px;padding:6px 14px;
+}
+.barre-site .lu[aria-pressed="true"]{position:relative;color:var(--encre2)}
+.barre-site .lu[aria-pressed="true"]::before{content:none}
+.barre-site .lu[aria-pressed="true"]::after{
+  content:"";position:absolute;left:7%;right:7%;top:50%;height:3px;
+  background:var(--chaud);
+}
+
+/* ─── surfaces du navigateur ─── */
+::selection{background:var(--chaud);color:#fff}
+input,textarea{caret-color:var(--chaud)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid var(--chaud);outline-offset:2px;
+}
+a{text-underline-offset:3px;text-decoration-thickness:2px}
+html{scrollbar-color:var(--encre) var(--fond);scrollbar-width:thin}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important}
+}
+
+/* ─── correctifs de la premiere passe ─── */
+
+/* La frise heritait d'une grille multi-colonnes : une journee de conduite ne
+   se lit pas en deux colonnes. Une seule bande, du haut au bas. */
+.frise{display:block;grid-template-columns:none;gap:0;list-style:none;padding:0}
+
+/* Les pictogrammes de mode etaient trop fins pour se lire a bout de bras. */
+.espace>h2::before{width:34px;height:34px;background-size:24px 24px}
+
+/* Le bandeau de chiffres devient une regle graduee : trois releves, separes
+   d'un filet, comme les compteurs d'un tableau de bord. */
+.chiffres{border-top:2px solid var(--encre);border-bottom:1px solid var(--trait2)}
+.chiffres b{font-family:"Chivo Mono",monospace;font-weight:600;letter-spacing:-.01em}
+.chiffres span{font-size:11px;letter-spacing:.12em}
+
+/* Le kit posait height:100% sur la carte de frise, ce qui n'avait de sens que
+   dans sa grille : en bande, chaque periode heritait de la hauteur du
+   viewport. Treize seances faisaient 31 000 px de page. */
+.frise a,.frise .vide{height:auto}
+
+/* Le liseré de 3 px en haut des portes : le detecteur le classe comme le tell
+   le plus reconnaissable d'une interface generee, et la porte a deja son
+   filet sur les quatre cotes. */
+nav.portes .porte::before{display:none}
+
+/* Le rail de la bande doit passer devant la hachure, sinon la gouttiere
+   d'heures se noie dans le temps non couru. */
+.frise li{background:transparent}
+.frise .vide{background-position:72px 0}
+.frise::before{z-index:1}
+.frise .n{position:relative;z-index:2}

@@ -3,10 +3,9 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Séquence 1 — la consommation</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
-<link rel="stylesheet" href="../assets/kit.css?v=258bd563">
-<link rel="stylesheet" href="../assets/site.css?v=258bd563">
+<link rel="stylesheet" href="../assets/kit.css?v=816c96bb">
+<link rel="stylesheet" href="../assets/site.css?v=816c96bb">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=816c96bb">
 
 <div class="page" data-site="ctrm" data-page="cours/S1">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="S0.html" rel="prev" title="Où j'en suis" aria-label="Où j'en suis">&lsaquo;</a></span><button type="button" class="lu" data-lu="cours/S1">Marquer comme lu</button></div>
@@ -39,7 +38,7 @@
 <tbody>
 <tr>
 <td>ils s’alignent</td>
-<td><strong>affine</strong> — y = a x + b</td>
+<td><strong>affine</strong>, y = a x + b</td>
 </tr>
 <tr>
 <td>ils s’incurvent régulièrement</td>
@@ -61,7 +60,7 @@
 <li>Saisir les points dans <strong>Régressions</strong> sur la NumWorks.</li>
 <li>Demander <strong>deux ou trois modèles</strong>, pas un seul.</li>
 <li>Retenir celui dont le <strong>R² est le plus proche de 1</strong>.</li>
-<li>Répondre à la question — et vérifier qu’on reste dans la plage des relevés.</li>
+<li>Répondre à la question, en vérifiant qu’on reste dans la plage des relevés.</li>
 </ol>
 </div>
 <h2 id="ce-que-les-quatre-releves-ont-donne">Ce que les quatre relevés ont donné</h2>
@@ -121,22 +120,22 @@
 </tbody>
 </table></div>
 <div class="piege">
-<p>Regardez la <strong>première ligne</strong> : affine et quadratique donnent le <strong>même</strong> R², à 0,985. Le R² ne tranche pas tout seul. On prend alors <strong>le plus simple des deux</strong> — et c’est l’affine. Un R² égal ne veut jamais dire « prenez le plus compliqué ».</p>
+<p>Regardez la <strong>première ligne</strong> : affine et quadratique donnent le <strong>même</strong> R², à 0,985. Le R² ne tranche pas tout seul. On prend alors <strong>le plus simple des deux</strong>, et c’est l’affine. Un R² égal ne veut jamais dire « prenez le plus compliqué ».</p>
 </div>
 <div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le relevé « âge → valeur », et le rendez-vous de la séquence 6</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Il donne <strong>y = 95 176 × 0,80ˣ</strong>, avec un R² de <strong>1,000</strong>.</p>
 <p>Ce 0,80 n’est pas un nombre sorti de la machine : c’est <strong>une décote de 20 % par an</strong>. Chaque année, le tracteur vaut 80 % de ce qu’il valait l’année d’avant.</p>
 <div class="cle">
-<p>Vous retrouverez exactement ce nombre en <strong>séquence 6</strong>, par les suites géométriques — et cette fois sans calculatrice. Le même camion, deux chemins, un seul résultat.</p>
+<p>Vous retrouverez exactement ce nombre en <strong>séquence 6</strong>, par les suites géométriques, et cette fois sans calculatrice. Le même camion, deux chemins, un seul résultat.</p>
 </div>
-<p>Un R² à 1,000 doit d’ailleurs vous mettre en alerte plutôt qu’en confiance : il signifie que la courbe passe <strong>exactement</strong> par les points. Sur un vrai relevé de terrain, c’est rare — ici, c’est parce que la décote est calculée, pas mesurée.</p></div></details>
+<p>Un R² à 1,000 doit d’ailleurs vous mettre en alerte plutôt qu’en confiance : il signifie que la courbe passe <strong>exactement</strong> par les points. Sur un vrai relevé de terrain, c’est rare. Ici, c’est parce que la décote est calculée et non mesurée.</p></div></details>
 </div><h2 id="r2-ce-qu-il-dit-ce-qu-il-ne-dit-pas">R² : ce qu’il dit, ce qu’il ne dit pas</h2>
 <div class="formule">
 <p><strong>R² compare la courbe aux points, et rien d’autre</strong></p>
 <ul>
 <li>il vaut au mieux <strong>1</strong></li>
-<li>au-dessus de <strong>0,9</strong> — le modèle décrit bien</li>
-<li>vers <strong>0,7</strong> — il donne une tendance</li>
-<li>sous <strong>0,5</strong> — il ne sert à rien</li>
+<li>au-dessus de <strong>0,9</strong> : le modèle décrit bien</li>
+<li>vers <strong>0,7</strong> : il donne une tendance</li>
+<li>sous <strong>0,5</strong> : il ne sert à rien</li>
 </ul>
 </div>
 <div class="piege">
@@ -146,7 +145,7 @@
 <div class="cle">
 <p><strong>Interpoler</strong>, c’est répondre <strong>à l’intérieur</strong> de la plage des relevés : on y a des points, on y va. <strong>Extrapoler</strong>, c’est répondre <strong>en dehors</strong> : le modèle prolonge, il ne constate plus.</p>
 </div>
-<p>Les deux calculs se font pareil. Ce qui change, c’est <strong>la phrase qu’on écrit après</strong> — et c’est elle qui rapporte les points au CCF.</p>
+<p>Les deux calculs se font pareil. Ce qui change, c’est <strong>la phrase qu’on écrit après</strong>, et c’est elle qui rapporte les points au CCF.</p>
 <h2 id="vous-verifier">Vous vérifier</h2>
 <section class="exo" id="S1-e1" data-exo="S1-e1" data-type="lecture" data-savoir="ST2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4NjU9OygzLjI3MysvP3h2eDY1PXh2eDc1Pj82P3o2NT07KDMuMjczKy8/eHZ4Nj96NjU9OygzLjI3MysvP3gHJw=="><p class="k">Exercice · ST2</p><h4>Quel modèle demander</h4><div class="enonce">
 
@@ -166,10 +165,10 @@
 <div class="piege">
 <p>Un café à 1,5 °C dans une pièce à 20 °C est impossible. <strong>Le R² était pourtant excellent.</strong> C’est la meilleure démonstration qu’un bon R² ne garantit rien au-delà des points relevés.</p>
 </div>
-<p>Le même modèle appliqué non pas à la température, mais à <strong>l’écart avec la température de la pièce</strong>, donne <strong>20,1 °C</strong> au bout de deux heures — c’est-à-dire la température de la pièce. Le café refroidit jusqu’à l’ambiance et s’arrête là.</p>
+<p>Le même modèle appliqué non pas à la température, mais à <strong>l’écart avec la température de la pièce</strong>, donne <strong>20,1 °C</strong> au bout de deux heures, soit la température de la pièce elle-même. Le café refroidit jusqu’à l’ambiance et s’arrête là.</p>
 <p><strong>Ce qu’il faut en retenir</strong> : le modèle ne connaît pas la physique. Il ne sait pas qu’un café ne descend pas sous la température de la pièce, ni qu’un camion a une valeur plancher. <strong>C’est vous qui le savez.</strong></p></div></details>
 </div><nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="S0.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Où j'en suis</span></a></div></nav>
 <p class="pied">Cette page rappelle la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé. Tous les calculs se font dans votre tablette ; rien n'est enregistré.</p>
 </div>
-<script src="../assets/kit.js?v=258bd563"></script>
-<script src="../assets/site.js?v=258bd563"></script>
+<script src="../assets/kit.js?v=816c96bb"></script>
+<script src="../assets/site.js?v=816c96bb"></script>
