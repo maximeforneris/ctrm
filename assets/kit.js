@@ -9058,6 +9058,297 @@ SCHEMAS["peser-l-energie"]=function(el){
     "environ <b>cent mille piles</b> comme celle-là."));
 };
 
+/* ══════════════════════════════════ SCHEMAS — Tle CTRM, sequence 3
+   Vecteurs dans l'espace. La convention d'axes est celle de la figure du
+   polycopie, fig3-espace : x longueur vers la DROITE, y largeur en fuyante
+   vers le haut-droit, z hauteur vers le HAUT. Un schema web qui inverserait
+   deux axes ferait douter de la feuille, pas de lui-meme. */
+
+/* ─────────── la caisse, et trois nombres pour un point ─────────── */
+SCHEMAS["caisse-reperee"]=function(el){
+  var W=724,H=400;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Une caisse de 6 m sur 2 m sur 3 m vue en perspective, ses trois axes, "+
+                 "et les coordonnées de quatre points remarquables"});
+  var OX=150,OY=356,UX=62,UZ=54,DX=40,DY=26;
+  function P(x,y,z){ return [OX+x*UX+y*DX, OY-z*UZ-y*DY]; }
+  function L(a,b,coul,ep){
+    svg.appendChild(S("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],
+      stroke:V(coul),"stroke-width":ep}));
+  }
+  svg.appendChild(S("text",{x:W/2,y:28,"text-anchor":"middle","class":"s-tit",
+    fill:V("chaud")},"TROIS NOMBRES POUR UN POINT"));
+  svg.appendChild(S("text",{x:W/2,y:50,"text-anchor":"middle","class":"s-pet",
+    fill:V("encre2")},"la caisse mobile : 6 m de long, 2 m de large, 3 m de haut"));
+
+  /* les douze aretes */
+  var LX=6,LY=2,LZ=3;
+  [[0,0,0,LX,0,0],[0,LY,0,LX,LY,0],[0,0,LZ,LX,0,LZ],[0,LY,LZ,LX,LY,LZ],
+   [0,0,0,0,LY,0],[LX,0,0,LX,LY,0],[0,0,LZ,0,LY,LZ],[LX,0,LZ,LX,LY,LZ],
+   [0,0,0,0,0,LZ],[LX,0,0,LX,0,LZ],[0,LY,0,0,LY,LZ],[LX,LY,0,LX,LY,LZ]]
+  .forEach(function(a){ L(P(a[0],a[1],a[2]),P(a[3],a[4],a[5]),"encre2","1.8"); });
+
+  /* les trois axes, par-dessus, avec leur pointe */
+  function axe(bx,by,txt,tx,ty,anc){
+    var o=P(0,0,0);
+    svg.appendChild(S("line",{x1:o[0],y1:o[1],x2:bx,y2:by,stroke:V("encre"),
+      "stroke-width":"3"}));
+    var dx=bx-o[0],dy=by-o[1],n=Math.sqrt(dx*dx+dy*dy);
+    dx/=n; dy/=n;
+    svg.appendChild(S("path",{d:"M "+bx+" "+by+" L "+(bx-13*dx+6*dy)+" "+(by-13*dy-6*dx)+
+      " L "+(bx-13*dx-6*dy)+" "+(by-13*dy+6*dx)+" z",fill:V("encre")}));
+    svg.appendChild(S("text",{x:tx,y:ty,"text-anchor":anc,"class":"s-lab",
+      fill:V("encre")},txt));
+  }
+  axe(578,356,"x longueur",586,362,"start");
+  axe(150,172,"z hauteur",160,166,"start");
+  axe(OX+2.7*DX,OY-2.7*DY,"y largeur",OX+2.7*DX+10,OY-2.7*DY-6,"start");
+
+  /* quatre gommettes, comme sur la boite du bureau */
+  [[0,0,0,"(0 ; 0 ; 0)",0,26,"middle"],
+   [6,0,0,"(6 ; 0 ; 0)",-12,22,"end"],
+   [0,2,0,"(0 ; 2 ; 0)",-12,4,"end"],
+   [6,2,3,"(6 ; 2 ; 3)",12,-8,"start"],
+   [3,1,0,"(3 ; 1 ; 0)",16,6,"start"]].forEach(function(g){
+    var p=P(g[0],g[1],g[2]);
+    svg.appendChild(S("circle",{cx:p[0],cy:p[1],r:"7",fill:V("chaud")}));
+    svg.appendChild(S("text",{x:p[0]+g[4],y:p[1]+g[5],"text-anchor":g[6],
+      "class":"s-pet",fill:V("chaud")},g[3]));
+  });
+  svg.appendChild(S("text",{x:136,y:352,"text-anchor":"end","class":"s-lab",
+    fill:V("encre")},"O"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "On lit les trois nombres <b>en marchant le long des arêtes</b> : d'abord vers le "+
+    "fond, puis vers la droite, puis vers le haut. Jamais dans un autre ordre, et jamais "+
+    "en diagonale. Le point marqué <b>(3 ; 1 ; 0)</b> est le centre du plancher : la "+
+    "moitié de 6, la moitié de 2, et <b>zéro en hauteur</b> puisqu'il est au sol. "+
+    "<b>Posez une vraie boîte devant vous</b> — celle-ci est un dessin, et c'est le "+
+    "dessin qui fait échouer, pas l'espace."));
+};
+
+/* ─────────── les deux sangles, et pourquoi 2 + 2 ne font pas 4 ───────────
+   A, B et S ont tous x = 4 : la figure est PLANE, et ce dessin en (y ; z)
+   n'est donc pas une projection, c'est la vraie forme. */
+SCHEMAS["deux-sangles-somme"]=function(el){
+  var W=724,H=420;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Les deux vecteurs sangles mis bout à bout : leur somme est verticale "+
+                 "et vaut 3,2 m, alors que chacun mesure 2 m"});
+  var OX=180,OY=350,U=80;
+  function P(y,z){ return [OX+y*U, OY-z*U]; }
+  var A=P(0,0), B=P(2.4,0), Sp=P(1.2,1.6), T=P(0,3.2);
+  function fl(a,b,coul,ep,dash){
+    var at={x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:V(coul),"stroke-width":ep};
+    if(dash)at["stroke-dasharray"]=dash;
+    svg.appendChild(S("line",at));
+    var dx=b[0]-a[0],dy=b[1]-a[1],n=Math.sqrt(dx*dx+dy*dy); dx/=n; dy/=n;
+    svg.appendChild(S("path",{d:"M "+b[0]+" "+b[1]+" L "+(b[0]-14*dx+6*dy)+" "+
+      (b[1]-14*dy-6*dx)+" L "+(b[0]-14*dx-6*dy)+" "+(b[1]-14*dy+6*dx)+" z",fill:V(coul)}));
+  }
+  svg.appendChild(S("text",{x:20,y:30,"class":"s-tit",fill:V("chaud")},
+    "DEUX SANGLES DE 2 m, UNE SOMME DE 3,2 m"));
+  /* le plancher */
+  svg.appendChild(S("line",{x1:130,y1:OY,x2:420,y2:OY,stroke:V("encre"),
+    "stroke-width":"4"}));
+  for(var x=140;x<420;x+=26){
+    svg.appendChild(S("line",{x1:x,y1:OY+4,x2:x-14,y2:OY+18,stroke:V("encre2"),
+      "stroke-width":"2"}));
+  }
+  /* la verticale qui passe par A : c'est sur elle que la somme retombe */
+  svg.appendChild(S("line",{x1:OX,y1:OY,x2:OX,y2:86,stroke:V("trait"),
+    "stroke-width":"1.6","stroke-dasharray":"6 5"}));
+  /* les deux sangles, puis BS reporte au bout de AS */
+  fl(A,Sp,"froid","3.2");
+  fl(B,Sp,"froid","3.2");
+  fl(Sp,T,"encre2","2.4","7 5");
+  fl(A,T,"chaud","4");
+  [[A,"A (4 ; 0 ; 0)",0,26,"middle"],[B,"B (4 ; 2,4 ; 0)",0,26,"middle"],
+   [Sp,"S (4 ; 1,2 ; 1,6)",14,-10,"start"]].forEach(function(g){
+    svg.appendChild(S("circle",{cx:g[0][0],cy:g[0][1],r:"6",fill:V("encre")}));
+    svg.appendChild(S("text",{x:g[0][0]+g[2],y:g[0][1]+g[3],"text-anchor":g[4],
+      "class":"s-pet",fill:V("encre")},g[1]));
+  });
+  svg.appendChild(S("text",{x:OX-12,y:100,"text-anchor":"end","class":"s-lab",
+    fill:V("chaud")},"3,2 m"));
+  /* cale sur S, cette etiquette passait sous le nom du point ; a droite de
+     la fleche en pointille, elle est seule. */
+  svg.appendChild(S("text",{x:300,y:150,"class":"s-pet",fill:V("encre2")},
+    "BS reporté ici"));
+  /* le compte, a droite */
+  svg.appendChild(S("rect",{x:436,y:112,width:268,height:158,rx:"6",
+    fill:V("carte2"),stroke:V("chaud"),"stroke-width":"1.6"}));
+  [["‖AS‖ = 2 m","froid",146],
+   ["‖BS‖ = 2 m","froid",176],
+   ["2 + 2 = 4","encre2",214],
+   ["‖AS + BS‖ = 3,2 m","chaud",248]].forEach(function(b){
+    svg.appendChild(S("text",{x:570,y:b[2],"text-anchor":"middle","class":"s-lab",
+      fill:V(b[1])},b[0]));
+  });
+  svg.appendChild(S("line",{x1:470,y1:192,x2:670,y2:192,stroke:V("encre2"),
+    "stroke-width":"1.4"}));
+  /* sur une seule ligne, cette phrase debordait du viewBox */
+  [["la norme de la somme",294],["n'est pas la somme des normes",314]]
+  .forEach(function(t){
+    svg.appendChild(S("text",{x:570,y:t[1],"text-anchor":"middle","class":"s-pet",
+      fill:V("chaud")},t[0]));
+  });
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Le dessin est <b>à l'échelle</b>, et c'est lui qui fait la preuve. On part de A, on "+
+    "suit la première sangle jusqu'à S, puis on <b>reporte la seconde au bout de la "+
+    "première</b> : on retombe exactement <b>au-dessus de A</b>, à 3,2 m de haut. Les "+
+    "deux composantes en largeur, <b>+1,2 et −1,2</b>, se sont annulées — c'est ce qui "+
+    "rend la somme verticale. Et le chemin direct est <b>plus court</b> que les deux "+
+    "morceaux mis bout à bout : 3,2 m contre 4 m."));
+};
+
+/* ─────────── colineaires : la meme droite, pas le meme sens ─────────── */
+SCHEMAS["direction-et-sens"]=function(el){
+  var W=724,H=360;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Un vecteur et ses multiples sur une même droite : k positif garde le "+
+                 "sens, k négatif le retourne"});
+  var OX=330,OY=190,UXv=110,UYv=-44;
+  function P(k){ return [OX+k*UXv, OY+k*UYv]; }
+  function fl(b,coul,ep){
+    var a=[OX,OY];
+    svg.appendChild(S("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:V(coul),
+      "stroke-width":ep}));
+    var dx=b[0]-a[0],dy=b[1]-a[1],n=Math.sqrt(dx*dx+dy*dy); dx/=n; dy/=n;
+    svg.appendChild(S("path",{d:"M "+b[0]+" "+b[1]+" L "+(b[0]-14*dx+6*dy)+" "+
+      (b[1]-14*dy-6*dx)+" L "+(b[0]-14*dx-6*dy)+" "+(b[1]-14*dy+6*dx)+" z",fill:V(coul)}));
+  }
+  svg.appendChild(S("text",{x:20,y:30,"class":"s-tit",fill:V("chaud")},
+    "LA MÊME DROITE, PAS FORCÉMENT LE MÊME SENS"));
+  /* la droite support : c'est elle, la direction */
+  svg.appendChild(S("line",{x1:0,y1:OY+OX*0.4,x2:W,y2:OY-(W-OX)*0.4,
+    stroke:V("trait"),"stroke-width":"1.6","stroke-dasharray":"7 5"}));
+  svg.appendChild(S("text",{x:20,y:340,"class":"s-pet",fill:V("encre2")},
+    "une seule droite : c'est la direction"));
+  /* les quatre multiples, du plus long au plus court pour que les traits
+     courts restent visibles par-dessus */
+  [[2,"chaud","4"],[1,"chaud","5"],[-1,"froid","5"],[-2,"froid","4"]]
+  .forEach(function(m){ fl(P(m[0]),m[1],m[2]); });
+  /* k = 2 posait son etiquette la ou passe le verdict du haut : elle passe
+     SOUS la pointe. */
+  [[2,"k = 2",8,22,"start"],[1,"u",6,-14,"start"],
+   [-1,"k = −1",-10,30,"end"],[-2,"k = −2",-10,18,"end"]]
+  .forEach(function(m){
+    var p=P(m[0]);
+    svg.appendChild(S("text",{x:p[0]+m[2],y:p[1]+m[3],"text-anchor":m[4],
+      "class":"s-lab",fill:m[0]>0?V("chaud"):V("froid")},m[1]));
+  });
+  svg.appendChild(S("circle",{cx:OX,cy:OY,r:"6",fill:V("encre")}));
+  /* les deux verdicts */
+  /* les deux verdicts vont dans les deux coins libres, loin des pointes
+     et de la droite support. */
+  [["k > 0 : même sens que u","chaud",700,208,"end"],
+   ["k < 0 : sens contraire","froid",60,130,"start"]].forEach(function(b){
+    svg.appendChild(S("text",{x:b[2],y:b[3],"text-anchor":b[4],"class":"s-lab",
+      fill:V(b[1])},b[0]));
+  });
+  svg.appendChild(S("text",{x:W-16,y:338,"text-anchor":"end","class":"s-pet",
+    fill:V("encre2")},"u(2 ; −1 ; 4)  →  2u(4 ; −2 ; 8)  →  −2u(−4 ; 2 ; −8)"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Les quatre vecteurs sont <b>colinéaires</b> : chacun est le précédent multiplié par "+
+    "un nombre, et tous portent <b>la même droite</b>. C'est cela, la direction. Le "+
+    "<b>sens</b> est autre chose : il se retourne dès que <b>k est négatif</b>. Deux "+
+    "sangles colinéaires tirent donc sur la même ligne — mais si l'un des k est négatif, "+
+    "<b>elles tirent l'une contre l'autre</b>. La longueur, elle, est multipliée par "+
+    "<b>la valeur de k sans son signe</b>."));
+};
+
+/* ─────────── ce que dit la troisieme coordonnee ───────────
+   Les deux panneaux sont vus DE COTE, et c'est indispensable : une vue de
+   dessus ne peut pas montrer que z vaut zero, puisque tout y parait
+   horizontal. Le premier essai la prenait, et ne demontrait rien. */
+SCHEMAS["troisieme-coordonnee"]=function(el){
+  var W=724,H=360,FY=256,NIV=196;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Deux sangles restées à la même hauteur ne plaquent pas la charge ; "+
+                 "un ancrage au plancher donne une troisième coordonnée négative"});
+  svg.appendChild(S("text",{x:W/2,y:28,"text-anchor":"middle","class":"s-tit",
+    fill:V("chaud")},"CE QUE DIT LA TROISIÈME COORDONNÉE"));
+  function fl(a,b,coul,ep){
+    svg.appendChild(S("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:V(coul),
+      "stroke-width":ep}));
+    var dx=b[0]-a[0],dy=b[1]-a[1],n=Math.sqrt(dx*dx+dy*dy); dx/=n; dy/=n;
+    svg.appendChild(S("path",{d:"M "+b[0]+" "+b[1]+" L "+(b[0]-14*dx+6*dy)+" "+
+      (b[1]-14*dy-6*dx)+" L "+(b[0]-14*dx-6*dy)+" "+(b[1]-14*dy+6*dx)+" z",fill:V(coul)}));
+  }
+  function plancher(ox){
+    svg.appendChild(S("line",{x1:ox+10,y1:FY,x2:ox+320,y2:FY,stroke:V("encre"),
+      "stroke-width":"4"}));
+    for(var x=ox+22;x<ox+320;x+=26){
+      svg.appendChild(S("line",{x1:x,y1:FY+4,x2:x-14,y2:FY+18,stroke:V("encre2"),
+        "stroke-width":"2"}));
+    }
+  }
+  function palette(x0,larg){
+    svg.appendChild(S("rect",{x:x0,y:NIV,width:larg,height:FY-NIV,rx:"3",
+      fill:V("carte2"),stroke:V("encre2"),"stroke-width":"2"}));
+  }
+  function nom(x,y,t){
+    svg.appendChild(S("text",{x:x,y:y,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre")},t));
+  }
+  function note(cx,t){
+    svg.appendChild(S("text",{x:cx,y:166,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},t));
+  }
+  function verdict(cx,gros,coul,petit){
+    svg.appendChild(S("text",{x:cx,y:306,"text-anchor":"middle","class":"s-lab",
+      fill:V(coul)},gros));
+    svg.appendChild(S("text",{x:cx,y:328,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},petit));
+  }
+
+  /* ① les deux ancrages sont a la meme hauteur que le point d'attache */
+  var A=20;
+  svg.appendChild(S("text",{x:A+165,y:62,"text-anchor":"middle","class":"s-lab",
+    fill:V("froid")},"① TOUT À LA MÊME HAUTEUR"));
+  plancher(A);
+  svg.appendChild(S("line",{x1:A+16,y1:NIV,x2:A+314,y2:NIV,stroke:V("trait"),
+    "stroke-width":"1.6","stroke-dasharray":"6 5"}));
+  palette(A+16,48); palette(A+266,48); palette(A+130,70);
+  nom(A+40,230,"P₁"); nom(A+290,230,"P₃"); nom(A+165,230,"P₄");
+  fl([A+165,NIV],[A+72,NIV],"froid","3");
+  fl([A+165,NIV],[A+258,NIV],"froid","3");
+  note(A+165,"les trois points sont à 1,0 m de haut");
+  verdict(A+165,"z = 0","froid","rien ne tire vers le bas");
+
+  /* ② l'ancrage est au plancher : le vecteur descend */
+  var B=374;
+  svg.appendChild(S("text",{x:B+165,y:62,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"② UN ANCRAGE AU PLANCHER"));
+  plancher(B);
+  palette(B+130,70);
+  nom(B+165,188,"P₄");
+  var T=[B+165,NIV], R=[B+93,FY];
+  svg.appendChild(S("circle",{cx:R[0],cy:R[1],r:"8",fill:V("encre")}));
+  svg.appendChild(S("text",{x:R[0]-14,y:FY+20,"text-anchor":"end","class":"s-pet",
+    fill:V("encre2")},"ancrage R"));
+  svg.appendChild(S("line",{x1:T[0],y1:NIV,x2:T[0],y2:FY,stroke:V("trait"),
+    "stroke-width":"1.6","stroke-dasharray":"6 4"}));
+  fl(T,R,"chaud","3.4");
+  svg.appendChild(S("text",{x:T[0]+12,y:232,"class":"s-pet",fill:V("chaud")},"−1,0"));
+  svg.appendChild(S("text",{x:B+112,y:212,"text-anchor":"end","class":"s-pet",
+    fill:V("chaud")},"P₄R"));
+  note(B+165,"l'ancrage est 1,0 m plus bas");
+  verdict(B+165,"z = −1,0","chaud","la sangle plaque la charge");
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "À gauche, les trois points sont <b>à la même hauteur</b> — c'est le cas du problème 1, "+
+    "où les quatre palettes sont identiques. Les deux sangles restent à plat, et leur somme "+
+    "aussi : <b>la troisième coordonnée vaut 0</b>. La charge est tenue sur les côtés, "+
+    "<b>rien ne l'empêche de décoller</b> au premier dos-d'âne. À droite, l'ancrage est "+
+    "<b>au plancher</b> : le vecteur descend, sa troisième coordonnée est <b>négative</b>, "+
+    "et c'est ce signe-là qui dit que la sangle plaque. C'est la raison d'être de "+
+    "l'arrimage par-dessus, dit <b>frictionnel</b>."));
+};
+
 
 
 

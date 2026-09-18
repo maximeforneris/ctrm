@@ -1,0 +1,136 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>S3 — norme et somme</title>
+<link rel="stylesheet" href="../assets/kit.css?v=2af1c964">
+<link rel="stylesheet" href="../assets/site.css?v=2af1c964">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=2af1c964">
+<link rel="stylesheet" href="../assets/vivant.css?v=2af1c964">
+
+<div class="page" data-site="ctrm" data-page="aide/ARRIM-2-norme-et-somme">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="ARRIM-1-du-plan-a-l-espace.html" rel="prev" title="S3 — repérer dans l'espace" aria-label="S3 — repérer dans l'espace">&lsaquo;</a><a class="fleche" href="ARRIM-3-colineaires.html" rel="next" title="S3 — colinéarité" aria-label="S3 — colinéarité">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/ARRIM-2-norme-et-somme">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">Tle Bac Pro CTRM</p>
+    <h1>La longueur<span>et la somme</span></h1>
+  </div>
+  <p class="accroche">Deux sangles mesurent 2 m chacune. Mises bout à bout, elles ne font pas 4 m de portée mais 3,2 m. Ce n'est pas une erreur de calcul, et c'est la découverte de la séance.</p>
+  <p class="contenu">4 exercices · 24 items d'entraînement · 1 figure</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag">VECT Vecteurs dans l'espace</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="ARRIM-1-du-plan-a-l-espace.html">Calculer les coordonnées d'un vecteur</a></b><span class="ou">S3 — repérer dans l'espace</span><span class="car">on ne peut pas en prendre la norme avant de l'avoir écrit.</span></li><li><b>Le carré d'un nombre décimal, et la racine carrée</b><span class="car">la norme n'est rien d'autre, mais trois fois de suite.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#la-norme-c-est-la-longueur">La norme, c’est la longueur</a><a href="#additionner-deux-vecteurs">Additionner deux vecteurs</a><a href="#pourquoi-la-resultante-est-verticale">Pourquoi la résultante est verticale</a><a href="#la-decouverte-2-2-ne-font-pas-4">La découverte : 2 + 2 ne font pas 4</a><a href="#vous-verifier">Vous vérifier</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
+<h2 id="la-norme-c-est-la-longueur">La norme, c’est la longueur</h2>
+<p>Un vecteur a une <strong>longueur</strong>, et on l’appelle sa <strong>norme</strong>. Sur une sangle, c’est le mètre de sangle à commander.</p>
+<div class="formule">
+<p>Pour <strong>u(x ; y ; z)</strong> : <strong>‖u‖ = √(x² + y² + z²)</strong></p>
+</div>
+<div class="etapes">
+<ol type="1">
+<li>Je mets chaque coordonnée <strong>au carré</strong>.</li>
+<li>J’<strong>additionne</strong> les trois carrés.</li>
+<li>Je prends la <strong>racine</strong> du total.</li>
+</ol>
+</div>
+<div class="piege">
+<p><strong>La norme n’est pas la somme des coordonnées.</strong> Pour (0 ; 1,2 ; 1,6), beaucoup écrivent 2,8. La bonne réponse est <strong>2</strong>. Le détour par les carrés n’est pas une complication : c’est ce qui fait la différence entre les deux.</p>
+</div>
+<div class="cle">
+<p><strong>Écrivez le calcul en trois temps</strong> : √( … + … + … ) = √… = … . Le document vous laisse la place exprès. Cette écriture-là interdit d’aller trop vite, et c’est tout ce qu’on lui demande.</p>
+</div>
+<div class="plus">
+<p><strong>Sur la NumWorks, en une seule ligne</strong></p>
+<p>Application <strong>Calculs</strong>, puis <strong>boîte à outils → √</strong>. On tape directement <code>1.2^2+1.6^2+0^2</code> sous la racine, et la machine renvoie 2.</p>
+<p>Inutile de calculer les carrés à part et de les noter : c’est précisément là qu’on se trompe de recopie. La machine est autorisée au CCF, elle fait cela sans broncher, et vous gardez votre attention pour l’ordre des points.</p>
+<p><strong>Une réserve.</strong> Écrire le résultat seul ne vaut pas la moitié des points. Le calcul en trois temps se rédige quand même ; la machine sert à le vérifier, pas à le remplacer.</p>
+</div>
+<h2 id="additionner-deux-vecteurs">Additionner deux vecteurs</h2>
+<p>C’est l’opération la plus simple de la séquence, et elle ne réserve aucune surprise.</p>
+<div class="formule">
+<p><strong>u(x ; y ; z) + v(x’ ; y’ ; z’) = (x + x’ ; y + y’ ; z + z’)</strong></p>
+</div>
+<div class="piege">
+<p><strong>Une somme de vecteurs est un vecteur, pas un nombre.</strong> La réponse est un triplet. Si votre résultat tient en un seul nombre, vous avez additionné les coordonnées entre elles au lieu d’additionner les deux vecteurs.</p>
+</div>
+<h2 id="pourquoi-la-resultante-est-verticale">Pourquoi la résultante est verticale</h2>
+<figure class="schema"><div class="dessin" data-schema="deux-sangles-somme"></div><figcaption>Les deux sangles de l’activité 1, mises bout à bout.</figcaption></figure>
+<p>Les deux sangles partent d’ancrages <strong>symétriques</strong> et rejoignent le même point. Leurs composantes en largeur valent <strong>+1,2</strong> et <strong>−1,2</strong> : elles s’annulent.</p>
+<div class="cle">
+<p><strong>Il ne reste que la hauteur.</strong> La somme vaut (0 ; 0 ; 3,2) : rien en longueur, rien en largeur. C’est cela, « tirer verticalement », et c’est le but d’un arrimage symétrique.</p>
+</div>
+<div class="piege">
+<p><strong>Le vecteur AS monte, la sangle tire vers le bas.</strong> AS va de l’ancrage <strong>vers</strong> le sommet ; il donne la <strong>longueur</strong> de sangle et la <strong>droite</strong> qu’elle suit. La force, elle, va du sommet vers l’ancrage. Même droite, sens opposé — on nommera cela en séance 3.</p>
+</div>
+<h2 id="la-decouverte-2-2-ne-font-pas-4">La découverte : 2 + 2 ne font pas 4</h2>
+<div class="formule">
+<p>‖AS‖ = <strong>2 m</strong> · ‖BS‖ = <strong>2 m</strong> · mais ‖AS + BS‖ = <strong>3,2 m</strong></p>
+</div>
+<div class="cle">
+<p><strong>La norme de la somme n’est pas la somme des normes.</strong> Ce n’est pas un cas particulier ni une curiosité : c’est vrai de deux vecteurs quelconques dès qu’ils ne pointent pas exactement dans la même direction.</p>
+</div>
+<div class="plus">
+<p><strong>Le cas où l’égalité tiendrait</strong></p>
+<p>Si les deux vecteurs étaient <strong>colinéaires et de même sens</strong>, alors oui, 2 + 2 feraient 4. C’est le seul cas. Dès qu’ils s’écartent, le chemin direct est plus court que le détour, et il l’est de plus en plus à mesure qu’ils s’ouvrent.</p>
+<p>Vous connaissez déjà cette idée sans le savoir : aller à Marseille en passant par Digne fait plus de kilomètres que d’y aller directement. Le vol d’oiseau est toujours plus court que le trajet, sauf si le trajet est une ligne droite.</p>
+<p>C’est exactement ce que le problème du drone, en séance 4, fait retrouver sur des nombres qui n’ont rien à voir avec un camion.</p>
+</div>
+<h2 id="vous-verifier">Vous vérifier</h2>
+<section class="exo" id="ARRIM-2-norme-et-somme-e1" data-exo="ARRIM-2-norme-et-somme-e1" data-type="calcul" data-savoir="VECT" data-a="IXgueGB4OTs2OS82eHZ4LHhgbXRqdnguNTZ4YGt0anZ4L3hgeHgn"><p class="k">Exercice · VECT</p><h4>Une norme qui tombe juste</h4><div class="enonce">
+
+<p>Calculez la norme du vecteur <strong>u(2 ; 3 ; 6)</strong>.</p>
+</div><div class="indice" hidden>4, 9 et 36. Additionnez-les avant de prendre la racine, jamais après.</div></section>
+<section class="exo" id="ARRIM-2-norme-et-somme-e2" data-exo="ARRIM-2-norme-et-somme-e2" data-type="calcul" data-savoir="VECT" data-a="IXgueGB4OTs2OS82eHZ4LHhgaHRqdnguNTZ4YGt0anZ4L3hgeDd4Jw=="><p class="k">Exercice · VECT</p><h4>La sangle de l’activité</h4><div class="enonce">
+
+<p>Le vecteur <strong>AS</strong> a pour coordonnées <strong>(0 ; 1,2 ; 1,6)</strong>. Quelle est sa norme, en mètres ?</p>
+</div><div class="indice" hidden>1,44 plus 2,56. Le total est un carré parfait, et ce n’est pas un hasard.</div></section>
+<section class="exo" id="ARRIM-2-norme-et-somme-e3" data-exo="ARRIM-2-norme-et-somme-e3" data-type="calcul" data-savoir="VECT" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRodnguNTZ4YGh0anZ4L3hgeDd4Jw=="><p class="k">Exercice · VECT</p><h4>La norme de la somme</h4><div class="enonce">
+
+<p><strong>AS(0 ; 1,2 ; 1,6)</strong> et <strong>BS(0 ; −1,2 ; 1,6)</strong>. Quelle est la norme de leur somme, en mètres ?</p>
+</div><div class="indice" hidden>Additionnez d’abord les deux vecteurs. Deux des trois coordonnées de la somme valent zéro, et la troisième vous donne la réponse sans calcul.</div></section>
+<section class="exo" id="ARRIM-2-norme-et-somme-e4" data-exo="ARRIM-2-norme-et-somme-e4" data-type="justification" data-savoir="VECT" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · VECT</p><h4>Quatre mètres de sangle, ou pas</h4><div class="enonce">
+
+<p>Un chargeur voit que chaque sangle mesure 2 m et en conclut que l’ensemble « tire sur 4 m ». Dites en quoi il se trompe.</p>
+</div><div class="indice" hidden>Regardez le schéma : on part de A, on va à S, on reporte la seconde sangle, et on retombe au-dessus de A. Le chemin direct est plus court que les deux morceaux.</div><ul class="verifier" hidden><li>J’ai dit que la norme de la somme vaut 3,2 m, pas 4 m</li><li>J’ai dit que les normes ne s’additionnent pas</li><li>J’ai dit ce qui s’annule : les composantes en largeur</li><li>J’ai dit dans quel cas l’égalité serait vraie</li></ul></section>
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
+<section class="serie" id="ARRIM-2-norme-et-somme-s1" data-serie="ARRIM-2-norme-et-somme-s1" data-savoir="VECT" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGt0bm4ndiF4LHhgaHRvbCd2IXgseGBudGondiF4LHhga2t0b2wndiF4LHhga3RjbCd2IXgseGBraXRvaCcHJw=="><p class="k">Série · VECT</p><h4>Série 1 — les carrés, avant toute racine</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">1,2²</span></li><li><span class="q">1,6²</span></li><li><span class="q">1,44 + 2,56</span></li><li><span class="q">3,4²</span></li><li><span class="q">1,4²</span></li><li><span class="q">11,56 + 1,96</span></li></ol><div class="indice" hidden>Un carré, c’est le nombre multiplié par lui-même. 1,2² ne vaut pas 2,4.</div></section>
+<section class="serie" id="ARRIM-2-norme-et-somme-s2" data-serie="ARRIM-2-norme-et-somme-s2" data-savoir="VECT" data-a="IXgveGB4N3h2eC41Nnhga3RqdngzeGABIXgseGBvdGondiF4LHhgbXRqJ3YheCx4YGl0aid2IXgseGBodGondiF4LHhgbXRqJ3YheCx4YGl0aCcHJw=="><p class="k">Série · VECT</p><h4>Série 2 — la norme d’un vecteur</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">u(3 ; 4 ; 0)</span></li><li><span class="q">u(2 ; 3 ; 6)</span></li><li><span class="q">u(1 ; 2 ; 2)</span></li><li><span class="q">u(0 ; 1,2 ; 1,6)</span></li><li><span class="q">u(6 ; 2 ; 3)</span></li><li><span class="q">u(0 ; 0 ; 3,2)</span></li></ol><div class="indice" hidden>Les trois carrés, leur somme, puis la racine. Tous ces totaux sont des carrés parfaits.</div></section>
+<section class="serie" id="ARRIM-2-norme-et-somme-s3" data-serie="ARRIM-2-norme-et-somme-s3" data-savoir="VECT" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4b3gHJ3YheDt4YAF4angHJ3YheDt4YAF4bngHJ3YheDt4YAF4angHJ3YheDt4YAF4aXZoeAcndiF4O3hgAXh3bngHJwd2eDd4YHgpMz00Pyl4Jw=="><p class="k">Série · VECT</p><h4>Série 3 — la somme, coordonnée par coordonnée</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">u(1 ; 2 ; 3) + v(4 ; −2 ; 1), le x</span></li><li><span class="q">le y</span></li><li><span class="q">le z</span></li><li><span class="q">u(0 ; 1,2 ; 1,6) + v(0 ; −1,2 ; 1,6), le y</span></li><li><span class="q">le z</span></li><li><span class="q">u(2 ; −1 ; 4) + v(−6 ; 3 ; −12), le x</span></li></ol><div class="indice" hidden>On ajoute les premières entre elles, les deuxièmes entre elles, les troisièmes entre elles. Jamais en travers.</div></section>
+<section class="serie" id="ARRIM-2-norme-et-somme-s4" data-serie="ARRIM-2-norme-et-somme-s4" data-savoir="VECT" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGh0aid2IXgseGBodGondiF4LHhgbnRqJ3YheCx4YGl0aCd2IXgseGBpdGgndiF4LHhganRiJwcn"><p class="k">Série · VECT</p><h4>Série 4 — deux plus deux ne font pas quatre</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">‖AS‖, en m</span></li><li><span class="q">‖BS‖, en m</span></li><li><span class="q">‖AS‖ + ‖BS‖</span></li><li><span class="q">le z de AS + BS</span></li><li><span class="q">‖AS + BS‖, en m</span></li><li><span class="q">l’écart entre 4 et la vraie norme</span></li></ol><div class="indice" hidden>La somme se calcule d’abord, la norme ensuite. Dans l’autre ordre, on ne calcule pas la même chose.</div></section>
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td><strong>‖u‖ = √(x² + y² + z²)</strong></td>
+<td>les carrés d’abord, la racine à la fin</td>
+</tr>
+<tr>
+<td><strong>On additionne coordonnée par coordonnée</strong></td>
+<td>et le résultat est un vecteur</td>
+</tr>
+<tr>
+<td><strong>‖u + v‖ n’est pas ‖u‖ + ‖v‖</strong></td>
+<td>sauf si les deux tirent exactement dans le même sens</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="ARRIM-1-du-plan-a-l-espace.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">S3 — repérer dans l'espace</span></a><a class="ap" href="ARRIM-3-colineaires.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S3 — colinéarité</span></a></div></nav>
+<p class="pied">Cette page détaille la séance 2 de la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=2af1c964"></script>
+<script src="../assets/site.js?v=2af1c964"></script>
+<script src="../assets/vivant.js?v=2af1c964"></script>
