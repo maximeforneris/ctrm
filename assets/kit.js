@@ -8769,6 +8769,41 @@ SCHEMAS["pile-electrons"]=function(el){
     "raccourci-là</b>, et c'est de l'énergie perdue en chaleur."));
 };
 
+/* ─────────── ce que pese l'energie, pour un meme besoin ───────────
+   Une seule mesure, donc une seule teinte, plus l'accent sur la ligne qui
+   porte le message. Les barres sont A L'ECHELLE : celle du gazole est
+   presque invisible, et c'est exactement ce qu'il faut voir. */
+SCHEMAS["energie-par-kg"]=function(el){
+  var W=724,H=330,X0=206,LMAX=438,Y=[96,166,236],HB=38;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Masse nécessaire pour stocker 240 kilowattheures : plomb 6857 kg, "+
+                 "lithium 1500 kg, gazole 20 kg"});
+  svg.appendChild(S("text",{x:20,y:42,"class":"s-tit",
+    fill:V("chaud")},"POUR STOCKER LES MÊMES 240 kW·h"));
+  var MAX=6857;
+  [["Plomb",6857,"6 857 kg","chaud"],
+   ["Lithium-ion",1500,"1 500 kg","encre2"],
+   ["Gazole",20,"20 kg","encre2"]].forEach(function(b,i){
+    var w=Math.max(3, b[1]/MAX*LMAX);
+    svg.appendChild(S("text",{x:X0-14,y:Y[i]+HB/2+6,"text-anchor":"end",
+      "class":"s-lab",fill:V("encre")},b[0]));
+    svg.appendChild(S("rect",{x:X0,y:Y[i],width:w,height:HB,rx:"2",fill:V(b[3])}));
+    svg.appendChild(S("text",{x:X0+w+12,y:Y[i]+HB/2+6,"class":"s-lab",
+      fill:V(b[3])},b[2]));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:Y[0]-14,x2:X0,y2:Y[2]+HB+14,stroke:V("encre2"),
+    "stroke-width":"2"}));
+  svg.appendChild(S("text",{x:X0,y:Y[2]+HB+34,"class":"s-pet",fill:V("chaud")},
+    "le plomb, c'est 27 % de la charge utile du tracteur"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Les trois barres sont <b>à la même échelle</b>. Celle du gazole tient dans un trait, "+
+    "et c'est la raison pour laquelle les camions ont roulé au gazole pendant un siècle. "+
+    "<b>Attention pourtant :</b> ces 240 kW·h de gazole ne sont pas de l'énergie utile — "+
+    "un moteur thermique n'en convertit qu'environ <b>40 %</b> en mouvement, contre plus "+
+    "de <b>90 %</b> pour un moteur électrique. La comparaison n'est pas honnête telle quelle."));
+};
+
 
 
 
