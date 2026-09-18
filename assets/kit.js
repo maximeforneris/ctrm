@@ -8804,6 +8804,260 @@ SCHEMAS["energie-par-kg"]=function(el){
     "de <b>90 %</b> pour un moteur électrique. La comparaison n'est pas honnête telle quelle."));
 };
 
+/* ─────────── le banc de l'activite 2, dans les deux sens ───────────
+   L'accumulateur est A LA MEME PLACE dans les deux panneaux — montant de
+   droite. Seule la fleche change, et c'est tout le propos de la seance.
+   Les valeurs sont celles d'un NiMH format AA : 1,2 V nominal, 2 000 mA·h. */
+SCHEMAS["banc-charge-decharge"]=function(el){
+  var W=724,H=516;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Banc de charge et de décharge d'un accumulateur, puis les deux "+
+                 "courbes de tension relevées toutes les deux minutes"});
+  svg.appendChild(S("text",{x:W/2,y:30,"text-anchor":"middle","class":"s-tit",
+    fill:V("chaud")},"LE MÊME ACCUMULATEUR, DANS LES DEUX SENS"));
+
+  /* pointe de fleche : dir = +1 vers la droite, -1 vers la gauche */
+  function pointe(x,y,coul,dir){
+    svg.appendChild(S("path",{d:"M "+x+" "+y+" l "+(-13*dir)+" -6 l 0 12 z",
+      fill:V(coul)}));
+  }
+
+  function panneau(ox,num,titre,coul,charge,l1,l2){
+    var XL=ox+62,XR=ox+250,YT=104,YB=196,MID=(XL+XR)/2,MY=(YT+YB)/2;
+    svg.appendChild(S("text",{x:ox+160,y:66,"text-anchor":"middle","class":"s-lab",
+      fill:V(coul)},num+"  "+titre));
+    /* la boucle, puis les organes par-dessus : leur fond masque le fil */
+    svg.appendChild(S("path",{d:"M "+XL+" "+YT+" L "+XR+" "+YT+" L "+XR+" "+YB+
+      " L "+XL+" "+YB+" Z",fill:"none",stroke:V("encre"),"stroke-width":"3"}));
+    svg.appendChild(S("circle",{cx:MID,cy:YT,r:"20",fill:V("carte"),stroke:V("encre"),
+      "stroke-width":"3"}));
+    svg.appendChild(S("text",{x:MID,y:YT+7,"text-anchor":"middle","class":"s-lab",
+      fill:V("encre")},"A"));
+    /* a gauche : l'alimentation en charge, la lampe en decharge */
+    if(charge){
+      svg.appendChild(S("rect",{x:XL-48,y:MY-32,width:96,height:64,rx:"5",
+        fill:V("carte"),stroke:V("encre"),"stroke-width":"2.4"}));
+      svg.appendChild(S("text",{x:XL,y:MY-4,"text-anchor":"middle","class":"s-lab",
+        fill:V("encre")},"ALIM."));
+      svg.appendChild(S("text",{x:XL,y:MY+18,"text-anchor":"middle","class":"s-pet",
+        fill:V("encre2")},"0,20 A"));
+    }else{
+      svg.appendChild(S("circle",{cx:XL,cy:MY,r:"22",fill:V("carte"),stroke:V("chaud"),
+        "stroke-width":"2.8"}));
+      svg.appendChild(S("path",{d:"M "+(XL-15)+" "+(MY-15)+" L "+(XL+15)+" "+(MY+15)+
+        " M "+(XL+15)+" "+(MY-15)+" L "+(XL-15)+" "+(MY+15),stroke:V("chaud"),
+        "stroke-width":"2.2"}));
+      svg.appendChild(S("text",{x:XL,y:YB+22,"text-anchor":"middle","class":"s-pet",
+        fill:V("encre2")},"lampe 2,5 V"));
+    }
+    /* a droite : l'accumulateur, borne + en haut DANS LES DEUX CAS */
+    svg.appendChild(S("rect",{x:XR-24,y:MY-20,width:48,height:40,fill:V("carte")}));
+    svg.appendChild(S("rect",{x:XR-20,y:MY-14,width:40,height:"3.5",fill:V("encre")}));
+    svg.appendChild(S("rect",{x:XR-10,y:MY+2,width:20,height:"5",fill:V("encre")}));
+    svg.appendChild(S("text",{x:XR+26,y:MY-8,"class":"s-lab",fill:V("encre2")},"+"));
+    svg.appendChild(S("text",{x:XR+26,y:MY+16,"class":"s-lab",fill:V("encre2")},"−"));
+    svg.appendChild(S("text",{x:XR,y:YB+22,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},"accumulateur"));
+    /* le sens du courant : deux pointes sur le fil du haut */
+    var dir=charge?1:-1;
+    /* les deux pointes se placent EN MIROIR : cote a cote dans le panneau
+       decharge, elles se chevauchaient et faisaient une seule tache. */
+    [charge?MID+58:MID-58, charge?XL+46:XR-46].forEach(function(x){
+      pointe(x,YT,coul,dir);
+    });
+    svg.appendChild(S("text",{x:MID,y:YT+30,"text-anchor":"middle","class":"s-pet",
+      fill:V(coul)},charge?"le courant ENTRE":"le courant SORT"));
+    /* le releve du poste */
+    svg.appendChild(S("rect",{x:ox+6,y:240,width:308,height:56,rx:"6",
+      fill:V("carte2")}));
+    svg.appendChild(S("text",{x:ox+160,y:262,"text-anchor":"middle","class":"s-lab",
+      fill:V(coul)},l1));
+    svg.appendChild(S("text",{x:ox+160,y:284,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},l2));
+  }
+  panneau(30,"①","EN CHARGE","chaud",true,
+          "I = 0,20 A constant","U : 1,30 V → 1,45 V en 10 min");
+  panneau(374,"②","EN DÉCHARGE","froid",false,
+          "I ≈ 0,15 A","U : 1,25 V → 1,10 V en 10 min");
+
+  /* ── les deux courbes : c'est le tableau g) du polycopie, rempli ── */
+  var X0=150,X1=620,YB2=482,HT=136;
+  function xT(t){return X0+t/10*(X1-X0);}
+  function yU(u){return YB2-(u-1.0)/0.5*HT;}
+  svg.appendChild(S("text",{x:W/2,y:320,"text-anchor":"middle","class":"s-pet",
+    fill:V("encre2")},"ce que donne le relevé de tension, toutes les deux minutes"));
+  [1.0,1.1,1.2,1.3,1.4,1.5].forEach(function(u){
+    svg.appendChild(S("line",{x1:X0,y1:yU(u),x2:X1,y2:yU(u),stroke:V("trait"),
+      "stroke-width":"1"}));
+    svg.appendChild(S("text",{x:X0-12,y:yU(u)+5,"text-anchor":"end","class":"s-pet",
+      fill:V("encre2")},u.toFixed(1).replace(".",",")+" V"));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:yU(1.5),x2:X0,y2:YB2,stroke:V("encre2"),
+    "stroke-width":"2"}));
+  svg.appendChild(S("line",{x1:X0,y1:YB2,x2:X1,y2:YB2,stroke:V("encre2"),
+    "stroke-width":"2"}));
+  [0,2,4,6,8,10].forEach(function(t){
+    svg.appendChild(S("text",{x:xT(t),y:500,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},""+t));
+  });
+  svg.appendChild(S("text",{x:636,y:500,"class":"s-pet",fill:V("encre2")},"min"));
+  function trace(vals,coul,nom,dy){
+    var d="";
+    vals.forEach(function(u,i){
+      d+=(i?" L ":"M ")+xT(i*2)+" "+yU(u);
+      svg.appendChild(S("circle",{cx:xT(i*2),cy:yU(u),r:"4",fill:V(coul)}));
+    });
+    svg.appendChild(S("path",{d:d,fill:"none",stroke:V(coul),"stroke-width":"2.6"}));
+    svg.appendChild(S("text",{x:X1+10,y:yU(vals[5])+dy,"class":"s-pet",fill:V(coul)},nom));
+  }
+  trace([1.30,1.35,1.38,1.41,1.43,1.45],"chaud","charge",-6);
+  trace([1.25,1.22,1.20,1.18,1.15,1.10],"froid","décharge",14);
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Le montage est le même des deux côtés, et l'accumulateur est à la même place : "+
+    "<b>seule la flèche du courant change de sens</b>. En charge, on <b>force</b> le courant "+
+    "à entrer et la tension <b>monte</b> ; en décharge, l'accumulateur <b>fournit</b> le "+
+    "courant et la tension <b>descend</b>. Les valeurs portées ici sont celles d'un NiMH "+
+    "format AA — <b>les vôtres seront voisines, pas identiques</b>, et c'est normal : ce "+
+    "qu'il faut retrouver, c'est le <b>sens</b> des deux courbes, pas le centième de volt."));
+};
+
+/* ─────────── la decharge complete, d'ou sortent Q et E ───────────
+   Le prolongement du banc de la seance 2, a courant constant. Les nombres
+   sont ceux de l'accumulateur AA, JAMAIS ceux des tableaux i) et j) du
+   polycopie : la fiche montre comment on lit, elle ne rend pas la copie. */
+SCHEMAS["releve-decharge"]=function(el){
+  var W=724,H=540;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Courbe de décharge à courant constant : le plateau à 1,2 volt, "+
+                 "la chute à 10 heures, et le calcul de la capacité et de l'énergie"});
+  var X0=120,X1=610,YB=380,HT=280;
+  function xT(t){return X0+t/12*(X1-X0);}
+  function yU(u){return YB-(u-0.8)/0.8*HT;}
+  svg.appendChild(S("text",{x:20,y:32,"class":"s-tit",fill:V("chaud")},
+    "UN ACCUMULATEUR QU'ON VIDE À COURANT CONSTANT"));
+  svg.appendChild(S("text",{x:20,y:56,"class":"s-pet",fill:V("encre2")},
+    "le même AA que sur le banc, déchargé sous 0,20 A sans jamais varier"));
+  [0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6].forEach(function(u){
+    svg.appendChild(S("line",{x1:X0,y1:yU(u),x2:X1,y2:yU(u),stroke:V("trait"),
+      "stroke-width":"1"}));
+    svg.appendChild(S("text",{x:X0-12,y:yU(u)+5,"text-anchor":"end","class":"s-pet",
+      fill:V("encre2")},u.toFixed(1).replace(".",",")+" V"));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:yU(1.6),x2:X0,y2:YB,stroke:V("encre2"),
+    "stroke-width":"2"}));
+  svg.appendChild(S("line",{x1:X0,y1:YB,x2:X1,y2:YB,stroke:V("encre2"),
+    "stroke-width":"2"}));
+  [0,2,4,6,8,12].forEach(function(t){
+    svg.appendChild(S("text",{x:xT(t),y:402,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},""+t));
+  });
+  svg.appendChild(S("text",{x:(X0+X1)/2,y:426,"text-anchor":"middle","class":"s-pet",
+    fill:V("encre2")},"temps de décharge, en heures"));
+  /* le seuil d'arret : en dessous, on abime la cellule */
+  svg.appendChild(S("line",{x1:X0,y1:yU(1.0),x2:X1,y2:yU(1.0),stroke:V("chaud"),
+    "stroke-width":"1.8","stroke-dasharray":"7 5"}));
+  /* calee sur X1, l etiquette passait sous le point du genou : elle s arrete
+     avant lui. */
+  svg.appendChild(S("text",{x:xT(9.4),y:yU(1.0)-17,"text-anchor":"end","class":"s-pet",
+    fill:V("chaud")},"seuil d'arrêt : 1,0 V"));
+  /* la courbe : long plateau, puis le genou */
+  var PTS=[[0,1.38],[0.5,1.32],[1,1.30],[2,1.28],[4,1.26],[6,1.24],[8,1.22],
+           [9,1.20],[9.5,1.17],[10,1.10],[10.3,0.95],[10.5,0.85]];
+  var d="";
+  PTS.forEach(function(q,i){ d+=(i?" L ":"M ")+xT(q[0])+" "+yU(q[1]); });
+  svg.appendChild(S("path",{d:d,fill:"none",stroke:V("froid"),"stroke-width":"3"}));
+  /* la lecture du temps d'arret */
+  svg.appendChild(S("line",{x1:xT(10),y1:yU(1.0),x2:xT(10),y2:YB,stroke:V("chaud"),
+    "stroke-width":"1.8","stroke-dasharray":"7 5"}));
+  svg.appendChild(S("circle",{cx:xT(10),cy:yU(1.10),r:"5",fill:V("chaud")}));
+  svg.appendChild(S("text",{x:xT(10),y:YB+22,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"t = 10 h"));
+  svg.appendChild(S("text",{x:xT(4.6),y:yU(1.26)+38,"text-anchor":"middle","class":"s-pet",
+    fill:V("froid")},"le plateau : U ≈ 1,2 V presque tout le temps"));
+  /* les deux calculs, dans le coin libre en haut a droite */
+  /* Les deux encadres sont SOUS le graphique, cote a cote. Poses dans le coin
+     haut-droit, ils recouvraient le plateau de la courbe et son etiquette. */
+  [["Q = I × t = 0,20 × 10","soit 2,0 A·h — la capacité",20],
+   ["E = Q × U = 2,0 × 1,2","soit 2,4 W·h — l'énergie",374]]
+  .forEach(function(b){
+    svg.appendChild(S("rect",{x:b[2],y:448,width:330,height:66,rx:"6",
+      fill:V("carte2"),stroke:V("chaud"),"stroke-width":"1.6"}));
+    svg.appendChild(S("text",{x:b[2]+18,y:476,"class":"s-lab",fill:V("encre")},b[0]));
+    svg.appendChild(S("text",{x:b[2]+18,y:499,"class":"s-pet",fill:V("chaud")},b[1]));
+  });
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Tout se lit sur la courbe. <b>Le courant est connu</b> parce qu'on l'a imposé : 0,20 A. "+
+    "<b>Le temps se lit</b> là où la tension tombe sous le seuil : 10 h. Leur produit est la "+
+    "<b>capacité</b>, 2,0 A·h — et c'est bien la valeur inscrite sur l'accumulateur. La "+
+    "multiplier par la tension donne l'<b>énergie</b>, 2,4 W·h. <b>Le plateau explique "+
+    "pourquoi on a le droit de multiplier par une seule tension :</b> elle ne bouge presque "+
+    "pas de toute la décharge. Une batterie de camion fait exactement cela, avec des nombres "+
+    "trois cents fois plus grands."));
+};
+
+/* ─────────── peser l'accumulateur, puis remonter au camion ───────────
+   Une manip de trente secondes qui ancre la table de l'activite 4 : le
+   W·h/kg cesse d'etre un nombre lu quelque part. */
+SCHEMAS["peser-l-energie"]=function(el){
+  var W=724,H=360;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Peser un accumulateur AA pour en tirer une énergie par kilogramme, "+
+                 "et la comparer au plomb et au lithium"});
+  svg.appendChild(S("text",{x:20,y:32,"class":"s-tit",fill:V("chaud")},
+    "CE QUE PÈSE L'ÉNERGIE — ON COMMENCE PAR PESER"));
+  /* la balance et sa cellule */
+  svg.appendChild(S("text",{x:145,y:72,"text-anchor":"middle","class":"s-pet",
+    fill:V("encre2")},"1 accumulateur AA"));
+  svg.appendChild(S("rect",{x:132,y:88,width:26,height:46,rx:"4",fill:V("carte"),
+    stroke:V("froid"),"stroke-width":"2.6"}));
+  svg.appendChild(S("rect",{x:140,y:82,width:10,height:7,rx:"2",fill:V("froid")}));
+  svg.appendChild(S("rect",{x:56,y:136,width:178,height:11,rx:"4",fill:V("encre2")}));
+  svg.appendChild(S("rect",{x:70,y:150,width:150,height:50,rx:"6",fill:V("carte"),
+    stroke:V("encre"),"stroke-width":"2.4"}));
+  svg.appendChild(S("rect",{x:92,y:162,width:106,height:26,rx:"3",fill:V("carte2")}));
+  svg.appendChild(S("text",{x:145,y:181,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"0,026 kg"));
+  /* les deux grandeurs, puis le quotient */
+  [["ÉNERGIE","2,4 W·h","mesurée en séance 3",300,"froid"],
+   ["MASSE","0,026 kg","pesée ici",502,"encre2"]].forEach(function(b){
+    svg.appendChild(S("rect",{x:b[3],y:82,width:170,height:64,rx:"6",fill:V("carte2"),
+      stroke:V(b[4]),"stroke-width":"1.6"}));
+    svg.appendChild(S("text",{x:b[3]+85,y:104,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},b[0]));
+    svg.appendChild(S("text",{x:b[3]+85,y:127,"text-anchor":"middle","class":"s-lab",
+      fill:V(b[4])},b[1]));
+    svg.appendChild(S("text",{x:b[3]+85,y:162,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},b[2]));
+  });
+  svg.appendChild(S("text",{x:486,y:124,"text-anchor":"middle","class":"s-lab",
+    fill:V("encre")},"÷"));
+  svg.appendChild(S("text",{x:486,y:202,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud"),style:"font-size:21px"},"= 92 W·h par kilogramme"));
+  /* le situer entre les deux technologies de la table */
+  /* LMAX=400 poussait l etiquette du lithium hors du viewBox : 340 la ramene */
+  var SX=250,LMAX=340,MAX=160;
+  [["Plomb",35,"35","encre2",238],
+   ["NiMH — le vôtre",92,"92","chaud",276],
+   ["Lithium-ion",160,"160","encre2",314]].forEach(function(b){
+    svg.appendChild(S("text",{x:SX-14,y:b[4]+20,"text-anchor":"end","class":"s-pet",
+      fill:V("encre")},b[0]));
+    svg.appendChild(S("rect",{x:SX,y:b[4],width:b[1]/MAX*LMAX,height:28,rx:"2",
+      fill:V(b[3])}));
+    svg.appendChild(S("text",{x:SX+b[1]/MAX*LMAX+12,y:b[4]+20,"class":"s-pet",
+      fill:V(b[3])},b[2]+" W·h/kg"));
+  });
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Le <b>W·h par kilogramme</b> de la table de l'activité 4 n'est pas un nombre tombé du "+
+    "ciel : c'est <b>l'énergie divisée par la masse</b>, et on peut le mesurer soi-même sur "+
+    "une pile qu'on tient dans la main. Le NiMH se place <b>entre le plomb et le lithium</b>, "+
+    "ce qui est bien sa place. Et le calcul remonte au camion sans rien changer : pour les "+
+    "<b>240 kW·h</b> du besoin, il faudrait <b>240 000 ÷ 92 ≈ 2 610 kg</b> de NiMH — "+
+    "environ <b>cent mille piles</b> comme celle-là."));
+};
+
 
 
 
