@@ -9349,6 +9349,296 @@ SCHEMAS["troisieme-coordonnee"]=function(el){
     "l'arrimage par-dessus, dit <b>frictionnel</b>."));
 };
 
+/* ══════════════════════════════ SCHEMAS — Tle CTRM, sequence 1
+   Ajustement d'un nuage. Ce sont des GRAPHIQUES, pas des dessins, et deux
+   regles les tiennent :
+
+   — deux teintes de serie au maximum par graphique, « chaud » et « froid ».
+     Eprouve au validateur : ecart 24,3 en vision normale et 18,7 en
+     protanopie. « encre2 » est un GRIS — chroma 0,007, ecart 12,8 de
+     « froid » — il ne peut donc pas porter une troisieme courbe. C'est la
+     raison pour laquelle le comparatif a quatre modeles est fait en petits
+     multiples : un seul trace par panneau, et le probleme disparait.
+
+   — l'identite ne repose jamais sur la seule couleur : chaque courbe porte
+     son nom en bout de trace, et le modele retenu porte le mot RETENU. */
+
+/* nuage + courbe : helpers communs aux quatre */
+function _pts(svg,X,Y,fx,fy,r){
+  X.forEach(function(x,i){
+    svg.appendChild(S("circle",{cx:fx(x),cy:fy(Y[i]),r:r||"3.6",fill:V("encre")}));
+  });
+}
+function _courbe(svg,f,x0,x1,fx,fy,coul,ep,ymin,ymax,tirets){
+  var d="",n=90,dessus=false;
+  for(var k=0;k<=n;k++){
+    var x=x0+(x1-x0)*k/n, y=f(x);
+    if(y<ymin||y>ymax){ dessus=false; continue; }
+    d+=(dessus?" L ":" M ")+fx(x).toFixed(1)+" "+fy(y).toFixed(1);
+    dessus=true;
+  }
+  var at={d:d,fill:"none",stroke:V(coul),"stroke-width":ep,"stroke-linecap":"round"};
+  if(tirets)at["stroke-dasharray"]=tirets;
+  svg.appendChild(S("path",at));
+}
+
+/* ─────────── le meme nuage, les quatre modeles ─────────── */
+SCHEMAS["quatre-modeles-un-nuage"]=function(el){
+  var W=724,H=456;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Le relevé vitesse-consommation ajusté par quatre modèles : affine, "+
+                 "quadratique, exponentiel et logarithmique, avec leurs quatre R carré"});
+  var X=[60,65,70,75,80,85,90,95,100], Y=[26,27,29,31,34,38,43,50,58];
+  svg.appendChild(S("text",{x:W/2,y:28,"text-anchor":"middle","class":"s-tit",
+    fill:V("chaud")},"LE MÊME NUAGE, QUATRE MODÈLES"));
+  svg.appendChild(S("text",{x:W/2,y:50,"text-anchor":"middle","class":"s-pet",
+    fill:V("encre2")},"relevé ② : la consommation selon la vitesse — "+
+                     "même échelle sur les quatre"));
+  var LARG=280,HAUT=118;
+  var MOD=[
+   ["① AFFINE","0,919",function(x){return 0.7733*x-24.5333;},44,96,false],
+   ["② QUADRATIQUE","0,998",function(x){return 0.020*x*x-2.4267*x+100.133;},398,96,true],
+   ["③ EXPONENTIEL","0,966",function(x){return 7.1742*Math.pow(1.02037,x);},44,296,false],
+   ["④ LOGARITHMIQUE","0,877",function(x){return 59.3217*Math.log(x)-221.8249;},398,296,false]];
+  MOD.forEach(function(m,idx){
+    var ox=m[3],oy=m[4],gagne=m[5],coul=gagne?"chaud":"froid";
+    function fx(x){ return ox+(x-58)/44*LARG; }
+    function fy(y){ return oy+HAUT-(y-22)/40*HAUT; }
+    svg.appendChild(S("text",{x:ox,y:oy-12,"class":"s-lab",fill:V(coul)},m[0]));
+    if(gagne){
+      svg.appendChild(S("text",{x:ox+LARG,y:oy-12,"text-anchor":"end","class":"s-pet",
+        fill:V("chaud")},"RETENU"));
+    }
+    /* la grille reste en retrait, l'encadre du retenu est en chaud */
+    [30,40,50,60].forEach(function(v){
+      svg.appendChild(S("line",{x1:ox,y1:fy(v),x2:ox+LARG,y2:fy(v),stroke:V("trait"),
+        "stroke-width":"1"}));
+    });
+    svg.appendChild(S("rect",{x:ox,y:oy,width:LARG,height:HAUT,fill:"none",
+      stroke:V(gagne?"chaud":"encre2"),"stroke-width":gagne?"2":"1.2"}));
+    _courbe(svg,m[2],58,102,fx,fy,coul,"2.6",22,62);
+    _pts(svg,X,Y,fx,fy,"3.4");
+    /* le R² est du TEXTE, pas une serie : encre, et un fond pour ne pas
+       s'asseoir sur la ligne de grille. L'identite du panneau est portee
+       par son titre, qui lui est colore. */
+    svg.appendChild(S("rect",{x:ox+6,y:oy+6,width:104,height:22,rx:"3",
+      fill:V("carte")}));
+    svg.appendChild(S("text",{x:ox+14,y:oy+22,"class":"s-lab",fill:V("encre")},
+      "R² = "+m[1]));
+    if(ox===44){
+      [30,50].forEach(function(v){
+        svg.appendChild(S("text",{x:ox-8,y:fy(v)+5,"text-anchor":"end","class":"s-pet",
+          fill:V("encre2")},""+v));
+      });
+    }
+    if(oy===296){
+      [60,100].forEach(function(v){
+        svg.appendChild(S("text",{x:fx(v),y:oy+HAUT+20,"text-anchor":"middle",
+          "class":"s-pet",fill:V("encre2")},""+v));
+      });
+    }
+  });
+  svg.appendChild(S("text",{x:44,y:448,"class":"s-pet",fill:V("encre2")},
+    "en abscisse la vitesse (km/h), en ordonnée la consommation (L/100 km)"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "<b>Les neuf points sont les mêmes partout</b>, et l'échelle aussi : seule la courbe "+
+    "change. L'affine passe au-dessus des points du milieu et en dessous des deux bouts — "+
+    "c'est visible à l'œil, et le R² de 0,919 le chiffre. Le logarithmique fait l'inverse "+
+    "et fait pire. <b>Le quadratique épouse la courbure</b>, R² = 0,998. L'exponentiel n'est "+
+    "pas ridicule, 0,966, mais il monte trop tôt. <b>On regarde l'allure, puis on lit le "+
+    "R².</b> Jamais l'inverse."));
+};
+
+/* ─────────── deux modeles que le R2 ne separe pas ─────────── */
+SCHEMAS["deux-modeles-qui-se-valent"]=function(el){
+  var W=724,H=392;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Sur le relevé charge-consommation, le modèle affine et le modèle "+
+                 "quadratique ont le même R carré et se confondent"});
+  var X=[5,7,9,11,13,15,18,21,24,28], Y=[26,28,28,32,34,34,36,40,43,46];
+  var X0=80,X1=590,Y0=300,Y1=76;
+  function fx(x){ return X0+(x-3)/43*(X1-X0); }
+  function fy(y){ return Y0-(y-22)/42*(Y0-Y1); }
+  svg.appendChild(S("text",{x:20,y:28,"class":"s-tit",fill:V("chaud")},
+    "DEUX MODÈLES, LE MÊME R² : LEQUEL PRENDRE ?"));
+  /* la plage des releves, en fond */
+  svg.appendChild(S("rect",{x:fx(5),y:Y1,width:fx(28)-fx(5),height:Y0-Y1,
+    fill:V("carte2")}));
+  svg.appendChild(S("text",{x:(fx(5)+fx(28))/2,y:Y0+40,"text-anchor":"middle",
+    "class":"s-pet",fill:V("encre2")},"la plage des relevés : 5 à 28 t"));
+  [30,40,50,60].forEach(function(v){
+    svg.appendChild(S("line",{x1:X0,y1:fy(v),x2:X1,y2:fy(v),stroke:V("trait"),
+      "stroke-width":"1"}));
+    svg.appendChild(S("text",{x:X0-8,y:fy(v)+5,"text-anchor":"end","class":"s-pet",
+      fill:V("encre2")},""+v));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:Y1,x2:X0,y2:Y0,stroke:V("encre2"),
+    "stroke-width":"1.6"}));
+  svg.appendChild(S("line",{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:V("encre2"),
+    "stroke-width":"1.6"}));
+  [10,20,30,40].forEach(function(v){
+    svg.appendChild(S("text",{x:fx(v),y:Y0+18,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},""+v));
+  });
+  _courbe(svg,function(x){return 0.002079*x*x+0.80685*x+21.9355;},3,45,fx,fy,
+          "froid","5.5",22,64);
+  _courbe(svg,function(x){return 0.8745*x+21.4945;},3,45,fx,fy,"chaud","2.4",22,64);
+  _pts(svg,X,Y,fx,fy);
+  /* nommees en bout de trace : l'identite ne tient pas a la couleur seule */
+  svg.appendChild(S("text",{x:X1+10,y:fy(60.85)+4,"class":"s-pet",fill:V("chaud")},
+    "affine"));
+  svg.appendChild(S("text",{x:X1+10,y:fy(62.45)-10,"class":"s-pet",fill:V("froid")},
+    "quadratique"));
+  svg.appendChild(S("rect",{x:100,y:88,width:240,height:62,rx:"6",fill:V("carte"),
+    stroke:V("encre2"),"stroke-width":"1.4"}));
+  svg.appendChild(S("text",{x:220,y:112,"text-anchor":"middle","class":"s-lab",
+    fill:V("encre")},"R² = 0,985  et  R² = 0,985"));
+  svg.appendChild(S("text",{x:220,y:136,"text-anchor":"middle","class":"s-pet",
+    fill:V("chaud")},"la machine ne tranche pas"));
+  svg.appendChild(S("text",{x:20,y:378,"class":"s-pet",fill:V("encre2")},
+    "charge (t) en abscisse, consommation (L/100 km) en ordonnée"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Sur toute la plage des relevés, les deux courbes <b>se confondent</b> : l'écart le plus "+
+    "grand entre elles est de <b>0,18 L/100 km</b>, soit moins que l'épaisseur du trait. "+
+    "Les deux R² sont égaux parce que les deux modèles décrivent aussi bien. <b>Quand le R² "+
+    "ne tranche pas, on prend le plus simple</b>, donc l'affine : une droite s'explique à un "+
+    "exploitant, une parabole beaucoup moins. Et il n'y a rien à gagner à choisir le "+
+    "compliqué — ils donnent le même résultat là où l'on a des points."));
+};
+
+/* ─────────── jusqu'ou les modeles restent d'accord ─────────── */
+SCHEMAS["extrapoler-les-quatre"]=function(el){
+  var W=724,H=432;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Hors de la plage des relevés, les quatre modèles donnent de 62 à 97 "+
+                 "litres aux cent kilomètres pour 120 km/h"});
+  var X=[60,65,70,75,80,85,90,95,100], Y=[26,27,29,31,34,38,43,50,58];
+  var X0=70,X1=548,Y0=336,Y1=76;
+  function fx(x){ return X0+(x-55)/70*(X1-X0); }
+  function fy(y){ return Y0-(y-20)/85*(Y0-Y1); }
+  svg.appendChild(S("text",{x:20,y:28,"class":"s-tit",fill:V("chaud")},
+    "LE MÊME RELEVÉ, PROLONGÉ JUSQU'À 120 km/h"));
+  svg.appendChild(S("rect",{x:fx(60),y:Y1,width:fx(100)-fx(60),height:Y0-Y1,
+    fill:V("carte2")}));
+  [60,80,100,120].forEach(function(v){
+    svg.appendChild(S("text",{x:fx(v),y:Y0+18,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},""+v));
+  });
+  svg.appendChild(S("text",{x:(fx(60)+fx(100))/2,y:Y0+40,"text-anchor":"middle",
+    "class":"s-pet",fill:V("encre2")},"on a des points ici"));
+  svg.appendChild(S("text",{x:(fx(100)+fx(122))/2,y:Y0+40,"text-anchor":"middle",
+    "class":"s-pet",fill:V("chaud")},"et rien ici"));
+  [40,60,80,100].forEach(function(v){
+    svg.appendChild(S("line",{x1:X0,y1:fy(v),x2:X1,y2:fy(v),stroke:V("trait"),
+      "stroke-width":"1"}));
+    svg.appendChild(S("text",{x:X0-8,y:fy(v)+5,"text-anchor":"end","class":"s-pet",
+      fill:V("encre2")},""+v));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:Y1,x2:X0,y2:Y0,stroke:V("encre2"),"stroke-width":"1.6"}));
+  svg.appendChild(S("line",{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:V("encre2"),"stroke-width":"1.6"}));
+  svg.appendChild(S("line",{x1:fx(100),y1:Y1,x2:fx(100),y2:Y0,stroke:V("encre2"),
+    "stroke-width":"1.6","stroke-dasharray":"6 5"}));
+  /* Quatre traces, deux teintes seulement : l'exponentiel et le
+     logarithmique passent sur l'encre avec DEUX MOTIFS de pointilles
+     distincts. Une troisieme teinte ne tiendrait pas l'ecart CVD ; un
+     motif, si, et il est lisible a l'impression comme en daltonisme. */
+  _courbe(svg,function(x){return 7.1742*Math.pow(1.02037,x);},58,122,fx,fy,
+          "encre","1.8",20,105,"8 5");
+  _courbe(svg,function(x){return 59.3217*Math.log(x)-221.8249;},58,122,fx,fy,
+          "encre","1.8",20,105,"2 5");
+  _courbe(svg,function(x){return 0.7733*x-24.5333;},58,122,fx,fy,"froid","2.8",20,105);
+  _courbe(svg,function(x){return 0.020*x*x-2.4267*x+100.133;},58,122,fx,fy,"chaud","2.8",20,105);
+  _pts(svg,X,Y,fx,fy,"3.4");
+  /* les quatre valeurs a 120, chacune nommee : pas de cinquieme couleur */
+  [["quadratique","96,9",96.9,"chaud",96],
+   ["exponentiel","80,7",80.7,"encre",150],
+   ["affine","68,3",68.3,"froid",190],
+   ["logarithmique","62,2",62.2,"encre",222]].forEach(function(b){
+    var y=fy(b[2]);
+    svg.appendChild(S("circle",{cx:fx(120),cy:y,r:"5.5",fill:V(b[3])}));
+    svg.appendChild(S("line",{x1:fx(120)+8,y1:y,x2:562,y2:b[4],stroke:V("trait"),
+      "stroke-width":"1.2"}));
+    svg.appendChild(S("text",{x:568,y:b[4]+4,"class":"s-pet",fill:V(b[3])},
+      b[0]+"  "+b[1]));
+  });
+  svg.appendChild(S("text",{x:20,y:400,"class":"s-lab",fill:V("chaud")},
+    "de 62 à 97 L/100 km selon le modèle : l'écart vaut 1,6 fois"));
+  svg.appendChild(S("text",{x:20,y:422,"class":"s-pet",fill:V("encre2")},
+    "vitesse (km/h) en abscisse, consommation (L/100 km) en ordonnée"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "<b>Dans la plage, les quatre modèles sont d'accord</b> — ils passent tous dans le "+
+    "nuage, à peu de chose près. <b>Dès qu'on sort, ils divergent</b> : à 120 km/h le "+
+    "logarithmique annonce 62 L/100 km et le quadratique 97, soit <b>1,6 fois plus</b>. "+
+    "Aucun relevé ne permet de départager, puisqu'il n'y a pas de point là-bas. C'est "+
+    "toute la différence entre <b>interpoler</b>, où le modèle rend compte de mesures, et "+
+    "<b>extrapoler</b>, où il ne fait plus que prolonger une habitude."));
+};
+
+/* ─────────── le cafe : deux R2 excellents, une reponse absurde ─────────── */
+SCHEMAS["cafe-deux-modeles"]=function(el){
+  var W=724,H=416;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Le refroidissement d'un café ajusté de deux façons : le modèle brut "+
+                 "passe sous la température de la pièce, celui sur l'écart n'y descend pas"});
+  var X=[0,5,10,15,20,25,30], Y=[88,71,58.3,48.7,41.5,36.1,32.1];
+  var X0=76,X1=568,Y0=318,Y1=72;
+  function fx(t){ return X0+t/126*(X1-X0); }
+  function fy(v){ return Y0-v/96*(Y0-Y1); }
+  svg.appendChild(S("text",{x:20,y:28,"class":"s-tit",fill:V("chaud")},
+    "DEUX MODÈLES EXCELLENTS, UNE RÉPONSE IMPOSSIBLE"));
+  svg.appendChild(S("rect",{x:fx(0),y:Y1,width:fx(30)-fx(0),height:Y0-Y1,
+    fill:V("carte2")}));
+  svg.appendChild(S("text",{x:(fx(0)+fx(30))/2,y:Y0+40,"text-anchor":"middle",
+    "class":"s-pet",fill:V("encre2")},"le relevé : 0 à 30 min"));
+  [20,40,60,80].forEach(function(v){
+    svg.appendChild(S("line",{x1:X0,y1:fy(v),x2:X1,y2:fy(v),stroke:V("trait"),
+      "stroke-width":"1"}));
+    svg.appendChild(S("text",{x:X0-8,y:fy(v)+5,"text-anchor":"end","class":"s-pet",
+      fill:V("encre2")},v+"°"));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:Y1,x2:X0,y2:Y0,stroke:V("encre2"),"stroke-width":"1.6"}));
+  svg.appendChild(S("line",{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:V("encre2"),"stroke-width":"1.6"}));
+  [0,30,60,90,120].forEach(function(t){
+    svg.appendChild(S("text",{x:fx(t),y:Y0+18,"text-anchor":"middle","class":"s-pet",
+      fill:V("encre2")},""+t));
+  });
+  /* la temperature de la piece : le plancher physique que le modele ignore */
+  svg.appendChild(S("line",{x1:X0,y1:fy(20),x2:X1,y2:fy(20),stroke:V("encre"),
+    "stroke-width":"2","stroke-dasharray":"8 5"}));
+  svg.appendChild(S("text",{x:X0+10,y:fy(20)-10,"class":"s-pet",
+    fill:V("encre")},"la pièce : 20 °C"));
+  _courbe(svg,function(t){return 83.94*Math.pow(0.96686,t);},0,126,fx,fy,"froid","2.8",0,96);
+  _courbe(svg,function(t){return 20+68.038*Math.pow(0.94404,t);},0,126,fx,fy,"chaud","2.8",0,96);
+  _pts(svg,X,Y,fx,fy,"3.6");
+  svg.appendChild(S("text",{x:576,y:fy(20.1)-6,"class":"s-pet",fill:V("chaud")},
+    "sur l'écart"));
+  svg.appendChild(S("text",{x:576,y:fy(20.1)+14,"class":"s-lab",fill:V("chaud")},
+    "20,1 °C"));
+  svg.appendChild(S("text",{x:576,y:fy(1.5)-16,"class":"s-pet",fill:V("froid")},
+    "brut"));
+  svg.appendChild(S("text",{x:576,y:fy(1.5)+2,"class":"s-lab",fill:V("froid")},
+    "1,5 °C"));
+  svg.appendChild(S("rect",{x:300,y:92,width:262,height:60,rx:"6",fill:V("carte"),
+    stroke:V("encre2"),"stroke-width":"1.4"}));
+  svg.appendChild(S("text",{x:431,y:114,"text-anchor":"middle","class":"s-pet",
+    fill:V("froid")},"brut : R² = 0,989"));
+  svg.appendChild(S("text",{x:431,y:136,"text-anchor":"middle","class":"s-pet",
+    fill:V("chaud")},"sur l'écart : R² = 1,000"));
+  svg.appendChild(S("text",{x:20,y:396,"class":"s-pet",fill:V("encre2")},
+    "temps (min) en abscisse, température (°C) en ordonnée"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "<b>Les deux courbes passent par les mêmes points</b>, et les deux R² sont excellents. "+
+    "Sur les trente minutes relevées, rien ne les sépare. Puis le modèle brut <b>traverse la "+
+    "ligne des 20 °C</b> et continue à descendre : il annonce <b>1,5 °C</b> à deux heures, "+
+    "soit un café plus froid que la pièce. Le modèle posé sur <b>l'écart à la pièce</b> "+
+    "s'arrête à 20,1 °C, parce que l'écart, lui, tend vers zéro. <b>Le R² ne connaît pas la "+
+    "physique</b> : il compare une courbe à des points, et c'est tout."));
+};
+
 
 
 
