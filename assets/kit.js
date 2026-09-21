@@ -9456,10 +9456,10 @@ SCHEMAS["deux-modeles-qui-se-valent"]=function(el){
   var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
     "aria-label":"Sur le relevé charge-consommation, le modèle affine et le modèle "+
                  "quadratique ont le même R carré et se confondent"});
-  var X=[5,7,9,11,13,15,18,21,24,28], Y=[26,28,28,32,34,34,36,40,43,46];
+  var X=[5,7,9,11,13,15,19,22,25,28], Y=[26,28,28,32,34,34,39,44,45,48];
   var X0=80,X1=590,Y0=300,Y1=76;
   function fx(x){ return X0+(x-3)/43*(X1-X0); }
-  function fy(y){ return Y0-(y-22)/42*(Y0-Y1); }
+  function fy(y){ return Y0-(y-22)/48*(Y0-Y1); }
   svg.appendChild(S("text",{x:20,y:28,"class":"s-tit",fill:V("chaud")},
     "DEUX MODÈLES, LE MÊME R² : LEQUEL PRENDRE ?"));
   /* la plage des releves, en fond */
@@ -9481,14 +9481,14 @@ SCHEMAS["deux-modeles-qui-se-valent"]=function(el){
     svg.appendChild(S("text",{x:fx(v),y:Y0+18,"text-anchor":"middle","class":"s-pet",
       fill:V("encre2")},""+v));
   });
-  _courbe(svg,function(x){return 0.002079*x*x+0.80685*x+21.9355;},3,45,fx,fy,
-          "froid","5.5",22,64);
-  _courbe(svg,function(x){return 0.8745*x+21.4945;},3,45,fx,fy,"chaud","2.4",22,64);
+  _courbe(svg,function(x){return 0.001867*x*x+0.92849*x+20.9552;},3,45,fx,fy,
+          "froid","5.5",22,70);
+  _courbe(svg,function(x){return 0.9899*x+20.5561;},3,45,fx,fy,"chaud","2.4",22,70);
   _pts(svg,X,Y,fx,fy);
   /* nommees en bout de trace : l'identite ne tient pas a la couleur seule */
-  svg.appendChild(S("text",{x:X1+10,y:fy(60.85)+4,"class":"s-pet",fill:V("chaud")},
+  svg.appendChild(S("text",{x:X1+10,y:fy(65.1)+4,"class":"s-pet",fill:V("chaud")},
     "affine"));
-  svg.appendChild(S("text",{x:X1+10,y:fy(62.45)-10,"class":"s-pet",fill:V("froid")},
+  svg.appendChild(S("text",{x:X1+10,y:fy(66.5)-10,"class":"s-pet",fill:V("froid")},
     "quadratique"));
   svg.appendChild(S("rect",{x:100,y:88,width:240,height:62,rx:"6",fill:V("carte"),
     stroke:V("encre2"),"stroke-width":"1.4"}));
@@ -9501,7 +9501,7 @@ SCHEMAS["deux-modeles-qui-se-valent"]=function(el){
   el.appendChild(svg);
   (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
     "Sur toute la plage des relevés, les deux courbes <b>se confondent</b> : l'écart le plus "+
-    "grand entre elles est de <b>0,18 L/100 km</b>, soit moins que l'épaisseur du trait. "+
+    "grand entre elles est de <b>0,14 L/100 km</b>, soit moins que l'épaisseur du trait. "+
     "Les deux R² sont égaux parce que les deux modèles décrivent aussi bien. <b>Quand le R² "+
     "ne tranche pas, on prend le plus simple</b>, donc l'affine : une droite s'explique à un "+
     "exploitant, une parabole beaucoup moins. Et il n'y a rien à gagner à choisir le "+
