@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>S2 — capacité et énergie</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/BATT-3-capacite-energie">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="BATT-2-accumulateur.html" rel="prev" title="S2 — l'accumulateur" aria-label="S2 — l'accumulateur">&lsaquo;</a><a class="fleche" href="BATT-4-autonomie-et-masse.html" rel="next" title="S2 — autonomie et masse" aria-label="S2 — autonomie et masse">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/BATT-3-capacite-energie">Marquer comme lu</button></div>
@@ -23,111 +31,207 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="BATT-2-accumulateur.html">Ce qu'est un accumulateur</a></b><span class="ou">S2 — l'accumulateur</span><span class="car">on ne parle de capacité et d'énergie stockée que pour un appareil qui se recharge.</span></li><li><b>Multiplier et diviser des nombres décimaux</b><span class="car">les trois formules de la séance ne demandent rien d'autre, mais elles se retournent dans les deux sens.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#trois-grandeurs-et-une-seule-difficulte">Trois grandeurs, et une seule difficulté</a><a href="#les-trois-nombres-sortent-d-un-seul-releve">Les trois nombres sortent d’un seul relevé</a><a href="#e-q-u-et-pourquoi-la-tension-change-tout">E = Q × U, et pourquoi la tension change tout</a><a href="#t-q-i-et-l-unite-qui-se-rate">t = Q ÷ I, et l’unité qui se rate</a><a href="#vous-verifier">Vous vérifier</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="trois-grandeurs-et-une-seule-difficulte">Trois grandeurs, et une seule difficulté</h2>
-<figure><img src="img/BATT-3-capacite-energie/fig2-capacite.png" alt="" /></figure>
-<div class="formule">
-<p><strong>La capacité Q</strong>, en ampères-heures (A·h) — ce que la batterie peut débiter</p>
-<p><strong>L’énergie stockée</strong> : <strong>E = Q × U</strong>, en wattheures (W·h)</p>
-<p><strong>La durée avant décharge</strong> : <strong>t = Q ÷ I</strong>, en heures</p>
-</div>
-<div class="piege">
-<p><strong>L’ampère-heure n’est pas une énergie.</strong> C’est la faute la plus fréquente du métier, et elle se paie sur un devis. Deux batteries de 600 A·h ne stockent pas la même énergie si leurs tensions diffèrent.</p>
-</div>
-<h2 id="les-trois-nombres-sortent-d-un-seul-releve">Les trois nombres sortent d’un seul relevé</h2>
-<p>Reprenons l’accumulateur du banc, et vidons-le complètement sous un courant qu’on maintient constant. <strong>Tout se lit sur la courbe</strong>, et les trois grandeurs tombent l’une après l’autre.</p>
-<figure class="schema"><div class="dessin" data-schema="releve-decharge"></div><figcaption>Une décharge complète à 0,20 A, et ce qu’on en tire.</figcaption></figure>
-<h2 id="e-q-u-et-pourquoi-la-tension-change-tout">E = Q × U, et pourquoi la tension change tout</h2>
-<div class="etapes">
-<ol type="1">
-<li>Je prends la capacité <strong>en ampères-heures</strong>.</li>
-<li>Je la multiplie par la <strong>tension d’utilisation</strong>, en volts.</li>
-<li>J’obtiens des <strong>wattheures</strong>. Pour passer en kilowattheures, je divise par <strong>1 000</strong>.</li>
-</ol>
-</div>
-<div class="formule">
-<p>Deux batteries de <strong>200 A·h</strong> :</p>
-<ul>
-<li>en <strong>12 V</strong> → 200 × 12 = <strong>2 400 W·h</strong></li>
-<li>en <strong>48 V</strong> → 200 × 48 = <strong>9 600 W·h</strong></li>
-</ul>
-<p><strong>Quatre fois plus</strong>, pour la même capacité affichée.</p>
-</div>
-<div class="cle">
-<p><strong>L’ampère-heure compte des charges, pas de l’énergie.</strong> Il dit combien d’électricité la batterie peut faire circuler, jamais avec quelle force. C’est la tension qui apporte la force — et le produit des deux seulement fait une énergie.</p>
-</div>
-<h2 id="t-q-i-et-l-unite-qui-se-rate">t = Q ÷ I, et l’unité qui se rate</h2>
-<div class="formule">
-<p><strong>t = Q ÷ I</strong></p>
-<p>600 A·h sous 200 A → 600 ÷ 200 = <strong>3 heures</strong></p>
-</div>
-<div class="piege">
-<p><strong>Q ÷ I donne des heures, pas des minutes.</strong> Un élève qui trouve « 3 » et écrit « 3 minutes » se trompe d’un facteur 60 sans s’en apercevoir. <strong>Écrivez l’unité avant de faire le calcul</strong>, à chaque ligne.</p>
-</div>
-<div class="piege">
-<p><strong>0,67 heure ne fait pas 67 minutes.</strong> Pour passer un dixième d’heure en minutes, on multiplie par 60 : 0,67 × 60 ≈ <strong>40 minutes</strong>. Cette conversion se rate une fois sur deux, et elle revient dans le problème de la recharge au dépôt.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi les constructeurs annoncent des ampères-heures</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Si l’ampère-heure ne dit rien de l’énergie, pourquoi est-ce lui qui figure sur toutes les étiquettes ?</p>
-<p><strong>Parce qu’il est plus grand.</strong> Une batterie de téléphone annoncée « 4 500 mA·h » sonne mieux que « 17 wattheures », qui est pourtant la même batterie. Le nombre est deux cent cinquante fois plus gros.</p>
-<p><strong>Et parce qu’il ne se compare pas.</strong> Tant que le client raisonne en ampères-heures, il ne peut pas mettre deux produits de tensions différentes côte à côte. C’est exactement le mécanisme du débit annoncé en bits plutôt qu’en octets.</p>
-<div class="cle">
-<p>La parade tient en un geste : <strong>multipliez toujours par la tension avant de comparer</strong>. Deux nombres en wattheures se comparent ; deux nombres en ampères-heures, non.</p>
-</div></div></details>
-</div><h2 id="vous-verifier">Vous vérifier</h2>
-<section class="exo" id="BATT-3-capacite-energie-e1" data-exo="BATT-3-capacite-energie-e1" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG5qdGp2eC41NnhgaHRqdngveGB4MQ0GL2pqOG0yeCc="><p class="k">Exercice · ELEC</p><h4>L’énergie du tracteur</h4><div class="enonce">
-
-<p>La batterie du tracteur fait <strong>600 A·h</strong> sous <strong>400 V</strong>. Quelle énergie stocke-t-elle, en kilowattheures ?</p>
-</div><div class="indice" hidden>Le produit d’abord, en wattheures. La division par mille ensuite, jamais par cent.</div></section>
-<section class="exo" id="BATT-3-capacite-energie-e2" data-exo="BATT-3-capacite-energie-e2" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRsbXZ4LjU2eGBpdGp2eC94YHgyeCc="><p class="k">Exercice · ELEC</p><h4>Le hayon élévateur</h4><div class="enonce">
-
-<p>Un hayon consomme <strong>60 A</strong>. Pendant combien d’<strong>heures</strong> une batterie de <strong>220 A·h</strong> peut-elle l’alimenter ?</p>
-</div><div class="indice" hidden>Q divisé par I. Le résultat est en heures ; si vous voulez des minutes, il reste une multiplication par 60 à faire sur la partie décimale.</div></section>
-<section class="exo" id="BATT-3-capacite-energie-e3" data-exo="BATT-3-capacite-energie-e3" data-type="justification" data-savoir="ELEC" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ELEC</p><h4>Le vendeur et les deux batteries</h4><div class="enonce">
-
-<p>Un vendeur affirme : « <em>la batterie de la perceuse fait 5 A·h et celle du téléphone 4,5 A·h — elles se valent presque.</em> » A-t-il raison ?</p>
-</div><div class="indice" hidden>La perceuse est en 18 V, le téléphone en 3,8 V. Les capacités se ressemblent ; les tensions, pas du tout.</div><ul class="verifier" hidden><li>J’ai calculé les deux énergies, en wattheures</li><li>J’ai donné le vrai rapport entre les deux</li><li>J’ai dit quelle grandeur le vendeur a oubliée</li><li>J’ai dit pourquoi deux ampères-heures ne se comparent pas</li></ul></section>
-<h2 id="je-m-entraine">Je m’entraîne</h2>
-<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
-<section class="serie" id="BATT-3-capacite-energie-s1" data-serie="BATT-3-capacite-energie-s1" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGtoamp0aid2IXgseGBoYmJqdGondiF4LHhgbWhqanRqJ3YheCx4YG9oYmp0aid2IXgseGBvaG9qanRqJ3YheCx4YGNqdGonByc="><p class="k">Série · ELEC</p><h4>Série 1 — l’énergie stockée, en wattheures</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">100 A·h sous 12 V</span></li><li><span class="q">60 A·h sous 48 V</span></li><li><span class="q">300 A·h sous 24 V</span></li><li><span class="q">220 A·h sous 24 V</span></li><li><span class="q">150 A·h sous 350 V</span></li><li><span class="q">5 A·h sous 18 V</span></li></ol><div class="indice" hidden>Capacité multipliée par tension. Rien d’autre, et surtout pas de division.</div></section>
-<section class="serie" id="BATT-3-capacite-energie-s2" data-serie="BATT-3-capacite-energie-s2" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGt0aCd2IXgseGBtdGgndiF4LHhgb2h0byd2IXgseGBobmp0aid2IXgseGBvdGhiJ3YheCx4YGp0amMnByc="><p class="k">Série · ELEC</p><h4>Série 2 — des wattheures aux kilowattheures</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">1 200 W·h en kW·h</span></li><li><span class="q">7 200 W·h en kW·h</span></li><li><span class="q">52 500 W·h en kW·h</span></li><li><span class="q">240 000 W·h en kW·h</span></li><li><span class="q">5 280 W·h en kW·h</span></li><li><span class="q">90 W·h en kW·h</span></li></ol><div class="indice" hidden>On divise par mille. Trois rangs, pas deux.</div></section>
-<section class="serie" id="BATT-3-capacite-energie-s3" data-serie="BATT-3-capacite-energie-s3" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGl0aid2IXgseGBudGondiF4LHhgbnRqJ3YheCx4YGl0aid2IXgseGBidGondiF4LHhgaHRvJwcn"><p class="k">Série · ELEC</p><h4>Série 3 — la durée avant décharge, en heures</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">600 A·h sous 200 A</span></li><li><span class="q">600 A·h sous 150 A</span></li><li><span class="q">220 A·h sous 55 A</span></li><li><span class="q">90 A·h sous 30 A</span></li><li><span class="q">120 A·h sous 15 A</span></li><li><span class="q">55 A·h sous 22 A</span></li></ol><div class="indice" hidden>Q divisé par I. Le résultat n’est pas toujours entier, et ce n’est pas une erreur.</div></section>
-<section class="serie" id="BATT-3-capacite-energie-s4" data-serie="BATT-3-capacite-energie-s4" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGlqdGondiF4LHhga290aid2IXgseGBuanRqJ3YheCx4YG9qdGondiF4LHhgbmp0aid2IXgseGBvanRqJwcn"><p class="k">Série · ELEC</p><h4>Série 4 — les dixièmes d’heure en minutes</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">0,5 h en minutes</span></li><li><span class="q">0,25 h en minutes</span></li><li><span class="q">0,67 h en minutes</span></li><li><span class="q">0,84 h en minutes</span></li><li><span class="q">3,67 h, la partie en minutes</span></li><li><span class="q">3,84 h, la partie en minutes</span></li></ol><div class="indice" hidden>On multiplie la partie décimale par 60. Jamais la lire comme des minutes telle quelle.</div></section>
-<section class="serie" id="BATT-3-capacite-energie-s5" data-serie="BATT-3-capacite-energie-s5" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGhuamp0aid2IXgseGBjbGpqdGondiF4LHhgbnRqJ3YheCx4YG50byd2IXgseGBrbXRrJ3YheCx4YG9qbnRqJwcn"><p class="k">Série · ELEC</p><h4>Série 5 — deux étapes d’un coup</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">200 A·h sous 12 V, en W·h</span></li><li><span class="q">200 A·h sous 48 V, en W·h</span></li><li><span class="q">combien de fois la 48 V stocke plus</span></li><li><span class="q">4 500 mA·h en A·h</span></li><li><span class="q">4,5 A·h sous 3,8 V, en W·h</span></li><li><span class="q">14 A·h sous 36 V, en W·h</span></li></ol><div class="indice" hidden>Les milliampères-heures se convertissent avant tout. 4 500 mA·h ne sont pas 4 500 A·h.</div></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td><strong>E = Q × U</strong>, en wattheures</td>
-<td>l’ampère-heure seul ne dit rien de l’énergie</td>
-</tr>
-<tr>
-<td><strong>t = Q ÷ I</strong>, en <strong>heures</strong></td>
-<td>0,67 h fait 40 minutes, pas 67</td>
-</tr>
-<tr>
-<td>Pour comparer deux batteries</td>
-<td><strong>multipliez d’abord par la tension</strong></td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="trois-grandeurs-et-une-seule-difficulte">Trois grandeurs, et une seule difficulté</h2>
+
+<figure><img src="img/BATT-3-capacite-energie/fig2-capacite.png" alt="" /></figure>
+
+<div class="formule">
+
+<p><strong>La capacité Q</strong>, en ampères-heures (A·h) — ce que la batterie peut débiter</p>
+
+<p><strong>L’énergie stockée</strong> : <strong>E = Q × U</strong>, en wattheures (W·h)</p>
+
+<p><strong>La durée avant décharge</strong> : <strong>t = Q ÷ I</strong>, en heures</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>L’ampère-heure n’est pas une énergie.</strong> C’est la faute la plus fréquente du métier, et elle se paie sur un devis. Deux batteries de 600 A·h ne stockent pas la même énergie si leurs tensions diffèrent.</p>
+
+</div>
+
+<h2 id="les-trois-nombres-sortent-d-un-seul-releve">Les trois nombres sortent d’un seul relevé</h2>
+
+<p>Reprenons l’accumulateur du banc, et vidons-le complètement sous un courant qu’on maintient constant. <strong>Tout se lit sur la courbe</strong>, et les trois grandeurs tombent l’une après l’autre.</p>
+
+<figure class="schema"><div class="dessin" data-schema="releve-decharge"></div><figcaption>Une décharge complète à 0,20 A, et ce qu’on en tire.</figcaption></figure>
+
+<h2 id="e-q-u-et-pourquoi-la-tension-change-tout">E = Q × U, et pourquoi la tension change tout</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Je prends la capacité <strong>en ampères-heures</strong>.</li>
+
+<li>Je la multiplie par la <strong>tension d’utilisation</strong>, en volts.</li>
+
+<li>J’obtiens des <strong>wattheures</strong>. Pour passer en kilowattheures, je divise par <strong>1 000</strong>.</li>
+
+</ol>
+
+</div>
+
+<div class="formule">
+
+<p>Deux batteries de <strong>200 A·h</strong> :</p>
+
+<ul>
+
+<li>en <strong>12 V</strong> → 200 × 12 = <strong>2 400 W·h</strong></li>
+
+<li>en <strong>48 V</strong> → 200 × 48 = <strong>9 600 W·h</strong></li>
+
+</ul>
+
+<p><strong>Quatre fois plus</strong>, pour la même capacité affichée.</p>
+
+</div>
+
+<div class="cle">
+
+<p><strong>L’ampère-heure compte des charges, pas de l’énergie.</strong> Il dit combien d’électricité la batterie peut faire circuler, jamais avec quelle force. C’est la tension qui apporte la force — et le produit des deux seulement fait une énergie.</p>
+
+</div>
+
+<h2 id="t-q-i-et-l-unite-qui-se-rate">t = Q ÷ I, et l’unité qui se rate</h2>
+
+<div class="formule">
+
+<p><strong>t = Q ÷ I</strong></p>
+
+<p>600 A·h sous 200 A → 600 ÷ 200 = <strong>3 heures</strong></p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Q ÷ I donne des heures, pas des minutes.</strong> Un élève qui trouve « 3 » et écrit « 3 minutes » se trompe d’un facteur 60 sans s’en apercevoir. <strong>Écrivez l’unité avant de faire le calcul</strong>, à chaque ligne.</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>0,67 heure ne fait pas 67 minutes.</strong> Pour passer un dixième d’heure en minutes, on multiplie par 60 : 0,67 × 60 ≈ <strong>40 minutes</strong>. Cette conversion se rate une fois sur deux, et elle revient dans le problème de la recharge au dépôt.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi les constructeurs annoncent des ampères-heures</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Si l’ampère-heure ne dit rien de l’énergie, pourquoi est-ce lui qui figure sur toutes les étiquettes ?</p>
+
+<p><strong>Parce qu’il est plus grand.</strong> Une batterie de téléphone annoncée « 4 500 mA·h » sonne mieux que « 17 wattheures », qui est pourtant la même batterie. Le nombre est deux cent cinquante fois plus gros.</p>
+
+<p><strong>Et parce qu’il ne se compare pas.</strong> Tant que le client raisonne en ampères-heures, il ne peut pas mettre deux produits de tensions différentes côte à côte. C’est exactement le mécanisme du débit annoncé en bits plutôt qu’en octets.</p>
+
+<div class="cle">
+
+<p>La parade tient en un geste : <strong>multipliez toujours par la tension avant de comparer</strong>. Deux nombres en wattheures se comparent ; deux nombres en ampères-heures, non.</p>
+
+</div></div></details>
+
+</div><h2 id="vous-verifier">Vous vérifier</h2>
+
+<section class="exo" id="BATT-3-capacite-energie-e1" data-exo="BATT-3-capacite-energie-e1" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG5qdGp2eC41NnhgaHRqdngveGB4MQ0GL2pqOG0yeCc="><p class="k">Exercice · ELEC</p><h4>L’énergie du tracteur</h4><div class="enonce">
+
+
+
+<p>La batterie du tracteur fait <strong>600 A·h</strong> sous <strong>400 V</strong>. Quelle énergie stocke-t-elle, en kilowattheures ?</p>
+
+</div><div class="indice" hidden>Le produit d’abord, en wattheures. La division par mille ensuite, jamais par cent.</div></section>
+
+<section class="exo" id="BATT-3-capacite-energie-e2" data-exo="BATT-3-capacite-energie-e2" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRsbXZ4LjU2eGBpdGp2eC94YHgyeCc="><p class="k">Exercice · ELEC</p><h4>Le hayon élévateur</h4><div class="enonce">
+
+
+
+<p>Un hayon consomme <strong>60 A</strong>. Pendant combien d’<strong>heures</strong> une batterie de <strong>220 A·h</strong> peut-elle l’alimenter ?</p>
+
+</div><div class="indice" hidden>Q divisé par I. Le résultat est en heures ; si vous voulez des minutes, il reste une multiplication par 60 à faire sur la partie décimale.</div></section>
+
+<section class="exo" id="BATT-3-capacite-energie-e3" data-exo="BATT-3-capacite-energie-e3" data-type="justification" data-savoir="ELEC" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ELEC</p><h4>Le vendeur et les deux batteries</h4><div class="enonce">
+
+
+
+<p>Un vendeur affirme : « <em>la batterie de la perceuse fait 5 A·h et celle du téléphone 4,5 A·h — elles se valent presque.</em> » A-t-il raison ?</p>
+
+</div><div class="indice" hidden>La perceuse est en 18 V, le téléphone en 3,8 V. Les capacités se ressemblent ; les tensions, pas du tout.</div><ul class="verifier" hidden><li>J’ai calculé les deux énergies, en wattheures</li><li>J’ai donné le vrai rapport entre les deux</li><li>J’ai dit quelle grandeur le vendeur a oubliée</li><li>J’ai dit pourquoi deux ampères-heures ne se comparent pas</li></ul></section>
+
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+
+<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
+
+<section class="serie" id="BATT-3-capacite-energie-s1" data-serie="BATT-3-capacite-energie-s1" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGtoamp0aid2IXgseGBoYmJqdGondiF4LHhgbWhqanRqJ3YheCx4YG9oYmp0aid2IXgseGBvaG9qanRqJ3YheCx4YGNqdGonByc="><p class="k">Série · ELEC</p><h4>Série 1 — l’énergie stockée, en wattheures</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">100 A·h sous 12 V</span></li><li><span class="q">60 A·h sous 48 V</span></li><li><span class="q">300 A·h sous 24 V</span></li><li><span class="q">220 A·h sous 24 V</span></li><li><span class="q">150 A·h sous 350 V</span></li><li><span class="q">5 A·h sous 18 V</span></li></ol><div class="indice" hidden>Capacité multipliée par tension. Rien d’autre, et surtout pas de division.</div></section>
+
+<section class="serie" id="BATT-3-capacite-energie-s2" data-serie="BATT-3-capacite-energie-s2" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGt0aCd2IXgseGBtdGgndiF4LHhgb2h0byd2IXgseGBobmp0aid2IXgseGBvdGhiJ3YheCx4YGp0amMnByc="><p class="k">Série · ELEC</p><h4>Série 2 — des wattheures aux kilowattheures</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">1 200 W·h en kW·h</span></li><li><span class="q">7 200 W·h en kW·h</span></li><li><span class="q">52 500 W·h en kW·h</span></li><li><span class="q">240 000 W·h en kW·h</span></li><li><span class="q">5 280 W·h en kW·h</span></li><li><span class="q">90 W·h en kW·h</span></li></ol><div class="indice" hidden>On divise par mille. Trois rangs, pas deux.</div></section>
+
+<section class="serie" id="BATT-3-capacite-energie-s3" data-serie="BATT-3-capacite-energie-s3" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGl0aid2IXgseGBudGondiF4LHhgbnRqJ3YheCx4YGl0aid2IXgseGBidGondiF4LHhgaHRvJwcn"><p class="k">Série · ELEC</p><h4>Série 3 — la durée avant décharge, en heures</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">600 A·h sous 200 A</span></li><li><span class="q">600 A·h sous 150 A</span></li><li><span class="q">220 A·h sous 55 A</span></li><li><span class="q">90 A·h sous 30 A</span></li><li><span class="q">120 A·h sous 15 A</span></li><li><span class="q">55 A·h sous 22 A</span></li></ol><div class="indice" hidden>Q divisé par I. Le résultat n’est pas toujours entier, et ce n’est pas une erreur.</div></section>
+
+<section class="serie" id="BATT-3-capacite-energie-s4" data-serie="BATT-3-capacite-energie-s4" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGlqdGondiF4LHhga290aid2IXgseGBuanRqJ3YheCx4YG9qdGondiF4LHhgbmp0aid2IXgseGBvanRqJwcn"><p class="k">Série · ELEC</p><h4>Série 4 — les dixièmes d’heure en minutes</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">0,5 h en minutes</span></li><li><span class="q">0,25 h en minutes</span></li><li><span class="q">0,67 h en minutes</span></li><li><span class="q">0,84 h en minutes</span></li><li><span class="q">3,67 h, la partie en minutes</span></li><li><span class="q">3,84 h, la partie en minutes</span></li></ol><div class="indice" hidden>On multiplie la partie décimale par 60. Jamais la lire comme des minutes telle quelle.</div></section>
+
+<section class="serie" id="BATT-3-capacite-energie-s5" data-serie="BATT-3-capacite-energie-s5" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGhuamp0aid2IXgseGBjbGpqdGondiF4LHhgbnRqJ3YheCx4YG50byd2IXgseGBrbXRrJ3YheCx4YG9qbnRqJwcn"><p class="k">Série · ELEC</p><h4>Série 5 — deux étapes d’un coup</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">200 A·h sous 12 V, en W·h</span></li><li><span class="q">200 A·h sous 48 V, en W·h</span></li><li><span class="q">combien de fois la 48 V stocke plus</span></li><li><span class="q">4 500 mA·h en A·h</span></li><li><span class="q">4,5 A·h sous 3,8 V, en W·h</span></li><li><span class="q">14 A·h sous 36 V, en W·h</span></li></ol><div class="indice" hidden>Les milliampères-heures se convertissent avant tout. 4 500 mA·h ne sont pas 4 500 A·h.</div></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td><strong>E = Q × U</strong>, en wattheures</td>
+
+<td>l’ampère-heure seul ne dit rien de l’énergie</td>
+
+</tr>
+
+<tr>
+
+<td><strong>t = Q ÷ I</strong>, en <strong>heures</strong></td>
+
+<td>0,67 h fait 40 minutes, pas 67</td>
+
+</tr>
+
+<tr>
+
+<td>Pour comparer deux batteries</td>
+
+<td><strong>multipliez d’abord par la tension</strong></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="BATT-2-accumulateur.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">S2 — l'accumulateur</span></a><a class="ap" href="BATT-4-autonomie-et-masse.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S2 — autonomie et masse</span></a></div></nav>
 <p class="pied">Cette page détaille la séance 3 de la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

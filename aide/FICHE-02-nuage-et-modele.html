@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Fiche 2 — nuage et modèle</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/FICHE-02-nuage-et-modele">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="FICHE-01-pourcentage-retour.html" rel="prev" title="Fiche 1 — pourcentages" aria-label="Fiche 1 — pourcentages">&lsaquo;</a><a class="fleche" href="FICHE-03-unites-composees.html" rel="next" title="Fiche 3 — les unités composées" aria-label="Fiche 3 — les unités composées">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/FICHE-02-nuage-et-modele">Marquer comme lu</button></div>
@@ -23,75 +31,135 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b>Placer un point dans un repère</b><span class="car">un nuage est fait de points, et les placer une fois à la main évite de faire une confiance aveugle à la machine.</span></li><li><b><a href="FICHE-03-unites-composees.html">Lire une unité composée</a></b><span class="ou">Fiche 3 — les unités composées</span><span class="car">les deux axes du nuage portent des unités, et le modèle n'a de sens qu'avec elles.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#le-blocage">Le blocage</a><a href="#la-methode-en-quatre-temps">La méthode, en quatre temps</a><a href="#le-piege-qui-revient">Le piège qui revient</a><a href="#vous-verifier">Vous vérifier</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="le-blocage">Le blocage</h2>
-<p>Vous avez un relevé, la calculatrice sort une équation, et la question suivante tombe : « et à 40 tonnes ? ». Deux choses coincent alors : savoir quel modèle prendre, et savoir jusqu’où on a le droit de s’en servir.</p>
-<h2 id="la-methode-en-quatre-temps">La méthode, en quatre temps</h2>
-<div class="etapes">
-<ol type="1">
-<li><strong>Regarder le nuage avant de calculer.</strong> Les points montent-ils en ligne droite, se courbent-ils, s’aplatissent-ils ? C’est ce coup d’œil qui choisit le modèle, et non la calculatrice.</li>
-<li><strong>Lancer l’ajustement</strong> dans l’application <em>Régressions</em>, sur le type qu’on vient de reconnaître.</li>
-<li><strong>Lire R²</strong>, et lui seul, pour dire si le modèle tient.</li>
-<li><strong>Répondre à la question</strong>, en vérifiant qu’on reste dans la plage des relevés.</li>
-</ol>
-</div>
-<div class="formule">
-<p><strong>Quatre allures, quatre modèles</strong></p>
-<ul>
-<li>une <strong>droite</strong> → modèle <strong>affine</strong>, y = a x + b</li>
-<li>une courbe qui <strong>s’incurve régulièrement</strong> → modèle <strong>quadratique</strong></li>
-<li>une croissance ou décroissance <strong>de plus en plus rapide</strong> → <strong>exponentiel</strong></li>
-<li>une montée qui <strong>s’essouffle</strong> → <strong>logarithmique</strong></li>
-</ul>
-</div>
-<div class="cle">
-<p>R² dit à quel point la courbe colle aux points, et rien d’autre. Il vaut au mieux 1. Au-dessus de 0,9, le modèle décrit bien ; vers 0,7, il donne une tendance ; en dessous de 0,5, il ne sert à rien.</p>
-</div>
-<h2 id="le-piege-qui-revient">Le piège qui revient</h2>
-<div class="piege">
-<p><strong>R² ne dit pas que le modèle est le bon.</strong> Il dit qu’il passe près des points. Un modèle exponentiel peut afficher un excellent R² sur un nuage qui est en réalité une droite, et donner n’importe quoi dès qu’on sort de la plage. On regarde l’allure d’abord, R² ensuite.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Interpoler, extrapoler : le mot qui vaut des points au CCF</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>Interpoler</strong>, c’est répondre à l’intérieur de la plage des relevés. Le modèle a été construit là, on lui fait confiance.</p>
-<p><strong>Extrapoler</strong>, c’est répondre en dehors. Le modèle n’a jamais rien vu à cet endroit : il prolonge sans constater.</p>
-<p><strong>Un exemple qui parle.</strong> Un relevé de consommation entre 8 et 26 tonnes donne y = 0,42 x + 21,5. À 22 tonnes, c’est une interpolation : 30,7 L/100 km, on y va. À 40 tonnes, c’est une extrapolation. Le calcul donnerait 38,3 L/100 km, mais aucun camion du relevé n’a jamais roulé à 40 tonnes.</p>
-<div class="cle">
-<p>Ce qu’il faut écrire dans la copie : « la valeur demandée est en dehors de la plage des relevés, il s’agit d’une extrapolation ; le résultat est une tendance et non une prévision fiable ». Cette phrase rapporte des points, le nombre seul non.</p>
-</div>
-<p>Et le contre-exemple à garder en tête : sur une décote, extrapoler à 30 ans donnerait une valeur qui continue de baisser sans jamais s’arrêter. Le modèle ne sait pas qu’un camion a une valeur plancher.</p></div></details>
-</div><h2 id="vous-verifier">Vous vérifier</h2>
-<section class="exo" id="FICHE-02-nuage-et-modele-e1" data-exo="FICHE-02-nuage-et-modele-e1" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGN0amx2eC41NnhgaHRqdngveGB4FnVramp6MTd4Jw=="><p class="k">Exercice · ST2</p><h4>Le modèle qu’on interroge</h4><div class="enonce">
-
-<p>Un relevé donne le modèle <strong>y = 0,42 x + 21,5</strong> (x en tonnes, y en L/100 km). Que consomme le camion à <strong>18 tonnes</strong> ?</p>
-</div><div class="indice" hidden>Remplacez x par la charge, et calculez. Rien de plus.</div></section>
-<section class="exo" id="FICHE-02-nuage-et-modele-e2" data-exo="FICHE-02-nuage-et-modele-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG90anZ4LjU2eGBpdGp2eC94YHgueCc="><p class="k">Exercice · ST2</p><h4>Le calcul retourné</h4><div class="enonce">
-
-<p>Avec le même modèle, à partir de quelle <strong>charge</strong> la consommation dépasse-t-elle <strong>32 L/100 km</strong> ?</p>
-</div><div class="indice" hidden>Cette fois on connaît y et on cherche x. C’est une équation du premier degré : isolez x.</div></section>
-<section class="exo" id="FICHE-02-nuage-et-modele-e3" data-exo="FICHE-02-nuage-et-modele-e3" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Ce qu’on écrit, et ce qu’on ne peut pas écrire</h4><div class="enonce">
-
-<p>Le relevé porte sur des charges de <strong>8 à 26 tonnes</strong>. On vous demande la consommation <strong>à 32 tonnes</strong>. Rédigez la réponse que vous mettriez sur une copie de CCF.</p>
-</div><div class="indice" hidden>Le calcul se fait toujours. C’est ce qu’on en dit ensuite qui change.</div><ul class="verifier" hidden><li>J’ai donné le résultat du calcul, avec son unité</li><li>J’ai dit que 32 tonnes est en dehors de la plage des relevés</li><li>J’ai employé le mot extrapolation</li><li>J’ai dit ce que vaut ce résultat, une tendance et non une valeur sûre</li></ul></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<tbody>
-<tr>
-<td>Le modèle se choisit sur l’allure du nuage</td>
-<td>pas sur R²</td>
-</tr>
-<tr>
-<td>R² dit si la courbe colle</td>
-<td>il ne dit pas qu’elle est la bonne</td>
-</tr>
-<tr>
-<td>Dans la plage on interpole, dehors on extrapole</td>
-<td>et on l’écrit</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="le-blocage">Le blocage</h2>
+
+<p>Vous avez un relevé, la calculatrice sort une équation, et la question suivante tombe : « et à 40 tonnes ? ». Deux choses coincent alors : savoir quel modèle prendre, et savoir jusqu’où on a le droit de s’en servir.</p>
+
+<h2 id="la-methode-en-quatre-temps">La méthode, en quatre temps</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li><strong>Regarder le nuage avant de calculer.</strong> Les points montent-ils en ligne droite, se courbent-ils, s’aplatissent-ils ? C’est ce coup d’œil qui choisit le modèle, et non la calculatrice.</li>
+
+<li><strong>Lancer l’ajustement</strong> dans l’application <em>Régressions</em>, sur le type qu’on vient de reconnaître.</li>
+
+<li><strong>Lire R²</strong>, et lui seul, pour dire si le modèle tient.</li>
+
+<li><strong>Répondre à la question</strong>, en vérifiant qu’on reste dans la plage des relevés.</li>
+
+</ol>
+
+</div>
+
+<div class="formule">
+
+<p><strong>Quatre allures, quatre modèles</strong></p>
+
+<ul>
+
+<li>une <strong>droite</strong> → modèle <strong>affine</strong>, y = a x + b</li>
+
+<li>une courbe qui <strong>s’incurve régulièrement</strong> → modèle <strong>quadratique</strong></li>
+
+<li>une croissance ou décroissance <strong>de plus en plus rapide</strong> → <strong>exponentiel</strong></li>
+
+<li>une montée qui <strong>s’essouffle</strong> → <strong>logarithmique</strong></li>
+
+</ul>
+
+</div>
+
+<div class="cle">
+
+<p>R² dit à quel point la courbe colle aux points, et rien d’autre. Il vaut au mieux 1. Au-dessus de 0,9, le modèle décrit bien ; vers 0,7, il donne une tendance ; en dessous de 0,5, il ne sert à rien.</p>
+
+</div>
+
+<h2 id="le-piege-qui-revient">Le piège qui revient</h2>
+
+<div class="piege">
+
+<p><strong>R² ne dit pas que le modèle est le bon.</strong> Il dit qu’il passe près des points. Un modèle exponentiel peut afficher un excellent R² sur un nuage qui est en réalité une droite, et donner n’importe quoi dès qu’on sort de la plage. On regarde l’allure d’abord, R² ensuite.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Interpoler, extrapoler : le mot qui vaut des points au CCF</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>Interpoler</strong>, c’est répondre à l’intérieur de la plage des relevés. Le modèle a été construit là, on lui fait confiance.</p>
+
+<p><strong>Extrapoler</strong>, c’est répondre en dehors. Le modèle n’a jamais rien vu à cet endroit : il prolonge sans constater.</p>
+
+<p><strong>Un exemple qui parle.</strong> Un relevé de consommation entre 8 et 26 tonnes donne y = 0,42 x + 21,5. À 22 tonnes, c’est une interpolation : 30,7 L/100 km, on y va. À 40 tonnes, c’est une extrapolation. Le calcul donnerait 38,3 L/100 km, mais aucun camion du relevé n’a jamais roulé à 40 tonnes.</p>
+
+<div class="cle">
+
+<p>Ce qu’il faut écrire dans la copie : « la valeur demandée est en dehors de la plage des relevés, il s’agit d’une extrapolation ; le résultat est une tendance et non une prévision fiable ». Cette phrase rapporte des points, le nombre seul non.</p>
+
+</div>
+
+<p>Et le contre-exemple à garder en tête : sur une décote, extrapoler à 30 ans donnerait une valeur qui continue de baisser sans jamais s’arrêter. Le modèle ne sait pas qu’un camion a une valeur plancher.</p></div></details>
+
+</div><h2 id="vous-verifier">Vous vérifier</h2>
+
+<section class="exo" id="FICHE-02-nuage-et-modele-e1" data-exo="FICHE-02-nuage-et-modele-e1" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGN0amx2eC41NnhgaHRqdngveGB4FnVramp6MTd4Jw=="><p class="k">Exercice · ST2</p><h4>Le modèle qu’on interroge</h4><div class="enonce">
+
+
+
+<p>Un relevé donne le modèle <strong>y = 0,42 x + 21,5</strong> (x en tonnes, y en L/100 km). Que consomme le camion à <strong>18 tonnes</strong> ?</p>
+
+</div><div class="indice" hidden>Remplacez x par la charge, et calculez. Rien de plus.</div></section>
+
+<section class="exo" id="FICHE-02-nuage-et-modele-e2" data-exo="FICHE-02-nuage-et-modele-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG90anZ4LjU2eGBpdGp2eC94YHgueCc="><p class="k">Exercice · ST2</p><h4>Le calcul retourné</h4><div class="enonce">
+
+
+
+<p>Avec le même modèle, à partir de quelle <strong>charge</strong> la consommation dépasse-t-elle <strong>32 L/100 km</strong> ?</p>
+
+</div><div class="indice" hidden>Cette fois on connaît y et on cherche x. C’est une équation du premier degré : isolez x.</div></section>
+
+<section class="exo" id="FICHE-02-nuage-et-modele-e3" data-exo="FICHE-02-nuage-et-modele-e3" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Ce qu’on écrit, et ce qu’on ne peut pas écrire</h4><div class="enonce">
+
+
+
+<p>Le relevé porte sur des charges de <strong>8 à 26 tonnes</strong>. On vous demande la consommation <strong>à 32 tonnes</strong>. Rédigez la réponse que vous mettriez sur une copie de CCF.</p>
+
+</div><div class="indice" hidden>Le calcul se fait toujours. C’est ce qu’on en dit ensuite qui change.</div><ul class="verifier" hidden><li>J’ai donné le résultat du calcul, avec son unité</li><li>J’ai dit que 32 tonnes est en dehors de la plage des relevés</li><li>J’ai employé le mot extrapolation</li><li>J’ai dit ce que vaut ce résultat, une tendance et non une valeur sûre</li></ul></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<tbody>
+
+<tr>
+
+<td>Le modèle se choisit sur l’allure du nuage</td>
+
+<td>pas sur R²</td>
+
+</tr>
+
+<tr>
+
+<td>R² dit si la courbe colle</td>
+
+<td>il ne dit pas qu’elle est la bonne</td>
+
+</tr>
+
+<tr>
+
+<td>Dans la plage on interpole, dehors on extrapole</td>
+
+<td>et on l’écrit</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="FICHE-01-pourcentage-retour.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Fiche 1 — pourcentages</span></a><a class="ap" href="FICHE-03-unites-composees.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Fiche 3 — les unités composées</span></a></div></nav>
 <p class="pied">Fiche d'aide. Aucun corrigé ; rien n'est enregistré, rien n'est noté.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

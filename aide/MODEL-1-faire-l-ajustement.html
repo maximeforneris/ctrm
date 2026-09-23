@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>S1 — faire l'ajustement</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/MODEL-1-faire-l-ajustement">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="FICHE-04-multiplier-plusieurs-fois.html" rel="prev" title="Fiche 4 — les suites" aria-label="Fiche 4 — les suites">&lsaquo;</a><a class="fleche" href="MODEL-2-choisir-le-modele.html" rel="next" title="S1 — choisir le modèle" aria-label="S1 — choisir le modèle">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/MODEL-1-faire-l-ajustement">Marquer comme lu</button></div>
@@ -23,292 +31,569 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b>La calculatrice NumWorks, application Régressions</b><span class="car">tout se passe dedans, et la fiche outil distribuée en septembre décrit les mêmes gestes.</span></li><li><b>Calculer avec une exponentielle et un logarithme</b><span class="car">la touche ln et la touche exp servent à chaque sujet.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#ce-qui-est-vraiment-demande">Ce qui est vraiment demandé</a><a href="#le-tuto-les-six-gestes-dans-l-ordre">Le tuto : les six gestes, dans l’ordre</a><a href="#exercice-1-les-utilitaires-electriques-du-parc">Exercice 1 — les utilitaires électriques du parc</a><a href="#exercice-2-un-chauffeur-qui-prend-le-tour-de-main">Exercice 2 — un chauffeur qui prend le tour de main</a><a href="#exercice-3-le-budget-d-entretien-d-un-tracteur">Exercice 3 — le budget d’entretien d’un tracteur</a><a href="#exercice-4-la-batterie-d-un-tracteur-electrique">Exercice 4 — la batterie d’un tracteur électrique</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="ce-qui-est-vraiment-demande">Ce qui est vraiment demandé</h2>
-<p>Dans un sujet d’épreuve, <strong>les trois modèles sont écrits dans l’énoncé</strong>, en bas, dans un encadré « Données ». Vous n’avez rien à reconnaître ni à deviner.</p>
-<div class="formule">
-<p><strong>Ajustement affine</strong> : y = a x + b</p>
-<p><strong>Ajustement exponentiel</strong> : y = a e^(b x)</p>
-<p><strong>Ajustement logarithmique</strong> : y = a ln x + b</p>
-</div>
-<div class="cle">
-<p><strong>La question « quel ajustement est le plus pertinent » a une réponse mécanique.</strong> On demande les trois à la machine, on relève les trois coefficients, et <strong>on garde celui dont le coefficient est le plus proche de 1</strong>. La justification tient en une phrase et cite les trois nombres.</p>
-</div>
-<h2 id="le-tuto-les-six-gestes-dans-l-ordre">Le tuto : les six gestes, dans l’ordre</h2>
-<div class="etapes">
-<ol type="1">
-<li>Application <strong>Régressions</strong>, onglet <strong>Données</strong>.</li>
-<li>Les <strong>x</strong> dans la colonne <strong>X1</strong>, les <strong>y</strong> dans la colonne <strong>Y1</strong>. Le séparateur décimal est le <strong>point</strong>.</li>
-<li>Sélectionner le <strong>nom de la colonne</strong>, appuyer sur <strong>OK</strong>, choisir <strong>Régression</strong>.</li>
-<li>Choisir le modèle : <strong>Linéaire</strong>, puis <strong>Exponentielle</strong>, puis <strong>Logarithmique</strong>. Les trois, l’un après l’autre.</li>
-<li>Onglet <strong>Stats</strong> : relever le <strong>coefficient</strong> affiché, à chaque fois.</li>
-<li>Revenir au modèle retenu, onglet <strong>Graphique</strong> : <strong>l’équation s’affiche en bas de l’écran</strong>. On la recopie avec les arrondis demandés.</li>
-</ol>
-</div>
-<div class="cle">
-<p><strong>Pour calculer l’estimation sans retaper l’équation</strong> : onglet <strong>Graphique</strong>, placer le curseur sur la courbe, <strong>OK</strong>, puis <strong>Prédiction sachant X</strong>. On donne le rang, la machine donne la valeur.</p>
-</div>
-<div class="piege">
-<p><strong>Un piège de saisie, et il fausse tout.</strong> La colonne X1 reçoit le <strong>rang</strong>, pas l’année. Si vous tapez 2019, 2020, 2021…, le logarithme et l’exponentielle donnent n’importe quoi. <strong>Le rang commence à 1.</strong></p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que la machine ne fait pas, et qui reste à vous</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>Elle ne choisit pas le modèle.</strong> Elle calcule les trois si on les lui demande et affiche trois nombres ; c’est vous qui écrivez lequel vous gardez et pourquoi.</p>
-<p><strong>Elle ne sait pas si l’estimation a un sens.</strong> Elle prolongera la courbe aussi loin qu’on veut, sans savoir qu’un pourcentage ne dépasse pas 100, qu’un nombre de véhicules est entier, ou qu’un relevé s’arrête au rang 8.</p>
-<p><strong>Elle n’écrit pas la phrase de conclusion</strong>, et c’est elle qui est cotée. Une estimation nue ne vaut pas la moitié des points : il faut revenir à la problématique et y répondre avec le chiffre.</p>
-<p><strong>Le coefficient affiché dépend du modèle.</strong> En linéaire la NumWorks affiche r <strong>et</strong> r² ; sur les autres, le nombre à comparer est celui qui est le plus proche de 1. Comparez toujours <strong>la même colonne</strong> d’un modèle à l’autre.</p></div></details>
-</div><h2 id="exercice-1-les-utilitaires-electriques-du-parc">Exercice 1 — les utilitaires électriques du parc</h2>
-<p>Un groupement de transporteurs relève le nombre d’utilitaires électriques immatriculés par ses adhérents.</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Année</th>
-<th>2019</th>
-<th>2020</th>
-<th>2021</th>
-<th>2022</th>
-<th>2023</th>
-<th>2024</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Rang xᵢ</strong></td>
-<td>1</td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>5</td>
-<td>6</td>
-</tr>
-<tr>
-<td><strong>Nombre yᵢ</strong></td>
-<td>1 200</td>
-<td>2 100</td>
-<td>3 600</td>
-<td>6 400</td>
-<td>11 000</td>
-<td>19 500</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>Problématique</strong> : « Le parc dépassera-t-il <strong>100 000</strong> utilitaires électriques en <strong>2027</strong> ? »</p>
-</blockquote>
-<div class="etapes">
-<ol type="1">
-<li>Donner le nombre d’utilitaires immatriculés en 2021.</li>
-<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier</strong> en citant les trois coefficients.</li>
-<li>Déterminer l’équation de la courbe d’ajustement. Arrondir <strong>a</strong> à l’unité et <strong>b</strong> au centième.</li>
-<li>Donner le rang de l’année 2027.</li>
-<li>Calculer le nombre estimé d’utilitaires en 2027. Arrondir à l’unité.</li>
-<li>Répondre à la problématique.</li>
-</ol>
-</div>
-<section class="serie" id="MODEL-1-faire-l-ajustement-s1" data-serie="MODEL-1-faire-l-ajustement-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGlsamp0aid2IXgseGBqdGJtJ3YheCx4YGt0aid2IXgseGBqdGxtJ3YheCx4YGN0aid2IXgseGBram9jbGx0aicHJw=="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">le nombre en 2021</span></li><li><span class="q">le coefficient de l’ajustement affine, au centième</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang de l’année 2027</span></li><li><span class="q">le nombre estimé en 2027</span></li></ol><div class="indice" hidden>Les trois coefficients se relèvent dans l’onglet Stats, un modèle après l’autre. Le rang de 2019 vaut 1, pas 2019.</div></section>
-<section class="exo" id="MODEL-1-faire-l-ajustement-e1" data-exo="MODEL-1-faire-l-ajustement-e1" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>La phrase de conclusion</h4><div class="enonce">
-
-<p>Rédigez la réponse à la problématique, comme on l’attend le jour de l’épreuve.</p>
-</div><div class="indice" hidden>Le jour de l’épreuve, la question 6 est cotée sur la compétence « Communiquer ». Une estimation posée sans phrase ne rapporte rien.</div><ul class="verifier" hidden><li>J’ai rappelé le seuil de 100 000 donné dans la situation</li><li>J’ai donné le nombre estimé en 2027</li><li>J’ai comparé les deux, et conclu par oui ou par non</li><li>J’ai écrit une phrase complète, pas seulement un nombre</li></ul></section>
-<h2 id="exercice-2-un-chauffeur-qui-prend-le-tour-de-main">Exercice 2 — un chauffeur qui prend le tour de main</h2>
-<p>Une plateforme suit le nombre de colis livrés par jour par un chauffeur nouvellement recruté, mois après mois.</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th><strong>Mois xᵢ</strong></th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Colis par jour yᵢ</strong></td>
-<td>42</td>
-<td>55</td>
-<td>62</td>
-<td>68</td>
-<td>71</td>
-<td>75</td>
-<td>77</td>
-<td>79</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>Problématique</strong> : « Un chauffeur atteindra-t-il <strong>100 colis par jour</strong> au bout d’<strong>un an et demi</strong> ? »</p>
-</blockquote>
-<div class="etapes">
-<ol type="1">
-<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
-<li>Déterminer l’équation. Arrondir <strong>a</strong> et <strong>b</strong> au centième.</li>
-<li>Donner le rang du mois correspondant à un an et demi.</li>
-<li>Calculer le nombre de colis estimé. Arrondir à l’unité.</li>
-<li>Répondre à la problématique.</li>
-</ol>
-</div>
-<section class="serie" id="MODEL-1-faire-l-ajustement-s2" data-serie="MODEL-1-faire-l-ajustement-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGp0Yyd2IXgseGBqdGJvJ3YheCx4YGt0aid2IXgseGBrYnRqJ3YheCx4YGNudGondiF4LHhgbHRqJwcn"><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang du mois d’un an et demi</span></li><li><span class="q">le nombre de colis estimé</span></li><li><span class="q">l’écart avec l’objectif de 100 colis</span></li></ol><div class="indice" hidden>Un an et demi fait dix-huit mois. Le modèle logarithmique monte en s’essoufflant, ce qui se voit sur le relevé lui-même.</div></section>
-<section class="exo" id="MODEL-1-faire-l-ajustement-e2" data-exo="MODEL-1-faire-l-ajustement-e2" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Ce que le modèle ne dit pas</h4><div class="enonce">
-
-<p>Le relevé s’arrête au <strong>mois 8</strong> et la question porte sur le <strong>mois 18</strong>. Expliquez pourquoi la réponse doit être assortie d’une réserve.</p>
-</div><div class="indice" hidden>Regardez le plus grand rang du tableau avant de répondre. Le calcul reste le même ; c’est la phrase qui change.</div><ul class="verifier" hidden><li>J’ai dit que le rang 18 est en dehors du relevé</li><li>J’ai employé le mot extrapolation</li><li>J’ai dit que le modèle prolonge et ne constate plus</li><li>J’ai quand même donné le nombre estimé et répondu à la question</li></ul></section>
-<h2 id="exercice-3-le-budget-d-entretien-d-un-tracteur">Exercice 3 — le budget d’entretien d’un tracteur</h2>
-<p>Un exploitant relève le coût d’entretien annuel d’un tracteur selon son âge.</p>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-<col style="width: 12%" />
-</colgroup>
-<thead>
-<tr>
-<th><strong>Âge xᵢ (années)</strong></th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Coût yᵢ (€)</strong></td>
-<td>1 850</td>
-<td>2 300</td>
-<td>2 700</td>
-<td>3 200</td>
-<td>3 550</td>
-<td>4 050</td>
-<td>4 450</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>Problématique</strong> : « Le budget d’entretien de <strong>5 000 € par an</strong> suffira-t-il encore quand le tracteur aura <strong>10 ans</strong> ? »</p>
-</blockquote>
-<div class="etapes">
-<ol type="1">
-<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
-<li>Déterminer l’équation. Arrondir <strong>a</strong> et <strong>b</strong> à l’unité.</li>
-<li>Calculer le coût d’entretien estimé à 10 ans. Arrondir à l’unité.</li>
-<li>Répondre à la problématique.</li>
-</ol>
-</div>
-<section class="serie" id="MODEL-1-faire-l-ajustement-s3" data-serie="MODEL-1-faire-l-ajustement-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGt0aid2IXgseGBqdGNiJ3YheCx4YGp0Y2kndiF4LHhgbmludGondiF4LHhga25oa3RqJ3YheCx4YG9tbGt0aicHJw=="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le coefficient a de l’équation retenue</span></li><li><span class="q">le coefficient b de l’équation retenue</span></li><li><span class="q">le coût estimé à 10 ans, en €</span></li></ol><div class="indice" hidden>Ici le rang est directement l’âge, il n’y a pas de conversion à faire. Le coefficient a est ce que coûte une année de plus.</div></section>
-<section class="exo" id="MODEL-1-faire-l-ajustement-e3" data-exo="MODEL-1-faire-l-ajustement-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgbmludGp2eC41NnhgaHRqdngveGB4Bi9oajs5eCc="><p class="k">Exercice · ST2</p><h4>Ce que coûte une année de plus</h4><div class="enonce">
-
-<p>Dans l’équation retenue, quel nombre donne <strong>l’augmentation du coût d’entretien par année supplémentaire</strong>, en euros ?</p>
-</div><div class="indice" hidden>Dans y = a x + b, l’un des deux coefficients est ce qu’on ajoute chaque fois que x augmente de 1.</div></section>
-<h2 id="exercice-4-la-batterie-d-un-tracteur-electrique">Exercice 4 — la batterie d’un tracteur électrique</h2>
-<p>Un atelier mesure la capacité restante d’une batterie de traction, exprimée en pourcentage de sa capacité d’origine, tous les cent cycles de charge.</p>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-<col style="width: 9%" />
-</colgroup>
-<thead>
-<tr>
-<th><strong>Rang xᵢ (centaines de cycles)</strong></th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>9</th>
-<th>10</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Capacité yᵢ (%)</strong></td>
-<td>100</td>
-<td>93</td>
-<td>87</td>
-<td>81</td>
-<td>75</td>
-<td>70</td>
-<td>65</td>
-<td>61</td>
-<td>57</td>
-<td>53</td>
-</tr>
-</tbody>
-</table></div>
-<blockquote>
-<p><strong>Problématique</strong> : « Le constructeur impose le remplacement sous <strong>40 %</strong> de capacité. Faudra-t-il remplacer cette batterie avant <strong>1 500 cycles</strong> ? »</p>
-</blockquote>
-<div class="etapes">
-<ol type="1">
-<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
-<li>Déterminer l’équation. Arrondir <strong>a</strong> au dixième et <strong>b</strong> au centième.</li>
-<li>Donner le rang correspondant à 1 500 cycles.</li>
-<li>Calculer la capacité restante estimée. Arrondir à l’unité.</li>
-<li>Répondre à la problématique.</li>
-</ol>
-</div>
-<div class="piege">
-<p><strong>Deux coefficients très proches.</strong> Ici l’affine donne 0,99 et l’exponentiel 1,00. La règle ne change pas : <strong>on garde le plus proche de 1</strong>. Mais regardez ce que les deux donnent au rang 15 — l’écart n’est plus négligeable.</p>
-</div>
-<section class="serie" id="MODEL-1-faire-l-ajustement-s4" data-serie="MODEL-1-faire-l-ajustement-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGp0Y2MndiF4LHhga3RqJ3YheCx4YGp0Y28ndiF4LHhga290aid2IXgseGBpYnRqJ3YheCx4YG5qdGonByc="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang correspondant à 1 500 cycles</span></li><li><span class="q">la capacité estimée, en %</span></li><li><span class="q">le seuil de remplacement, en %</span></li></ol><div class="indice" hidden>Cent cycles font un rang. Mille cinq cents cycles en font donc quinze, pas 1 500.</div></section>
-<section class="exo" id="MODEL-1-faire-l-ajustement-e4" data-exo="MODEL-1-faire-l-ajustement-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>La réponse à l’atelier</h4><div class="enonce">
-
-<p>Rédigez la réponse à la problématique, avec le chiffre.</p>
-</div><div class="indice" hidden>Le relevé s’arrête à 1 000 cycles. La conclusion reste juste, mais elle se donne avec sa réserve.</div><ul class="verifier" hidden><li>J’ai donné la capacité estimée à 1 500 cycles</li><li>J’ai comparé au seuil de 40 %</li><li>J’ai conclu par oui ou par non</li><li>J’ai dit que 1 500 cycles est au-delà du dernier relevé</li></ul></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td><strong>Les trois modèles sont donnés</strong></td>
-<td>rien à deviner, rien à reconnaître à l’œil</td>
-</tr>
-<tr>
-<td><strong>Le rang, jamais l’année</strong></td>
-<td>X1 reçoit 1, 2, 3… et pas 2019, 2020, 2021</td>
-</tr>
-<tr>
-<td><strong>Une phrase, pas un nombre</strong></td>
-<td>la dernière question est cotée sur la communication</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="ce-qui-est-vraiment-demande">Ce qui est vraiment demandé</h2>
+
+<p>Dans un sujet d’épreuve, <strong>les trois modèles sont écrits dans l’énoncé</strong>, en bas, dans un encadré « Données ». Vous n’avez rien à reconnaître ni à deviner.</p>
+
+<div class="formule">
+
+<p><strong>Ajustement affine</strong> : y = a x + b</p>
+
+<p><strong>Ajustement exponentiel</strong> : y = a e^(b x)</p>
+
+<p><strong>Ajustement logarithmique</strong> : y = a ln x + b</p>
+
+</div>
+
+<div class="cle">
+
+<p><strong>La question « quel ajustement est le plus pertinent » a une réponse mécanique.</strong> On demande les trois à la machine, on relève les trois coefficients, et <strong>on garde celui dont le coefficient est le plus proche de 1</strong>. La justification tient en une phrase et cite les trois nombres.</p>
+
+</div>
+
+<h2 id="le-tuto-les-six-gestes-dans-l-ordre">Le tuto : les six gestes, dans l’ordre</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Application <strong>Régressions</strong>, onglet <strong>Données</strong>.</li>
+
+<li>Les <strong>x</strong> dans la colonne <strong>X1</strong>, les <strong>y</strong> dans la colonne <strong>Y1</strong>. Le séparateur décimal est le <strong>point</strong>.</li>
+
+<li>Sélectionner le <strong>nom de la colonne</strong>, appuyer sur <strong>OK</strong>, choisir <strong>Régression</strong>.</li>
+
+<li>Choisir le modèle : <strong>Linéaire</strong>, puis <strong>Exponentielle</strong>, puis <strong>Logarithmique</strong>. Les trois, l’un après l’autre.</li>
+
+<li>Onglet <strong>Stats</strong> : relever le <strong>coefficient</strong> affiché, à chaque fois.</li>
+
+<li>Revenir au modèle retenu, onglet <strong>Graphique</strong> : <strong>l’équation s’affiche en bas de l’écran</strong>. On la recopie avec les arrondis demandés.</li>
+
+</ol>
+
+</div>
+
+<div class="cle">
+
+<p><strong>Pour calculer l’estimation sans retaper l’équation</strong> : onglet <strong>Graphique</strong>, placer le curseur sur la courbe, <strong>OK</strong>, puis <strong>Prédiction sachant X</strong>. On donne le rang, la machine donne la valeur.</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Un piège de saisie, et il fausse tout.</strong> La colonne X1 reçoit le <strong>rang</strong>, pas l’année. Si vous tapez 2019, 2020, 2021…, le logarithme et l’exponentielle donnent n’importe quoi. <strong>Le rang commence à 1.</strong></p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que la machine ne fait pas, et qui reste à vous</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>Elle ne choisit pas le modèle.</strong> Elle calcule les trois si on les lui demande et affiche trois nombres ; c’est vous qui écrivez lequel vous gardez et pourquoi.</p>
+
+<p><strong>Elle ne sait pas si l’estimation a un sens.</strong> Elle prolongera la courbe aussi loin qu’on veut, sans savoir qu’un pourcentage ne dépasse pas 100, qu’un nombre de véhicules est entier, ou qu’un relevé s’arrête au rang 8.</p>
+
+<p><strong>Elle n’écrit pas la phrase de conclusion</strong>, et c’est elle qui est cotée. Une estimation nue ne vaut pas la moitié des points : il faut revenir à la problématique et y répondre avec le chiffre.</p>
+
+<p><strong>Le coefficient affiché dépend du modèle.</strong> En linéaire la NumWorks affiche r <strong>et</strong> r² ; sur les autres, le nombre à comparer est celui qui est le plus proche de 1. Comparez toujours <strong>la même colonne</strong> d’un modèle à l’autre.</p></div></details>
+
+</div><h2 id="exercice-1-les-utilitaires-electriques-du-parc">Exercice 1 — les utilitaires électriques du parc</h2>
+
+<p>Un groupement de transporteurs relève le nombre d’utilitaires électriques immatriculés par ses adhérents.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Année</th>
+
+<th>2019</th>
+
+<th>2020</th>
+
+<th>2021</th>
+
+<th>2022</th>
+
+<th>2023</th>
+
+<th>2024</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>Rang xᵢ</strong></td>
+
+<td>1</td>
+
+<td>2</td>
+
+<td>3</td>
+
+<td>4</td>
+
+<td>5</td>
+
+<td>6</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Nombre yᵢ</strong></td>
+
+<td>1 200</td>
+
+<td>2 100</td>
+
+<td>3 600</td>
+
+<td>6 400</td>
+
+<td>11 000</td>
+
+<td>19 500</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<blockquote>
+
+<p><strong>Problématique</strong> : « Le parc dépassera-t-il <strong>100 000</strong> utilitaires électriques en <strong>2027</strong> ? »</p>
+
+</blockquote>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Donner le nombre d’utilitaires immatriculés en 2021.</li>
+
+<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier</strong> en citant les trois coefficients.</li>
+
+<li>Déterminer l’équation de la courbe d’ajustement. Arrondir <strong>a</strong> à l’unité et <strong>b</strong> au centième.</li>
+
+<li>Donner le rang de l’année 2027.</li>
+
+<li>Calculer le nombre estimé d’utilitaires en 2027. Arrondir à l’unité.</li>
+
+<li>Répondre à la problématique.</li>
+
+</ol>
+
+</div>
+
+<section class="serie" id="MODEL-1-faire-l-ajustement-s1" data-serie="MODEL-1-faire-l-ajustement-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGlsamp0aid2IXgseGBqdGJtJ3YheCx4YGt0aid2IXgseGBqdGxtJ3YheCx4YGN0aid2IXgseGBram9jbGx0aicHJw=="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">le nombre en 2021</span></li><li><span class="q">le coefficient de l’ajustement affine, au centième</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang de l’année 2027</span></li><li><span class="q">le nombre estimé en 2027</span></li></ol><div class="indice" hidden>Les trois coefficients se relèvent dans l’onglet Stats, un modèle après l’autre. Le rang de 2019 vaut 1, pas 2019.</div></section>
+
+<section class="exo" id="MODEL-1-faire-l-ajustement-e1" data-exo="MODEL-1-faire-l-ajustement-e1" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>La phrase de conclusion</h4><div class="enonce">
+
+
+
+<p>Rédigez la réponse à la problématique, comme on l’attend le jour de l’épreuve.</p>
+
+</div><div class="indice" hidden>Le jour de l’épreuve, la question 6 est cotée sur la compétence « Communiquer ». Une estimation posée sans phrase ne rapporte rien.</div><ul class="verifier" hidden><li>J’ai rappelé le seuil de 100 000 donné dans la situation</li><li>J’ai donné le nombre estimé en 2027</li><li>J’ai comparé les deux, et conclu par oui ou par non</li><li>J’ai écrit une phrase complète, pas seulement un nombre</li></ul></section>
+
+<h2 id="exercice-2-un-chauffeur-qui-prend-le-tour-de-main">Exercice 2 — un chauffeur qui prend le tour de main</h2>
+
+<p>Une plateforme suit le nombre de colis livrés par jour par un chauffeur nouvellement recruté, mois après mois.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th><strong>Mois xᵢ</strong></th>
+
+<th>1</th>
+
+<th>2</th>
+
+<th>3</th>
+
+<th>4</th>
+
+<th>5</th>
+
+<th>6</th>
+
+<th>7</th>
+
+<th>8</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>Colis par jour yᵢ</strong></td>
+
+<td>42</td>
+
+<td>55</td>
+
+<td>62</td>
+
+<td>68</td>
+
+<td>71</td>
+
+<td>75</td>
+
+<td>77</td>
+
+<td>79</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<blockquote>
+
+<p><strong>Problématique</strong> : « Un chauffeur atteindra-t-il <strong>100 colis par jour</strong> au bout d’<strong>un an et demi</strong> ? »</p>
+
+</blockquote>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
+
+<li>Déterminer l’équation. Arrondir <strong>a</strong> et <strong>b</strong> au centième.</li>
+
+<li>Donner le rang du mois correspondant à un an et demi.</li>
+
+<li>Calculer le nombre de colis estimé. Arrondir à l’unité.</li>
+
+<li>Répondre à la problématique.</li>
+
+</ol>
+
+</div>
+
+<section class="serie" id="MODEL-1-faire-l-ajustement-s2" data-serie="MODEL-1-faire-l-ajustement-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGp0Yyd2IXgseGBqdGJvJ3YheCx4YGt0aid2IXgseGBrYnRqJ3YheCx4YGNudGondiF4LHhgbHRqJwcn"><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang du mois d’un an et demi</span></li><li><span class="q">le nombre de colis estimé</span></li><li><span class="q">l’écart avec l’objectif de 100 colis</span></li></ol><div class="indice" hidden>Un an et demi fait dix-huit mois. Le modèle logarithmique monte en s’essoufflant, ce qui se voit sur le relevé lui-même.</div></section>
+
+<section class="exo" id="MODEL-1-faire-l-ajustement-e2" data-exo="MODEL-1-faire-l-ajustement-e2" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Ce que le modèle ne dit pas</h4><div class="enonce">
+
+
+
+<p>Le relevé s’arrête au <strong>mois 8</strong> et la question porte sur le <strong>mois 18</strong>. Expliquez pourquoi la réponse doit être assortie d’une réserve.</p>
+
+</div><div class="indice" hidden>Regardez le plus grand rang du tableau avant de répondre. Le calcul reste le même ; c’est la phrase qui change.</div><ul class="verifier" hidden><li>J’ai dit que le rang 18 est en dehors du relevé</li><li>J’ai employé le mot extrapolation</li><li>J’ai dit que le modèle prolonge et ne constate plus</li><li>J’ai quand même donné le nombre estimé et répondu à la question</li></ul></section>
+
+<h2 id="exercice-3-le-budget-d-entretien-d-un-tracteur">Exercice 3 — le budget d’entretien d’un tracteur</h2>
+
+<p>Un exploitant relève le coût d’entretien annuel d’un tracteur selon son âge.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+<col style="width: 12%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th><strong>Âge xᵢ (années)</strong></th>
+
+<th>1</th>
+
+<th>2</th>
+
+<th>3</th>
+
+<th>4</th>
+
+<th>5</th>
+
+<th>6</th>
+
+<th>7</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>Coût yᵢ (€)</strong></td>
+
+<td>1 850</td>
+
+<td>2 300</td>
+
+<td>2 700</td>
+
+<td>3 200</td>
+
+<td>3 550</td>
+
+<td>4 050</td>
+
+<td>4 450</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<blockquote>
+
+<p><strong>Problématique</strong> : « Le budget d’entretien de <strong>5 000 € par an</strong> suffira-t-il encore quand le tracteur aura <strong>10 ans</strong> ? »</p>
+
+</blockquote>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
+
+<li>Déterminer l’équation. Arrondir <strong>a</strong> et <strong>b</strong> à l’unité.</li>
+
+<li>Calculer le coût d’entretien estimé à 10 ans. Arrondir à l’unité.</li>
+
+<li>Répondre à la problématique.</li>
+
+</ol>
+
+</div>
+
+<section class="serie" id="MODEL-1-faire-l-ajustement-s3" data-serie="MODEL-1-faire-l-ajustement-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGt0aid2IXgseGBqdGNiJ3YheCx4YGp0Y2kndiF4LHhgbmludGondiF4LHhga25oa3RqJ3YheCx4YG9tbGt0aicHJw=="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le coefficient a de l’équation retenue</span></li><li><span class="q">le coefficient b de l’équation retenue</span></li><li><span class="q">le coût estimé à 10 ans, en €</span></li></ol><div class="indice" hidden>Ici le rang est directement l’âge, il n’y a pas de conversion à faire. Le coefficient a est ce que coûte une année de plus.</div></section>
+
+<section class="exo" id="MODEL-1-faire-l-ajustement-e3" data-exo="MODEL-1-faire-l-ajustement-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgbmludGp2eC41NnhgaHRqdngveGB4Bi9oajs5eCc="><p class="k">Exercice · ST2</p><h4>Ce que coûte une année de plus</h4><div class="enonce">
+
+
+
+<p>Dans l’équation retenue, quel nombre donne <strong>l’augmentation du coût d’entretien par année supplémentaire</strong>, en euros ?</p>
+
+</div><div class="indice" hidden>Dans y = a x + b, l’un des deux coefficients est ce qu’on ajoute chaque fois que x augmente de 1.</div></section>
+
+<h2 id="exercice-4-la-batterie-d-un-tracteur-electrique">Exercice 4 — la batterie d’un tracteur électrique</h2>
+
+<p>Un atelier mesure la capacité restante d’une batterie de traction, exprimée en pourcentage de sa capacité d’origine, tous les cent cycles de charge.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+<col style="width: 9%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th><strong>Rang xᵢ (centaines de cycles)</strong></th>
+
+<th>1</th>
+
+<th>2</th>
+
+<th>3</th>
+
+<th>4</th>
+
+<th>5</th>
+
+<th>6</th>
+
+<th>7</th>
+
+<th>8</th>
+
+<th>9</th>
+
+<th>10</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>Capacité yᵢ (%)</strong></td>
+
+<td>100</td>
+
+<td>93</td>
+
+<td>87</td>
+
+<td>81</td>
+
+<td>75</td>
+
+<td>70</td>
+
+<td>65</td>
+
+<td>61</td>
+
+<td>57</td>
+
+<td>53</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<blockquote>
+
+<p><strong>Problématique</strong> : « Le constructeur impose le remplacement sous <strong>40 %</strong> de capacité. Faudra-t-il remplacer cette batterie avant <strong>1 500 cycles</strong> ? »</p>
+
+</blockquote>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Déterminer l’ajustement le plus pertinent. <strong>Justifier.</strong></li>
+
+<li>Déterminer l’équation. Arrondir <strong>a</strong> au dixième et <strong>b</strong> au centième.</li>
+
+<li>Donner le rang correspondant à 1 500 cycles.</li>
+
+<li>Calculer la capacité restante estimée. Arrondir à l’unité.</li>
+
+<li>Répondre à la problématique.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Deux coefficients très proches.</strong> Ici l’affine donne 0,99 et l’exponentiel 1,00. La règle ne change pas : <strong>on garde le plus proche de 1</strong>. Mais regardez ce que les deux donnent au rang 15 — l’écart n’est plus négligeable.</p>
+
+</div>
+
+<section class="serie" id="MODEL-1-faire-l-ajustement-s4" data-serie="MODEL-1-faire-l-ajustement-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGp0Y2MndiF4LHhga3RqJ3YheCx4YGp0Y28ndiF4LHhga290aid2IXgseGBpYnRqJ3YheCx4YG5qdGonByc="><p class="k">Série · ST2</p><h4>Ce que la machine affiche, et ce qu’on en tire</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">le coefficient de l’ajustement affine</span></li><li><span class="q">celui de l’exponentiel</span></li><li><span class="q">celui du logarithmique</span></li><li><span class="q">le rang correspondant à 1 500 cycles</span></li><li><span class="q">la capacité estimée, en %</span></li><li><span class="q">le seuil de remplacement, en %</span></li></ol><div class="indice" hidden>Cent cycles font un rang. Mille cinq cents cycles en font donc quinze, pas 1 500.</div></section>
+
+<section class="exo" id="MODEL-1-faire-l-ajustement-e4" data-exo="MODEL-1-faire-l-ajustement-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>La réponse à l’atelier</h4><div class="enonce">
+
+
+
+<p>Rédigez la réponse à la problématique, avec le chiffre.</p>
+
+</div><div class="indice" hidden>Le relevé s’arrête à 1 000 cycles. La conclusion reste juste, mais elle se donne avec sa réserve.</div><ul class="verifier" hidden><li>J’ai donné la capacité estimée à 1 500 cycles</li><li>J’ai comparé au seuil de 40 %</li><li>J’ai conclu par oui ou par non</li><li>J’ai dit que 1 500 cycles est au-delà du dernier relevé</li></ul></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td><strong>Les trois modèles sont donnés</strong></td>
+
+<td>rien à deviner, rien à reconnaître à l’œil</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Le rang, jamais l’année</strong></td>
+
+<td>X1 reçoit 1, 2, 3… et pas 2019, 2020, 2021</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Une phrase, pas un nombre</strong></td>
+
+<td>la dernière question est cotée sur la communication</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="FICHE-04-multiplier-plusieurs-fois.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Fiche 4 — les suites</span></a><a class="ap" href="MODEL-2-choisir-le-modele.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S1 — choisir le modèle</span></a></div></nav>
 <p class="pied">Cette page est un entraînement au format de l'épreuve. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

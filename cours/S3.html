@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Séquence 3 — l'arrimage</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="cours/S3">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="S2.html" rel="prev" title="Séquence 2 — la batterie" aria-label="Séquence 2 — la batterie">&lsaquo;</a></span><button type="button" class="lu" data-lu="cours/S3">Marquer comme lu</button></div>
@@ -23,103 +31,191 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b>Lire les coordonnées d'un point dans le plan</b><span class="car">c'est le travail de première, et la séquence n'y ajoute qu'un troisième nombre.</span></li><li><b>Calculer un carré et une racine carrée</b><span class="car">la norme ne demande rien d'autre, mais trois fois de suite.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#la-question-a-laquelle-il-faut-repondre">La question à laquelle il faut répondre</a><a href="#ce-que-la-terminale-ajoute">Ce que la terminale ajoute</a><a href="#les-quatre-pages-de-la-sequence">Les quatre pages de la séquence</a><a href="#ce-qu-il-faut-savoir-faire-en-sortant">Ce qu’il faut savoir faire en sortant</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="la-question-a-laquelle-il-faut-repondre">La question à laquelle il faut répondre</h2>
-<blockquote>
-<p>Une caisse est arrimée par <strong>deux sangles</strong> partant de deux points d’ancrage opposés du plancher et rejoignant le même point, au sommet de la charge.</p>
-<p><strong>Quelle longueur de sangle commander, et dans quelle direction tire l’ensemble des deux sangles réunies ?</strong></p>
-</blockquote>
-<div class="cle">
-<p><strong>Une longueur et une direction.</strong> Aucun nombre seul ne porte les deux : il faut un <strong>vecteur</strong>. Toute la séquence consiste à apprendre à en lire un, à en mesurer un, et à en additionner deux.</p>
-</div>
-<h2 id="ce-que-la-terminale-ajoute">Ce que la terminale ajoute</h2>
-<div class="formule">
-<p><strong>Trois coordonnées</strong> au lieu de deux : longueur, largeur, hauteur</p>
-<p><strong>AB = B − A</strong>, coordonnée par coordonnée</p>
-<p><strong>‖u‖ = √(x² + y² + z²)</strong></p>
-<p><strong>Colinéaires</strong> : v = k × u, sur les trois coordonnées à la fois</p>
-</div>
-<div class="piege">
-<p><strong>Le programme dit « sans formalisme ».</strong> Pas de produit scalaire, pas d’équation de plan, pas d’angle entre deux vecteurs. Un nombre de plus, et les gestes de première. Si quelque chose vous paraît nouveau au-delà de cela, c’est que vous cherchez trop loin.</p>
-</div>
-<h2 id="les-quatre-pages-de-la-sequence">Les quatre pages de la séquence</h2>
-<p>Chacune reprend <strong>une séance</strong> et détaille ce que le document distribué demande sans l’expliquer. Elles se lisent dans l’ordre, et chacune renvoie à la précédente.</p>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th>La page</th>
-<th>Ce qu’elle explique</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1</strong></td>
-<td><a href="../aide/ARRIM-1-du-plan-a-l-espace.html">Du plan à l’espace</a></td>
-<td>lire trois coordonnées sur une caisse, et le « arrivée moins départ »</td>
-</tr>
-<tr>
-<td><strong>2</strong></td>
-<td><a href="../aide/ARRIM-2-norme-et-somme.html">La longueur et la somme</a></td>
-<td>la norme, l’addition, et pourquoi 2 + 2 ne font pas 4</td>
-</tr>
-<tr>
-<td><strong>3</strong></td>
-<td><a href="../aide/ARRIM-3-colineaires.html">Colinéaires, ou non</a></td>
-<td>le coefficient k, et la direction qui n’est pas le sens</td>
-</tr>
-<tr>
-<td><strong>4</strong></td>
-<td><a href="../aide/ARRIM-4-la-troisieme-coordonnee.html">La troisième coordonnée</a></td>
-<td>le nombre qui dit si la charge est plaquée ou seulement tenue</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p><strong>Par où commencer.</strong> Si c’est la lecture des coordonnées qui a bloqué, prenez la page 1. Si c’est le calcul de la longueur de sangle, allez directement à la page 2. La page 4 porte la conclusion du métier, et elle se lit même si le reste est acquis.</p>
-</div>
-<h2 id="ce-qu-il-faut-savoir-faire-en-sortant">Ce qu’il faut savoir faire en sortant</h2>
-<div class="etapes">
-<ol type="1">
-<li>Donner les <strong>trois coordonnées</strong> d’un point remarquable d’une caisse, sans hésiter sur l’ordre.</li>
-<li>Calculer les coordonnées d’un <strong>vecteur</strong>, et sa <strong>norme</strong>.</li>
-<li>Additionner deux vecteurs, et <strong>lire ce que dit la somme</strong>.</li>
-<li>Reconnaître deux vecteurs <strong>colinéaires</strong>, donner le <strong>k</strong>, et dire s’ils vont dans le même sens.</li>
-</ol>
-</div>
-<div class="piege">
-<p><strong>Une justification sans nombre ne vaut rien.</strong> « La sangle tire vers le bas » n’est pas une réponse ; « la troisième coordonnée vaut −1,0, donc le vecteur descend » en est une. C’est ce que l’évaluation cote, et c’est la question qui prédit le mieux la réussite au CCF.</p>
-</div>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td><strong>AB = B − A</strong></td>
-<td>écrivez « B − A » au-dessus du calcul, à chaque fois</td>
-</tr>
-<tr>
-<td><strong>‖u‖ = √(x² + y² + z²)</strong></td>
-<td>les carrés d’abord, la racine à la fin</td>
-</tr>
-<tr>
-<td><strong>La troisième coordonnée dit si ça plaque</strong></td>
-<td>négative, elle presse ; nulle, elle ne fait que retenir</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="la-question-a-laquelle-il-faut-repondre">La question à laquelle il faut répondre</h2>
+
+<blockquote>
+
+<p>Une caisse est arrimée par <strong>deux sangles</strong> partant de deux points d’ancrage opposés du plancher et rejoignant le même point, au sommet de la charge.</p>
+
+<p><strong>Quelle longueur de sangle commander, et dans quelle direction tire l’ensemble des deux sangles réunies ?</strong></p>
+
+</blockquote>
+
+<div class="cle">
+
+<p><strong>Une longueur et une direction.</strong> Aucun nombre seul ne porte les deux : il faut un <strong>vecteur</strong>. Toute la séquence consiste à apprendre à en lire un, à en mesurer un, et à en additionner deux.</p>
+
+</div>
+
+<h2 id="ce-que-la-terminale-ajoute">Ce que la terminale ajoute</h2>
+
+<div class="formule">
+
+<p><strong>Trois coordonnées</strong> au lieu de deux : longueur, largeur, hauteur</p>
+
+<p><strong>AB = B − A</strong>, coordonnée par coordonnée</p>
+
+<p><strong>‖u‖ = √(x² + y² + z²)</strong></p>
+
+<p><strong>Colinéaires</strong> : v = k × u, sur les trois coordonnées à la fois</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Le programme dit « sans formalisme ».</strong> Pas de produit scalaire, pas d’équation de plan, pas d’angle entre deux vecteurs. Un nombre de plus, et les gestes de première. Si quelque chose vous paraît nouveau au-delà de cela, c’est que vous cherchez trop loin.</p>
+
+</div>
+
+<h2 id="les-quatre-pages-de-la-sequence">Les quatre pages de la séquence</h2>
+
+<p>Chacune reprend <strong>une séance</strong> et détaille ce que le document distribué demande sans l’expliquer. Elles se lisent dans l’ordre, et chacune renvoie à la précédente.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th></th>
+
+<th>La page</th>
+
+<th>Ce qu’elle explique</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>1</strong></td>
+
+<td><a href="../aide/ARRIM-1-du-plan-a-l-espace.html">Du plan à l’espace</a></td>
+
+<td>lire trois coordonnées sur une caisse, et le « arrivée moins départ »</td>
+
+</tr>
+
+<tr>
+
+<td><strong>2</strong></td>
+
+<td><a href="../aide/ARRIM-2-norme-et-somme.html">La longueur et la somme</a></td>
+
+<td>la norme, l’addition, et pourquoi 2 + 2 ne font pas 4</td>
+
+</tr>
+
+<tr>
+
+<td><strong>3</strong></td>
+
+<td><a href="../aide/ARRIM-3-colineaires.html">Colinéaires, ou non</a></td>
+
+<td>le coefficient k, et la direction qui n’est pas le sens</td>
+
+</tr>
+
+<tr>
+
+<td><strong>4</strong></td>
+
+<td><a href="../aide/ARRIM-4-la-troisieme-coordonnee.html">La troisième coordonnée</a></td>
+
+<td>le nombre qui dit si la charge est plaquée ou seulement tenue</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p><strong>Par où commencer.</strong> Si c’est la lecture des coordonnées qui a bloqué, prenez la page 1. Si c’est le calcul de la longueur de sangle, allez directement à la page 2. La page 4 porte la conclusion du métier, et elle se lit même si le reste est acquis.</p>
+
+</div>
+
+<h2 id="ce-qu-il-faut-savoir-faire-en-sortant">Ce qu’il faut savoir faire en sortant</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Donner les <strong>trois coordonnées</strong> d’un point remarquable d’une caisse, sans hésiter sur l’ordre.</li>
+
+<li>Calculer les coordonnées d’un <strong>vecteur</strong>, et sa <strong>norme</strong>.</li>
+
+<li>Additionner deux vecteurs, et <strong>lire ce que dit la somme</strong>.</li>
+
+<li>Reconnaître deux vecteurs <strong>colinéaires</strong>, donner le <strong>k</strong>, et dire s’ils vont dans le même sens.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Une justification sans nombre ne vaut rien.</strong> « La sangle tire vers le bas » n’est pas une réponse ; « la troisième coordonnée vaut −1,0, donc le vecteur descend » en est une. C’est ce que l’évaluation cote, et c’est la question qui prédit le mieux la réussite au CCF.</p>
+
+</div>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td><strong>AB = B − A</strong></td>
+
+<td>écrivez « B − A » au-dessus du calcul, à chaque fois</td>
+
+</tr>
+
+<tr>
+
+<td><strong>‖u‖ = √(x² + y² + z²)</strong></td>
+
+<td>les carrés d’abord, la racine à la fin</td>
+
+</tr>
+
+<tr>
+
+<td><strong>La troisième coordonnée dit si ça plaque</strong></td>
+
+<td>négative, elle presse ; nulle, elle ne fait que retenir</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="S2.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Séquence 2 — la batterie</span></a></div></nav>
 <p class="pied">Cette page rappelle la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

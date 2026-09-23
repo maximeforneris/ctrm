@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>S1 — jusqu'où aller</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/MODEL-3-jusqu-ou-aller">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="MODEL-2-choisir-le-modele.html" rel="prev" title="S1 — choisir le modèle" aria-label="S1 — choisir le modèle">&lsaquo;</a></span><button type="button" class="lu" data-lu="aide/MODEL-3-jusqu-ou-aller">Marquer comme lu</button></div>
@@ -23,101 +31,187 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="MODEL-2-choisir-le-modele.html">Choisir un modèle et lire son R²</a></b><span class="ou">S1 — choisir le modèle</span><span class="car">cette page dit ce qu'on a le droit d'en faire une fois choisi.</span></li><li><b>Lire une plage de valeurs dans un tableau</b><span class="car">c'est elle qui décide si une estimation est une interpolation ou non.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#les-deux-mots-et-ce-qui-les-separe">Les deux mots, et ce qui les sépare</a><a href="#ce-que-coute-le-fait-de-sortir-de-la-plage">Ce que coûte le fait de sortir de la plage</a><a href="#le-r2-ne-connait-pas-la-physique">Le R² ne connaît pas la physique</a><a href="#vous-verifier">Vous vérifier</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="les-deux-mots-et-ce-qui-les-separe">Les deux mots, et ce qui les sépare</h2>
-<div class="formule">
-<p><strong>Interpoler</strong> : estimer <strong>à l’intérieur</strong> de la plage des relevés.</p>
-<p><strong>Extrapoler</strong> : estimer <strong>en dehors</strong>.</p>
-</div>
-<div class="cle">
-<p><strong>Le calcul est exactement le même.</strong> On remplace <em>x</em> dans l’équation, dans les deux cas. Ce qui change, c’est <strong>la phrase qu’on écrit après</strong> — et c’est elle qui rapporte les points au CCF.</p>
-</div>
-<div class="etapes">
-<ol type="1">
-<li>Je repère la <strong>plus petite</strong> et la <strong>plus grande</strong> valeur de <em>x</em> du relevé.</li>
-<li>Je regarde si la valeur demandée est <strong>entre les deux</strong>.</li>
-<li>Si oui : <strong>interpolation</strong>, je réponds.</li>
-<li>Si non : <strong>extrapolation</strong>, je réponds <strong>et j’assortis ma réponse d’une réserve</strong>.</li>
-</ol>
-</div>
-<h2 id="ce-que-coute-le-fait-de-sortir-de-la-plage">Ce que coûte le fait de sortir de la plage</h2>
-<figure class="schema"><div class="dessin" data-schema="extrapoler-les-quatre"></div><figcaption>Le relevé de la vitesse, et les quatre modèles prolongés jusqu’à 120 km/h.</figcaption></figure>
-<div class="piege">
-<p><strong>Les quatre modèles sont d’accord dans la plage, et seulement là.</strong> À 120 km/h ils annoncent 62, 68, 81 et 97 L/100 km. Le meilleur R² ne protège de rien : il a été calculé sur des points qui s’arrêtent à 100.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un exemple entièrement fait</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le relevé de la charge va de <strong>5 t à 28 t</strong>, et son modèle est <strong>y = 0,875 x + 21,5</strong>.</p>
-<p><strong>Pour 14 t</strong> — 14 est entre 5 et 28, donc c’est une <strong>interpolation</strong>. 0,875 × 14 + 21,5 = <strong>33,8 L/100 km</strong>. On répond sans réserve : <em>« Pour une charge de 14 t, la consommation estimée est de 33,8 L/100 km. »</em></p>
-<p><strong>Pour 22 t</strong> — 22 est aussi entre 5 et 28, donc c’est <strong>encore une interpolation</strong>, même si le nombre paraît grand. Beaucoup répondent « extrapolation » parce que 22 t <em>ressemble</em> à une charge exceptionnelle. <strong>Regardez le tableau, pas votre intuition.</strong> 0,875 × 22 + 21,5 = <strong>40,7 L/100 km</strong>.</p>
-<p><strong>Pour 35 t</strong> — là, oui, c’est une <strong>extrapolation</strong>. On calcule quand même, 52,1 L/100 km, mais on écrit : <em>« Cette valeur est hors de la plage des relevés, qui s’arrêtent à 28 t. Elle n’est qu’une prolongation du modèle. »</em></p></div></details>
-</div><h2 id="le-r2-ne-connait-pas-la-physique">Le R² ne connaît pas la physique</h2>
-<figure class="schema"><div class="dessin" data-schema="cafe-deux-modeles"></div><figcaption>Une tasse de café, deux modèles exponentiels, deux R² excellents.</figcaption></figure>
-<p>Le modèle brut annonce <strong>1,5 °C</strong> à deux heures, dans une pièce à 20 °C. C’est impossible, et son R² valait pourtant 0,989.</p>
-<div class="cle">
-<p><strong>Le même modèle posé sur l’écart à la pièce donne 20,1 °C.</strong> L’écart, lui, tend vers zéro, et rien ne l’empêche. Le café refroidit jusqu’à l’ambiance et s’arrête là.</p>
-</div>
-<div class="piege">
-<p><strong>Le modèle ne sait pas qu’un café ne descend pas sous la température de la pièce</strong>, ni qu’un camion a une valeur plancher, ni qu’une consommation ne peut pas être négative. <strong>C’est vous qui le savez</strong>, et c’est la seule chose que la machine ne fera jamais.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La question de bon sens, avant de rendre</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Trois vérifications, et elles prennent dix secondes.</p>
-<p><strong>Le signe.</strong> Une consommation, une masse, une durée, un prix sont positifs. Un modèle qui en annonce un négatif est sorti de son domaine.</p>
-<p><strong>L’ordre de grandeur.</strong> Un poids lourd consomme entre 25 et 60 L/100 km. Une réponse à 4 ou à 400 se rejette sans calcul.</p>
-<p><strong>La limite physique.</strong> Y a-t-il un plancher ou un plafond que la chose ne peut pas franchir ? La température de la pièce, la valeur à la casse, la capacité d’une citerne. Si le modèle le franchit, il est sorti de son domaine — <strong>même avec un R² de 0,99</strong>.</p></div></details>
-</div><h2 id="vous-verifier">Vous vérifier</h2>
-<section class="exo" id="MODEL-3-jusqu-ou-aller-e1" data-exo="MODEL-3-jusqu-ou-aller-e1" data-type="lecture" data-savoir="ST2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4PyIuKDsqNTY7LjM1NHh2eC80P3o/Ii4oOyo1NjsuMzU0eHZ4PyIuKDsqNTY/KHgHJw=="><p class="k">Exercice · ST2</p><h4>Dedans ou dehors</h4><div class="enonce">
-
-<p>Un relevé de chaudières porte sur des températures extérieures de <strong>− 5 °C à 15 °C</strong>. Estimer la consommation à <strong>− 12 °C</strong>, est-ce une interpolation ou une extrapolation ?</p>
-</div><div class="indice" hidden>− 12 est-il compris entre − 5 et 15 ? Attention au sens des nombres négatifs.</div></section>
-<section class="exo" id="MODEL-3-jusqu-ou-aller-e2" data-exo="MODEL-3-jusqu-ou-aller-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgb2h0a3Z4LjU2eGBpdGp2eC94YHgWdWtqanoxN3gn"><p class="k">Exercice · ST2</p><h4>Hors plage, quand même</h4><div class="enonce">
-
-<p>Le modèle de la charge est <strong>y = 0,875 x + 21,5</strong>. Que donne-t-il pour <strong>35 t</strong> ?</p>
-</div><div class="indice" hidden>On calcule normalement. C’est la phrase qui suit qui change, pas le calcul.</div></section>
-<section class="exo" id="MODEL-3-jusqu-ou-aller-e3" data-exo="MODEL-3-jusqu-ou-aller-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGp0a3Z4LjU2eGBpdGp2eC94YHgGL2pqOGoZeCc="><p class="k">Exercice · ST2</p><h4>Le café à deux heures</h4><div class="enonce">
-
-<p>Le modèle posé sur l’écart donne <strong>écart = 68 × 0,944ᵗ</strong>, avec <em>t</em> en minutes. Quelle <strong>température</strong> le café a-t-il à 120 min, la pièce étant à 20 °C ?</p>
-</div><div class="indice" hidden>Calculez d’abord l’écart, puis ajoutez les 20 °C de la pièce. L’écart obtenu est tout petit.</div></section>
-<section class="exo" id="MODEL-3-jusqu-ou-aller-e4" data-exo="MODEL-3-jusqu-ou-aller-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Un R² excellent et une réponse fausse</h4><div class="enonce">
-
-<p>Le modèle brut du café a un R² de 0,989 et annonce 1,5 °C à deux heures. Expliquez comment les deux peuvent être vrais en même temps.</p>
-</div><div class="indice" hidden>Le R² mesure la distance entre la courbe et les points. Il ne mesure rien là où il n’y a pas de points.</div><ul class="verifier" hidden><li>J’ai dit que le R² se calcule sur les points relevés seulement</li><li>J’ai dit que 2 heures est en dehors de la plage, qui s’arrête à 30 min</li><li>J’ai dit pourquoi 1,5 °C est impossible dans une pièce à 20 °C</li><li>J’ai dit ce que le modèle sur l’écart change</li></ul></section>
-<h2 id="je-m-entraine">Je m’entraîne</h2>
-<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
-<section class="serie" id="MODEL-3-jusqu-ou-aller-s1" data-serie="MODEL-3-jusqu-ou-aller-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJwcn"><p class="k">Série · ST2</p><h4>Série 1 — interpolation ou extrapolation, relevé de − 5 °C à 15 °C</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">estimer à 8 °C</span></li><li><span class="q">estimer à − 12 °C</span></li><li><span class="q">estimer à 15 °C</span></li><li><span class="q">estimer à 30 °C</span></li><li><span class="q">estimer à 0 °C</span></li><li><span class="q">estimer à − 5 °C</span></li></ol><div class="indice" hidden>Les deux bornes font partie de la plage. Une valeur juste à la limite est encore une interpolation.</div></section>
-<section class="serie" id="MODEL-3-jusqu-ou-aller-s2" data-serie="MODEL-3-jusqu-ou-aller-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJwcn"><p class="k">Série · ST2</p><h4>Série 2 — la plage du relevé de la charge, de 5 t à 28 t</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">14 t</span></li><li><span class="q">22 t</span></li><li><span class="q">3 t</span></li><li><span class="q">28 t</span></li><li><span class="q">35 t</span></li><li><span class="q">5 t</span></li></ol><div class="indice" hidden>Regardez le tableau, pas votre intuition. Une charge qui paraît lourde peut être dans la plage.</div></section>
-<section class="serie" id="MODEL-3-jusqu-ou-aller-s3" data-serie="MODEL-3-jusqu-ou-aller-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGxodGgndiF4LHhgbGJ0aSd2IXgseGBianRtJ3YheCx4YGNsdGMndiF4LHhgaW50bSd2IXgseGBrdGwnByc="><p class="k">Série · ST2</p><h4>Série 3 — les quatre modèles à 120 km/h</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">le logarithmique annonce</span></li><li><span class="q">l’affine annonce</span></li><li><span class="q">l’exponentiel annonce</span></li><li><span class="q">le quadratique annonce</span></li><li><span class="q">l’écart entre le plus petit et le plus grand</span></li><li><span class="q">le rapport du plus grand au plus petit, au dixième</span></li></ol><div class="indice" hidden>Les quatre valeurs sont sur le graphique de la page. L’écart est une soustraction, le rapport une division.</div></section>
-<section class="serie" id="MODEL-3-jusqu-ou-aller-s4" data-serie="MODEL-3-jusqu-ou-aller-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGhqdGondiF4LHhgaWp0aid2IXgseGBrdG8ndiF4LHhgaGp0ayd2IXgseGBqdGsndiF4LHhga2hqdGonByc="><p class="k">Série · ST2</p><h4>Série 4 — le café, minute par minute</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">la température de la pièce, en °C</span></li><li><span class="q">le dernier temps relevé, en min</span></li><li><span class="q">le modèle brut à 120 min, en °C</span></li><li><span class="q">le modèle sur l’écart à 120 min, en °C</span></li><li><span class="q">l’écart prévu à 120 min, en °C</span></li><li><span class="q">deux heures, en minutes</span></li></ol><div class="indice" hidden>Le modèle sur l’écart donne l’écart ; la température s’obtient en ajoutant les 20 °C de la pièce.</div></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td><strong>Interpoler : dedans · extrapoler : dehors</strong></td>
-<td>le calcul est le même, la phrase qui suit ne l’est pas</td>
-</tr>
-<tr>
-<td><strong>Hors plage, les modèles divergent</strong></td>
-<td>de 62 à 97 L/100 km sur le même relevé</td>
-</tr>
-<tr>
-<td><strong>Le R² ne connaît pas la physique</strong></td>
-<td>un café ne descend pas sous la température de la pièce</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="les-deux-mots-et-ce-qui-les-separe">Les deux mots, et ce qui les sépare</h2>
+
+<div class="formule">
+
+<p><strong>Interpoler</strong> : estimer <strong>à l’intérieur</strong> de la plage des relevés.</p>
+
+<p><strong>Extrapoler</strong> : estimer <strong>en dehors</strong>.</p>
+
+</div>
+
+<div class="cle">
+
+<p><strong>Le calcul est exactement le même.</strong> On remplace <em>x</em> dans l’équation, dans les deux cas. Ce qui change, c’est <strong>la phrase qu’on écrit après</strong> — et c’est elle qui rapporte les points au CCF.</p>
+
+</div>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Je repère la <strong>plus petite</strong> et la <strong>plus grande</strong> valeur de <em>x</em> du relevé.</li>
+
+<li>Je regarde si la valeur demandée est <strong>entre les deux</strong>.</li>
+
+<li>Si oui : <strong>interpolation</strong>, je réponds.</li>
+
+<li>Si non : <strong>extrapolation</strong>, je réponds <strong>et j’assortis ma réponse d’une réserve</strong>.</li>
+
+</ol>
+
+</div>
+
+<h2 id="ce-que-coute-le-fait-de-sortir-de-la-plage">Ce que coûte le fait de sortir de la plage</h2>
+
+<figure class="schema"><div class="dessin" data-schema="extrapoler-les-quatre"></div><figcaption>Le relevé de la vitesse, et les quatre modèles prolongés jusqu’à 120 km/h.</figcaption></figure>
+
+<div class="piege">
+
+<p><strong>Les quatre modèles sont d’accord dans la plage, et seulement là.</strong> À 120 km/h ils annoncent 62, 68, 81 et 97 L/100 km. Le meilleur R² ne protège de rien : il a été calculé sur des points qui s’arrêtent à 100.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un exemple entièrement fait</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le relevé de la charge va de <strong>5 t à 28 t</strong>, et son modèle est <strong>y = 0,875 x + 21,5</strong>.</p>
+
+<p><strong>Pour 14 t</strong> — 14 est entre 5 et 28, donc c’est une <strong>interpolation</strong>. 0,875 × 14 + 21,5 = <strong>33,8 L/100 km</strong>. On répond sans réserve : <em>« Pour une charge de 14 t, la consommation estimée est de 33,8 L/100 km. »</em></p>
+
+<p><strong>Pour 22 t</strong> — 22 est aussi entre 5 et 28, donc c’est <strong>encore une interpolation</strong>, même si le nombre paraît grand. Beaucoup répondent « extrapolation » parce que 22 t <em>ressemble</em> à une charge exceptionnelle. <strong>Regardez le tableau, pas votre intuition.</strong> 0,875 × 22 + 21,5 = <strong>40,7 L/100 km</strong>.</p>
+
+<p><strong>Pour 35 t</strong> — là, oui, c’est une <strong>extrapolation</strong>. On calcule quand même, 52,1 L/100 km, mais on écrit : <em>« Cette valeur est hors de la plage des relevés, qui s’arrêtent à 28 t. Elle n’est qu’une prolongation du modèle. »</em></p></div></details>
+
+</div><h2 id="le-r2-ne-connait-pas-la-physique">Le R² ne connaît pas la physique</h2>
+
+<figure class="schema"><div class="dessin" data-schema="cafe-deux-modeles"></div><figcaption>Une tasse de café, deux modèles exponentiels, deux R² excellents.</figcaption></figure>
+
+<p>Le modèle brut annonce <strong>1,5 °C</strong> à deux heures, dans une pièce à 20 °C. C’est impossible, et son R² valait pourtant 0,989.</p>
+
+<div class="cle">
+
+<p><strong>Le même modèle posé sur l’écart à la pièce donne 20,1 °C.</strong> L’écart, lui, tend vers zéro, et rien ne l’empêche. Le café refroidit jusqu’à l’ambiance et s’arrête là.</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Le modèle ne sait pas qu’un café ne descend pas sous la température de la pièce</strong>, ni qu’un camion a une valeur plancher, ni qu’une consommation ne peut pas être négative. <strong>C’est vous qui le savez</strong>, et c’est la seule chose que la machine ne fera jamais.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La question de bon sens, avant de rendre</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Trois vérifications, et elles prennent dix secondes.</p>
+
+<p><strong>Le signe.</strong> Une consommation, une masse, une durée, un prix sont positifs. Un modèle qui en annonce un négatif est sorti de son domaine.</p>
+
+<p><strong>L’ordre de grandeur.</strong> Un poids lourd consomme entre 25 et 60 L/100 km. Une réponse à 4 ou à 400 se rejette sans calcul.</p>
+
+<p><strong>La limite physique.</strong> Y a-t-il un plancher ou un plafond que la chose ne peut pas franchir ? La température de la pièce, la valeur à la casse, la capacité d’une citerne. Si le modèle le franchit, il est sorti de son domaine — <strong>même avec un R² de 0,99</strong>.</p></div></details>
+
+</div><h2 id="vous-verifier">Vous vérifier</h2>
+
+<section class="exo" id="MODEL-3-jusqu-ou-aller-e1" data-exo="MODEL-3-jusqu-ou-aller-e1" data-type="lecture" data-savoir="ST2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4PyIuKDsqNTY7LjM1NHh2eC80P3o/Ii4oOyo1NjsuMzU0eHZ4PyIuKDsqNTY/KHgHJw=="><p class="k">Exercice · ST2</p><h4>Dedans ou dehors</h4><div class="enonce">
+
+
+
+<p>Un relevé de chaudières porte sur des températures extérieures de <strong>− 5 °C à 15 °C</strong>. Estimer la consommation à <strong>− 12 °C</strong>, est-ce une interpolation ou une extrapolation ?</p>
+
+</div><div class="indice" hidden>− 12 est-il compris entre − 5 et 15 ? Attention au sens des nombres négatifs.</div></section>
+
+<section class="exo" id="MODEL-3-jusqu-ou-aller-e2" data-exo="MODEL-3-jusqu-ou-aller-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgb2h0a3Z4LjU2eGBpdGp2eC94YHgWdWtqanoxN3gn"><p class="k">Exercice · ST2</p><h4>Hors plage, quand même</h4><div class="enonce">
+
+
+
+<p>Le modèle de la charge est <strong>y = 0,875 x + 21,5</strong>. Que donne-t-il pour <strong>35 t</strong> ?</p>
+
+</div><div class="indice" hidden>On calcule normalement. C’est la phrase qui suit qui change, pas le calcul.</div></section>
+
+<section class="exo" id="MODEL-3-jusqu-ou-aller-e3" data-exo="MODEL-3-jusqu-ou-aller-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGp0a3Z4LjU2eGBpdGp2eC94YHgGL2pqOGoZeCc="><p class="k">Exercice · ST2</p><h4>Le café à deux heures</h4><div class="enonce">
+
+
+
+<p>Le modèle posé sur l’écart donne <strong>écart = 68 × 0,944ᵗ</strong>, avec <em>t</em> en minutes. Quelle <strong>température</strong> le café a-t-il à 120 min, la pièce étant à 20 °C ?</p>
+
+</div><div class="indice" hidden>Calculez d’abord l’écart, puis ajoutez les 20 °C de la pièce. L’écart obtenu est tout petit.</div></section>
+
+<section class="exo" id="MODEL-3-jusqu-ou-aller-e4" data-exo="MODEL-3-jusqu-ou-aller-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Un R² excellent et une réponse fausse</h4><div class="enonce">
+
+
+
+<p>Le modèle brut du café a un R² de 0,989 et annonce 1,5 °C à deux heures. Expliquez comment les deux peuvent être vrais en même temps.</p>
+
+</div><div class="indice" hidden>Le R² mesure la distance entre la courbe et les points. Il ne mesure rien là où il n’y a pas de points.</div><ul class="verifier" hidden><li>J’ai dit que le R² se calcule sur les points relevés seulement</li><li>J’ai dit que 2 heures est en dehors de la plage, qui s’arrête à 30 min</li><li>J’ai dit pourquoi 1,5 °C est impossible dans une pièce à 20 °C</li><li>J’ai dit ce que le modèle sur l’écart change</li></ul></section>
+
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+
+<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
+
+<section class="serie" id="MODEL-3-jusqu-ou-aller-s1" data-serie="MODEL-3-jusqu-ou-aller-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJwcn"><p class="k">Série · ST2</p><h4>Série 1 — interpolation ou extrapolation, relevé de − 5 °C à 15 °C</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">estimer à 8 °C</span></li><li><span class="q">estimer à − 12 °C</span></li><li><span class="q">estimer à 15 °C</span></li><li><span class="q">estimer à 30 °C</span></li><li><span class="q">estimer à 0 °C</span></li><li><span class="q">estimer à − 5 °C</span></li></ol><div class="indice" hidden>Les deux bornes font partie de la plage. Une valeur juste à la limite est encore une interpolation.</div></section>
+
+<section class="serie" id="MODEL-3-jusqu-ou-aller-s2" data-serie="MODEL-3-jusqu-ou-aller-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJ3YheDt4YAF4PyIuKDsqNTY7LjM1NHgHJ3YheDt4YAF4MzQuPygqNTY7LjM1NHgHJwcn"><p class="k">Série · ST2</p><h4>Série 2 — la plage du relevé de la charge, de 5 t à 28 t</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">14 t</span></li><li><span class="q">22 t</span></li><li><span class="q">3 t</span></li><li><span class="q">28 t</span></li><li><span class="q">35 t</span></li><li><span class="q">5 t</span></li></ol><div class="indice" hidden>Regardez le tableau, pas votre intuition. Une charge qui paraît lourde peut être dans la plage.</div></section>
+
+<section class="serie" id="MODEL-3-jusqu-ou-aller-s3" data-serie="MODEL-3-jusqu-ou-aller-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGxodGgndiF4LHhgbGJ0aSd2IXgseGBianRtJ3YheCx4YGNsdGMndiF4LHhgaW50bSd2IXgseGBrdGwnByc="><p class="k">Série · ST2</p><h4>Série 3 — les quatre modèles à 120 km/h</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">le logarithmique annonce</span></li><li><span class="q">l’affine annonce</span></li><li><span class="q">l’exponentiel annonce</span></li><li><span class="q">le quadratique annonce</span></li><li><span class="q">l’écart entre le plus petit et le plus grand</span></li><li><span class="q">le rapport du plus grand au plus petit, au dixième</span></li></ol><div class="indice" hidden>Les quatre valeurs sont sur le graphique de la page. L’écart est une soustraction, le rapport une division.</div></section>
+
+<section class="serie" id="MODEL-3-jusqu-ou-aller-s4" data-serie="MODEL-3-jusqu-ou-aller-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGhqdGondiF4LHhgaWp0aid2IXgseGBrdG8ndiF4LHhgaGp0ayd2IXgseGBqdGsndiF4LHhga2hqdGonByc="><p class="k">Série · ST2</p><h4>Série 4 — le café, minute par minute</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">la température de la pièce, en °C</span></li><li><span class="q">le dernier temps relevé, en min</span></li><li><span class="q">le modèle brut à 120 min, en °C</span></li><li><span class="q">le modèle sur l’écart à 120 min, en °C</span></li><li><span class="q">l’écart prévu à 120 min, en °C</span></li><li><span class="q">deux heures, en minutes</span></li></ol><div class="indice" hidden>Le modèle sur l’écart donne l’écart ; la température s’obtient en ajoutant les 20 °C de la pièce.</div></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td><strong>Interpoler : dedans · extrapoler : dehors</strong></td>
+
+<td>le calcul est le même, la phrase qui suit ne l’est pas</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Hors plage, les modèles divergent</strong></td>
+
+<td>de 62 à 97 L/100 km sur le même relevé</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Le R² ne connaît pas la physique</strong></td>
+
+<td>un café ne descend pas sous la température de la pièce</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="MODEL-2-choisir-le-modele.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">S1 — choisir le modèle</span></a></div></nav>
 <p class="pied">Cette page détaille la séance 3 de la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

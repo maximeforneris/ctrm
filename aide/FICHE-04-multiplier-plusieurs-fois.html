@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Fiche 4 — les suites</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/FICHE-04-multiplier-plusieurs-fois">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="FICHE-03-unites-composees.html" rel="prev" title="Fiche 3 — les unités composées" aria-label="Fiche 3 — les unités composées">&lsaquo;</a><a class="fleche" href="MODEL-1-faire-l-ajustement.html" rel="next" title="S1 — faire l'ajustement" aria-label="S1 — faire l'ajustement">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/FICHE-04-multiplier-plusieurs-fois">Marquer comme lu</button></div>
@@ -23,140 +31,265 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="FICHE-01-pourcentage-retour.html">Le coefficient multiplicateur</a></b><span class="ou">Fiche 1 — pourcentages</span><span class="car">multiplier plusieurs fois, c'est appliquer plusieurs fois le même coefficient, et la fiche 1 le construit.</span></li><li><b>Les puissances sur la calculatrice</b><span class="car">0,85 élevé à la puissance 5 se tape avec la touche x^y, et le résultat doit être plus petit que 0,85.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#le-blocage">Le blocage</a><a href="#le-reflexe-un-coefficient-eleve-a-la-puissance">Le réflexe : un coefficient, élevé à la puissance</a><a href="#le-piege-qui-trompe-meme-les-bons">Le piège qui trompe même les bons</a><a href="#vous-verifier">Vous vérifier</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="le-blocage">Le blocage</h2>
-<p>Un tracteur perd 18 % par an. Au bout de quatre ans, beaucoup calculent 4 × 18 = 72 % et concluent qu’il ne vaut presque plus rien.</p>
-<p>L’erreur est toujours la même : on additionne des pourcentages au lieu de multiplier des coefficients.</p>
-<h2 id="le-reflexe-un-coefficient-eleve-a-la-puissance">Le réflexe : un coefficient, élevé à la puissance</h2>
-<div class="formule">
-<p><strong>Valeur au bout de n années = valeur de départ × qⁿ</strong></p>
-<ul>
-<li><strong>q</strong><span>est le coefficient d’une année, 0,82 pour une baisse de 18 %</span></li>
-<li><strong>n</strong><span>est le nombre d’années</span></li>
-<li><strong>qⁿ</strong><span>se tape avec la touche puissance de la NumWorks</span></li>
-</ul>
-</div>
-<div class="cle">
-<p>n années, c’est le coefficient n fois, et non le taux n fois. Sur la calculatrice, 0,82^4, et non 0,82 × 4.</p>
-</div>
-<p><strong>Le calcul en entier</strong>, pour un tracteur à 52 000 € :</p>
-<p>52 000 × 0,82⁴ = <strong>23 510 €</strong></p>
-<p>Il a perdu près de 55 % de sa valeur, et non 72 %. Chaque année, les 18 % se calculent sur une somme plus petite que l’année d’avant.</p>
-<h2 id="le-piege-qui-trompe-meme-les-bons">Le piège qui trompe même les bons</h2>
-<div class="piege">
-<p><strong>Le taux ne bouge pas, mais la perte en euros diminue.</strong> Ce n’est pas une contradiction :</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Année</th>
-<th style="text-align: right;">Valeur au début</th>
-<th style="text-align: right;">Perte de l’année</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td style="text-align: right;">52 000 €</td>
-<td style="text-align: right;">9 360 €</td>
-</tr>
-<tr>
-<td>2</td>
-<td style="text-align: right;">42 640 €</td>
-<td style="text-align: right;">7 675 €</td>
-</tr>
-<tr>
-<td>3</td>
-<td style="text-align: right;">34 965 €</td>
-<td style="text-align: right;">6 294 €</td>
-</tr>
-<tr>
-<td>4</td>
-<td style="text-align: right;">28 671 €</td>
-<td style="text-align: right;">5 161 €</td>
-</tr>
-</tbody>
-</table></div>
-<p>Toujours 18 %, mais 18 % de quoi. C’est la base qui rétrécit.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le sens du calcul, et comment revenir en arrière</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Reconnaître une suite géométrique tient en une question : est-ce qu’on multiplie toujours par le même nombre ?</p>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>Ce qu’on lit</th>
-<th>Ce que c’est</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>« perd 18 % par an »</td>
-<td>géométrique, q = 0,82</td>
-</tr>
-<tr>
-<td>« augmente de 6 % par an »</td>
-<td>géométrique, q = 1,06</td>
-</tr>
-<tr>
-<td>« perd 3 000 € par an »</td>
-<td>arithmétique : on soustrait, on ne multiplie pas</td>
-</tr>
-<tr>
-<td>« double tous les deux ans »</td>
-<td>géométrique, q = 2 tous les deux pas</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>Un taux en pour cent annonce presque toujours une suite géométrique, un montant en euros une suite arithmétique. Le mot « par an » ne suffit pas à trancher : ce qui décide, c’est l’unité de ce qui se répète.</p>
-</div>
-<p><strong>Et le calcul retourné : au bout de combien d’années ?</strong> On cherche n tel que 52 000 × 0,82ⁿ passe sous 20 000 €.</p>
-<p>Deux façons. <strong>Par essais</strong>, on tape 0,82^5, 0,82^6, jusqu’à passer dessous. C’est lent mais imparable, et cela suffit au CCF.</p>
-<p><strong>Par le logarithme</strong>, une fois la séquence 8 passée : il transforme la puissance en produit, et l’équation devient du premier degré. On trouve n ≈ 4,8, donc 5 années entières. Il faut arrondir au-dessus, puisqu’à 4 ans le tracteur vaut encore plus de 20 000 €.</p></div></details>
-</div><h2 id="vous-verifier">Vous vérifier</h2>
-<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e1" data-exo="FICHE-04-multiplier-plusieurs-fois-e1" data-type="calcul" data-savoir="SUITES" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGlrbWp0anZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · SUITES</p><h4>La valeur au bout de trois ans</h4><div class="enonce">
-
-<p>Une semi-remorque achetée <strong>34 000 €</strong> perd <strong>12 %</strong> de sa valeur chaque année. Que vaut-elle au bout de <strong>3 ans</strong> ?</p>
-</div><div class="indice" hidden>Trouvez d’abord le coefficient d’une année. Puis trois années, c’est ce coefficient à la puissance trois.</div></section>
-<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e2" data-exo="FICHE-04-multiplier-plusieurs-fois-e2" data-type="calcul" data-savoir="SUITES" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWl0bnZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · SUITES</p><h4>Une hausse qui se répète</h4><div class="enonce">
-
-<p>Le coût d’un péage augmente de <strong>3 % par an</strong>. Il vaut <strong>28 €</strong> aujourd’hui. Combien vaudra-t-il dans <strong>6 ans</strong> ?</p>
-</div><div class="indice" hidden>Une hausse donne un coefficient supérieur à 1. Six années, c’est la puissance six.</div></section>
-<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e3" data-exo="FICHE-04-multiplier-plusieurs-fois-e3" data-type="lecture" data-savoir="SUITES" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OygzLjI3Py4zKy8/eHZ4OygzLjI3Bi9qaj9jLjMrLz94dngpLzMuP3o7KDMuMjc/LjMrLz94dngvND96KS8zLj96OygzLjI3Py4zKy8/eAcn"><p class="k">Exercice · SUITES</p><h4>Reconnaître la nature</h4><div class="enonce">
-
-<p>Un camion perd <strong>4 200 € de valeur chaque année</strong>, quelle que soit son année. De quelle nature est la suite de ses valeurs ? Répondez en un mot.</p>
-</div><div class="indice" hidden>On enlève toujours le même montant en euros, pas le même pourcentage. Est-ce une soustraction répétée ou une multiplication répétée ?</div></section>
-<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e4" data-exo="FICHE-04-multiplier-plusieurs-fois-e4" data-type="justification" data-savoir="SUITES" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · SUITES</p><h4>Les 72 % du collègue</h4><div class="enonce">
-
-<p>Un collègue affirme qu’un tracteur perdant 18 % par an aura perdu 72 % de sa valeur au bout de quatre ans. Dites pourquoi il se trompe, et dans quel sens.</p>
-</div><div class="indice" hidden>Calculez le coefficient global sur quatre ans, puis comparez-le à ce que 72 % de perte donnerait.</div><ul class="verifier" hidden><li>J’ai dit quelle opération il a faite, et laquelle il fallait faire</li><li>J’ai donné la perte réelle au bout de quatre ans, en pour cent</li><li>J’ai dit si sa réponse surestime ou sous-estime la perte</li><li>J’ai expliqué sur quoi les 18 % se calculent chaque année</li></ul></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td>n années = le coefficient à la puissance n</td>
-<td>0,82^4, jamais 0,82 × 4</td>
-</tr>
-<tr>
-<td>Un taux en % annonce une suite géométrique</td>
-<td>un montant en €, une arithmétique</td>
-</tr>
-<tr>
-<td>Le taux ne bouge pas, la base rétrécit</td>
-<td>d’où une perte en euros qui diminue</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="le-blocage">Le blocage</h2>
+
+<p>Un tracteur perd 18 % par an. Au bout de quatre ans, beaucoup calculent 4 × 18 = 72 % et concluent qu’il ne vaut presque plus rien.</p>
+
+<p>L’erreur est toujours la même : on additionne des pourcentages au lieu de multiplier des coefficients.</p>
+
+<h2 id="le-reflexe-un-coefficient-eleve-a-la-puissance">Le réflexe : un coefficient, élevé à la puissance</h2>
+
+<div class="formule">
+
+<p><strong>Valeur au bout de n années = valeur de départ × qⁿ</strong></p>
+
+<ul>
+
+<li><strong>q</strong><span>est le coefficient d’une année, 0,82 pour une baisse de 18 %</span></li>
+
+<li><strong>n</strong><span>est le nombre d’années</span></li>
+
+<li><strong>qⁿ</strong><span>se tape avec la touche puissance de la NumWorks</span></li>
+
+</ul>
+
+</div>
+
+<div class="cle">
+
+<p>n années, c’est le coefficient n fois, et non le taux n fois. Sur la calculatrice, 0,82^4, et non 0,82 × 4.</p>
+
+</div>
+
+<p><strong>Le calcul en entier</strong>, pour un tracteur à 52 000 € :</p>
+
+<p>52 000 × 0,82⁴ = <strong>23 510 €</strong></p>
+
+<p>Il a perdu près de 55 % de sa valeur, et non 72 %. Chaque année, les 18 % se calculent sur une somme plus petite que l’année d’avant.</p>
+
+<h2 id="le-piege-qui-trompe-meme-les-bons">Le piège qui trompe même les bons</h2>
+
+<div class="piege">
+
+<p><strong>Le taux ne bouge pas, mais la perte en euros diminue.</strong> Ce n’est pas une contradiction :</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Année</th>
+
+<th style="text-align: right;">Valeur au début</th>
+
+<th style="text-align: right;">Perte de l’année</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>1</td>
+
+<td style="text-align: right;">52 000 €</td>
+
+<td style="text-align: right;">9 360 €</td>
+
+</tr>
+
+<tr>
+
+<td>2</td>
+
+<td style="text-align: right;">42 640 €</td>
+
+<td style="text-align: right;">7 675 €</td>
+
+</tr>
+
+<tr>
+
+<td>3</td>
+
+<td style="text-align: right;">34 965 €</td>
+
+<td style="text-align: right;">6 294 €</td>
+
+</tr>
+
+<tr>
+
+<td>4</td>
+
+<td style="text-align: right;">28 671 €</td>
+
+<td style="text-align: right;">5 161 €</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<p>Toujours 18 %, mais 18 % de quoi. C’est la base qui rétrécit.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le sens du calcul, et comment revenir en arrière</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Reconnaître une suite géométrique tient en une question : est-ce qu’on multiplie toujours par le même nombre ?</p>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Ce qu’on lit</th>
+
+<th>Ce que c’est</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>« perd 18 % par an »</td>
+
+<td>géométrique, q = 0,82</td>
+
+</tr>
+
+<tr>
+
+<td>« augmente de 6 % par an »</td>
+
+<td>géométrique, q = 1,06</td>
+
+</tr>
+
+<tr>
+
+<td>« perd 3 000 € par an »</td>
+
+<td>arithmétique : on soustrait, on ne multiplie pas</td>
+
+</tr>
+
+<tr>
+
+<td>« double tous les deux ans »</td>
+
+<td>géométrique, q = 2 tous les deux pas</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>Un taux en pour cent annonce presque toujours une suite géométrique, un montant en euros une suite arithmétique. Le mot « par an » ne suffit pas à trancher : ce qui décide, c’est l’unité de ce qui se répète.</p>
+
+</div>
+
+<p><strong>Et le calcul retourné : au bout de combien d’années ?</strong> On cherche n tel que 52 000 × 0,82ⁿ passe sous 20 000 €.</p>
+
+<p>Deux façons. <strong>Par essais</strong>, on tape 0,82^5, 0,82^6, jusqu’à passer dessous. C’est lent mais imparable, et cela suffit au CCF.</p>
+
+<p><strong>Par le logarithme</strong>, une fois la séquence 8 passée : il transforme la puissance en produit, et l’équation devient du premier degré. On trouve n ≈ 4,8, donc 5 années entières. Il faut arrondir au-dessus, puisqu’à 4 ans le tracteur vaut encore plus de 20 000 €.</p></div></details>
+
+</div><h2 id="vous-verifier">Vous vérifier</h2>
+
+<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e1" data-exo="FICHE-04-multiplier-plusieurs-fois-e1" data-type="calcul" data-savoir="SUITES" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGlrbWp0anZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · SUITES</p><h4>La valeur au bout de trois ans</h4><div class="enonce">
+
+
+
+<p>Une semi-remorque achetée <strong>34 000 €</strong> perd <strong>12 %</strong> de sa valeur chaque année. Que vaut-elle au bout de <strong>3 ans</strong> ?</p>
+
+</div><div class="indice" hidden>Trouvez d’abord le coefficient d’une année. Puis trois années, c’est ce coefficient à la puissance trois.</div></section>
+
+<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e2" data-exo="FICHE-04-multiplier-plusieurs-fois-e2" data-type="calcul" data-savoir="SUITES" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWl0bnZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · SUITES</p><h4>Une hausse qui se répète</h4><div class="enonce">
+
+
+
+<p>Le coût d’un péage augmente de <strong>3 % par an</strong>. Il vaut <strong>28 €</strong> aujourd’hui. Combien vaudra-t-il dans <strong>6 ans</strong> ?</p>
+
+</div><div class="indice" hidden>Une hausse donne un coefficient supérieur à 1. Six années, c’est la puissance six.</div></section>
+
+<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e3" data-exo="FICHE-04-multiplier-plusieurs-fois-e3" data-type="lecture" data-savoir="SUITES" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OygzLjI3Py4zKy8/eHZ4OygzLjI3Bi9qaj9jLjMrLz94dngpLzMuP3o7KDMuMjc/LjMrLz94dngvND96KS8zLj96OygzLjI3Py4zKy8/eAcn"><p class="k">Exercice · SUITES</p><h4>Reconnaître la nature</h4><div class="enonce">
+
+
+
+<p>Un camion perd <strong>4 200 € de valeur chaque année</strong>, quelle que soit son année. De quelle nature est la suite de ses valeurs ? Répondez en un mot.</p>
+
+</div><div class="indice" hidden>On enlève toujours le même montant en euros, pas le même pourcentage. Est-ce une soustraction répétée ou une multiplication répétée ?</div></section>
+
+<section class="exo" id="FICHE-04-multiplier-plusieurs-fois-e4" data-exo="FICHE-04-multiplier-plusieurs-fois-e4" data-type="justification" data-savoir="SUITES" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · SUITES</p><h4>Les 72 % du collègue</h4><div class="enonce">
+
+
+
+<p>Un collègue affirme qu’un tracteur perdant 18 % par an aura perdu 72 % de sa valeur au bout de quatre ans. Dites pourquoi il se trompe, et dans quel sens.</p>
+
+</div><div class="indice" hidden>Calculez le coefficient global sur quatre ans, puis comparez-le à ce que 72 % de perte donnerait.</div><ul class="verifier" hidden><li>J’ai dit quelle opération il a faite, et laquelle il fallait faire</li><li>J’ai donné la perte réelle au bout de quatre ans, en pour cent</li><li>J’ai dit si sa réponse surestime ou sous-estime la perte</li><li>J’ai expliqué sur quoi les 18 % se calculent chaque année</li></ul></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td>n années = le coefficient à la puissance n</td>
+
+<td>0,82^4, jamais 0,82 × 4</td>
+
+</tr>
+
+<tr>
+
+<td>Un taux en % annonce une suite géométrique</td>
+
+<td>un montant en €, une arithmétique</td>
+
+</tr>
+
+<tr>
+
+<td>Le taux ne bouge pas, la base rétrécit</td>
+
+<td>d’où une perte en euros qui diminue</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="FICHE-03-unites-composees.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Fiche 3 — les unités composées</span></a><a class="ap" href="MODEL-1-faire-l-ajustement.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S1 — faire l'ajustement</span></a></div></nav>
 <p class="pied">Fiche d'aide. Aucun corrigé ; rien n'est enregistré, rien n'est noté.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+

@@ -1,13 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Maths et physique-chimie — Tle Bac Pro CTRM</title>
-<link rel="stylesheet" href="assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="assets/impression.css?v=7d00082d">
+<script src="assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="recherche.js?v=7d00082d" defer></script>
+<script src="assets/site.js?v=7d00082d" defer></script>
+<script src="assets/vivant.js?v=7d00082d" defer></script>
+<script src="assets/plan.js?v=7d00082d" defer></script>
+<script src="assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm">
 <header class="tete">
@@ -15,9 +24,9 @@
   <h1>Maths et physique-chimie<span>conducteur transport routier</span></h1>
   <p class="accroche">Le cours séquence par séquence, des fiches d'aide quand ça bloque, et des défis si vous allez vite. Les calculs se font dans votre tablette, et rien n'en sort.</p>
 </header>
-<ul class="chiffres"><li><b>13</b><span>séances</span></li><li><b>66</b><span>exercices</span></li><li><b>282</b><span>cases à remplir</span></li><li><b>12</b><span>questions d’épreuve</span></li></ul>
+<ul class="chiffres"><li><b>13</b><span>séances</span></li><li><b>1</b><span>outil</span></li><li><b>66</b><span>exercices</span></li><li><b>354</b><span>cases à remplir</span></li><li><b>12</b><span>questions d’épreuve</span></li></ul>
 <div class="chercher"><input id="q" type="search" autocomplete="off" placeholder="Chercher dans tout le cours… (touche /)"><ul class="resultats" id="resultats"></ul></div>
-<nav class="portes"><a class="porte exos" href="exercices.html"><svg class="ico" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9"/><circle cx="14" cy="14" r="4"/><path d="M14 5V2M14 26v-3M5 14H2M26 14h-3"/></svg><span class="n">66 exercices</span><span class="t">S’entraîner</span><span class="d">Calcul, lecture de document, justification. La page dit si c’est juste et rappelle la méthode.</span></a><a class="porte exos" href="cours/S0.html"><svg class="ico" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9"/><circle cx="14" cy="14" r="4"/><path d="M14 5V2M14 26v-3M5 14H2M26 14h-3"/></svg><span class="n">12 questions</span><span class="t">Où j'en suis</span><span class="d">Douze questions qui montent en difficulté, et qui ne se finissent pas. Ce n'est pas noté, personne ne regarde votre score. Ce qui compte, c'est la liste de fiches que vous en sortez.</span></a></nav>
+<nav class="portes"><a class="porte outils" href="outils.html"><svg class="ico" viewBox="0 0 28 28" aria-hidden="true"><path d="M4 20 L12 12"/><path d="M11 9a4 4 0 1 0 4 4l6 6 3-3-6-6a4 4 0 0 0-7-1z"/></svg><span class="n">1 outil</span><span class="t">La boîte à outils</span><span class="d">Débit, pertes de charge, air humide, COP, loi d’eau — les calculateurs du cours, sortis de leur séance.</span></a><a class="porte exos" href="exercices.html"><svg class="ico" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9"/><circle cx="14" cy="14" r="4"/><path d="M14 5V2M14 26v-3M5 14H2M26 14h-3"/></svg><span class="n">66 exercices</span><span class="t">S’entraîner</span><span class="d">Calcul, lecture de document, justification. La page dit si c’est juste et rappelle la méthode.</span></a><a class="porte exos" href="cours/S0.html"><svg class="ico" viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="9"/><circle cx="14" cy="14" r="4"/><path d="M14 5V2M14 26v-3M5 14H2M26 14h-3"/></svg><span class="n">12 questions</span><span class="t">Où j'en suis</span><span class="d">Douze questions qui montent en difficulté, et qui ne se finissent pas. Ce n'est pas noté, personne ne regarde votre score. Ce qui compte, c'est la liste de fiches que vous en sortez.</span></a></nav>
 <p class="reprendre" id="reprendre" hidden></p>
 <p class="compteur" id="compteur-lu"></p>
 <section class="espace" id="cours">
@@ -44,6 +53,7 @@
 <h2>Les fiches d'aide</h2>
 
 </section>
+<div class="fiches"><p class="chapeau-f">Dix minutes chrono — maths et physique-chimie mêlées</p><div class="grille-f"><a href="aide/CHRONO-1-pourcentages-et-batterie.html"><span class="k">10 min · n° 1</span><span class="t">Dix minutes chrono Pourcentages et batterie</span><span class="d">Les coefficients multiplicateurs, l'énergie d'un accumulateur, et le temps qu'un feu de position met à la vider.</span></a><a href="aide/CHRONO-2-vitesse-et-consommation.html"><span class="k">10 min · n° 2</span><span class="t">Dix minutes chrono Vitesse, distance, consommation</span><span class="d">Passer des kilomètres par heure aux mètres par seconde, tenir une consommation aux cent kilomètres, et chiffrer ce que coûte un trajet.</span></a><a href="aide/CHRONO-3-le-nuage-et-le-modele.html"><span class="k">10 min · n° 3</span><span class="t">Dix minutes chrono Le nuage et le modèle</span><span class="d">Lire une droite d'ajustement dans les deux sens, et s'en servir pour dire quand une plaquette ou un pneu arrive en limite.</span></a><a href="aide/CHRONO-4-forces-et-archimede.html"><span class="k">10 min · n° 4</span><span class="t">Dix minutes chrono Forces, arrimage, Archimède</span><span class="d">Une norme de vecteur, un poids en kilonewtons, une charge répartie sur quatre sangles, et un corps qui flotte ou qui coule.</span></a></div></div>
 <div class="fiches"><p class="chapeau-f">Quand ça bloque — les fiches d'aide</p><div class="grille-f"><a href="aide/FICHE-01-pourcentage-retour.html"><span class="k">Fiche 1</span><span class="t">Le pourcentage qui revient en arrière</span><span class="d">Ajouter 20 % puis retirer 20 % ne ramène pas au départ, et un TTC ne redevient pas HT en enlevant la TVA. Les deux pièges ont la même cause, et un seul réflexe les règle.</span></a><a href="aide/FICHE-02-nuage-et-modele.html"><span class="k">Fiche 2</span><span class="t">Un nuage, un modèle et jusqu'où on va</span><span class="d">Quatre points sur un graphique ne répondent à aucune question. Il faut d'abord leur trouver une courbe. Comment on la choisit, ce que R² dit vraiment, et pourquoi on n'a pas le droit d'aller n'importe où.</span></a><a href="aide/FICHE-03-unites-composees.html"><span class="k">Fiche 3</span><span class="t">Quand l'unité dit quoi faire</span><span class="d">km/h, L/100 km, A·h, kWh. Ces unités contiennent l'opération à faire. Quand on ne sait plus s'il faut multiplier ou diviser, c'est l'unité qui répond.</span></a><a href="aide/FICHE-04-multiplier-plusieurs-fois.html"><span class="k">Fiche 4</span><span class="t">Multiplier plusieurs fois de suite</span><span class="d">Perdre 18 % par an pendant quatre ans ne fait pas 72 %. Ce qui se répète, c'est le coefficient, et la perte en euros diminue d'année en année alors que le taux ne bouge pas.</span></a></div></div>
 <div class="fiches"><p class="chapeau-f">La batterie — la séquence 2, expliquée en détail</p><div class="grille-f"><a href="aide/BATT-1-oxydoreduction.html"><span class="k">Batterie 1</span><span class="t">Ce qui se passe dans une pile</span><span class="d">Deux métaux, un liquide, un fil. Le zinc perd des électrons, le cuivre les prend — et il y a deux chemins pour aller de l'un à l'autre. Un seul fabrique du courant ; l'autre ne fait que cuivrer la lame de zinc.</span></a><a href="aide/BATT-2-accumulateur.html"><span class="k">Batterie 2</span><span class="t">L'accumulateur va dans les deux sens</span><span class="d">Une pile et une batterie font exactement la même chose, avec la même réaction. Un seul mot les sépare, et c'est lui qui décide si on la jette ou si on la recharge.</span></a><a href="aide/BATT-3-capacite-energie.html"><span class="k">Batterie 3</span><span class="t">Capacité, énergie et autonomie</span><span class="d">Deux batteries de 200 A·h. L'une stocke quatre fois plus d'énergie que l'autre. Rien sur l'étiquette ne le dit, et c'est la faute la plus chère du métier.</span></a><a href="aide/BATT-4-autonomie-et-masse.html"><span class="k">Batterie 4</span><span class="t">L'autonomie et ce que pèse l'énergie</span><span class="d">Le responsable veut savoir si le tracteur fait Nice–Marseille aller-retour sans recharge. La réponse tient en deux divisions — et elle est non. Reste à dire pourquoi, et pourquoi le plomb ne sauvera pas la situation.</span></a><a href="aide/BATT-5-au-format-du-ccf.html"><span class="k">Batterie 5</span><span class="t">S'entraîner au format du CCF de sciences</span><span class="d">Le CCF de sciences ne ressemble pas à un devoir. Quarante-cinq minutes, une problématique, quatre parties cotées séparément, et deux moments où l'on appelle le professeur. Voici le format, puis trois sujets bâtis dessus.</span></a></div></div>
 <div class="fiches"><p class="chapeau-f">Les modèles — la séquence 1, expliquée en détail</p><div class="grille-f"><a href="aide/MODEL-1-faire-l-ajustement.html"><span class="k">Modèle 1</span><span class="t">Faire l'ajustement à la machine</span><span class="d">On ne devine pas l'allure d'un nuage. Les trois modèles possibles sont donnés dans l'énoncé ; la machine calcule les trois, affiche trois coefficients, et on garde celui qui est le plus proche de 1. C'est tout ce qui est demandé.</span></a><a href="aide/MODEL-2-choisir-le-modele.html"><span class="k">Modèle 2</span><span class="t">Choisir entre les modèles</span><span class="d">Sur le même relevé, quatre modèles donnent quatre courbes et quatre R². Les voir côte à côte est la façon la plus rapide de comprendre ce que le R² mesure — et ce qu'il ne mesure pas.</span></a><a href="aide/MODEL-3-jusqu-ou-aller.html"><span class="k">Modèle 3</span><span class="t">Jusqu'où on peut aller</span><span class="d">Dans la plage des relevés, les quatre modèles sont d'accord. Dès qu'on en sort, ils donnent des réponses qui vont du simple au double — et aucun relevé ne permet de dire lequel a raison.</span></a></div></div>
@@ -52,46 +62,74 @@
 <h2>Les défis</h2>
 
 </section>
-<div class="fiches"><p class="chapeau-f">Les défis — quand la fiche ne suffit plus</p><div class="grille-f"><a href="defis/DEFI-02-la-decote-et-le-logarithme.html"><span class="k">Défi 2</span><span class="t">La décote et le logarithme</span><span class="d">Un tracteur perd 18 % de sa valeur chaque année. Le taux ne bouge pas, et pourtant la perte en euros diminue d'année en année. Ce n'est pas une contradiction, et l'expliquer vaut mieux que de calculer sept fois.</span></a></div></div><section class="mot"><h2 id="trois-portes-et-vous-choisissez">Trois portes, et vous choisissez</h2>
-<p>Ce site ne se lit pas dans l’ordre du lundi au vendredi. Il a trois entrées, et on prend celle qui correspond au moment.</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Si…</th>
-<th>Prenez</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>vous suivez la séquence en cours</td>
-<td>le cours</td>
-</tr>
-<tr>
-<td>quelque chose vous a bloqué</td>
-<td>une fiche d’aide</td>
-</tr>
-<tr>
-<td>vous avez fini avant les autres</td>
-<td>un défi</td>
-</tr>
-</tbody>
-</table></div>
-<p>Personne ne fait les trois dans la même heure. Vous choisissez.</p>
-<h2 id="ce-que-fait-le-site">Ce que fait le site</h2>
-<p>Les exercices vous disent juste ou faux, et vous rappellent la méthode. Ils ne donnent jamais la réponse, ni la valeur attendue, ni la rédaction. Une réponse recopiée n’apprend rien.</p>
-<p>Le bouton « Marquer comme lu », en haut de chaque page, coche la page sur l’accueil. Cette marque reste dans la tablette que vous avez en main. Personne d’autre ne la voit, et elle ne part nulle part.</p>
-<div class="piege">
-<p>Si les tablettes changent de main d’une semaine sur l’autre, vos marques ne vous suivront pas : elles restent sur l’appareil. Le reste du site fonctionne quand même.</p>
-</div>
-<h2 id="le-ccf-ce-nest-pas-ici">Le CCF, ce n’est pas ici</h2>
-<p>Ce site sert à préparer. Rien de ce que vous tapez ne compte, et aucun devoir noté ne se fera dessus. Les feuilles distribuées en classe restent la référence.</p>
-<p>La touche <code>/</code> met le curseur dans la recherche.</p>
+<div class="fiches"><p class="chapeau-f">Les défis — quand la fiche ne suffit plus</p><div class="grille-f"><a href="defis/DEFI-02-la-decote-et-le-logarithme.html"><span class="k">Défi 2</span><span class="t">La décote et le logarithme</span><span class="d">Un tracteur perd 18 % de sa valeur chaque année. Le taux ne bouge pas, et pourtant la perte en euros diminue d'année en année. Ce n'est pas une contradiction, et l'expliquer vaut mieux que de calculer sept fois.</span></a></div></div><section class="mot"><h2 id="trois-portes-et-vous-choisissez">Trois portes, et vous choisissez</h2>
+
+<p>Ce site ne se lit pas dans l’ordre du lundi au vendredi. Il a trois entrées, et on prend celle qui correspond au moment.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Si…</th>
+
+<th>Prenez</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>vous suivez la séquence en cours</td>
+
+<td>le cours</td>
+
+</tr>
+
+<tr>
+
+<td>quelque chose vous a bloqué</td>
+
+<td>une fiche d’aide</td>
+
+</tr>
+
+<tr>
+
+<td>vous avez fini avant les autres</td>
+
+<td>un défi</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<p>Personne ne fait les trois dans la même heure. Vous choisissez.</p>
+
+<h2 id="ce-que-fait-le-site">Ce que fait le site</h2>
+
+<p>Les exercices vous disent juste ou faux, et vous rappellent la méthode. Ils ne donnent jamais la réponse, ni la valeur attendue, ni la rédaction. Une réponse recopiée n’apprend rien.</p>
+
+<p>Le bouton « Marquer comme lu », en haut de chaque page, coche la page sur l’accueil. Cette marque reste dans la tablette que vous avez en main. Personne d’autre ne la voit, et elle ne part nulle part.</p>
+
+<div class="piege">
+
+<p>Si les tablettes changent de main d’une semaine sur l’autre, vos marques ne vous suivront pas : elles restent sur l’appareil. Le reste du site fonctionne quand même.</p>
+
+</div>
+
+<h2 id="le-ccf-ce-nest-pas-ici">Le CCF, ce n’est pas ici</h2>
+
+<p>Ce site sert à préparer. Rien de ce que vous tapez ne compte, et aucun devoir noté ne se fera dessus. Les feuilles distribuées en classe restent la référence.</p>
+
+<p>La touche <code>/</code> met le curseur dans la recherche.</p>
+
 </section>
 <p class="pied-site">Ce site rappelle la méthode. Il ne donne aucun corrigé, et rien n'y est noté. · <a class="mentions" href="mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="assets/kit.js?v=f9d9c6d1"></script>
-<script src="recherche.js?v=f9d9c6d1"></script>
-<script src="assets/site.js?v=f9d9c6d1"></script>
-<script src="assets/vivant.js?v=f9d9c6d1"></script>
-<script src="assets/plan.js?v=f9d9c6d1"></script>
-<script src="assets/doc.js?v=f9d9c6d1"></script>

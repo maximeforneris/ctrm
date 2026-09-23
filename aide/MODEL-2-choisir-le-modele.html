@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>S1 — choisir le modèle</title>
-<link rel="stylesheet" href="../assets/kit.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/site.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/vivant.css?v=f9d9c6d1">
-<link rel="stylesheet" href="../assets/doc.css?v=f9d9c6d1">
+<link rel="stylesheet" href="../assets/kit.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/site.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/vivant.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/doc.css?v=7d00082d">
+<link rel="stylesheet" href="../assets/impression.css?v=7d00082d">
+<script src="../assets/kit.js?v=7d00082d-e7caaa" defer></script>
+<script src="../assets/site.js?v=7d00082d" defer></script>
+<script src="../assets/vivant.js?v=7d00082d" defer></script>
+<script src="../assets/plan.js?v=7d00082d" defer></script>
+<script src="../assets/doc.js?v=7d00082d" defer></script>
 
 <div class="page" data-site="ctrm" data-page="aide/MODEL-2-choisir-le-modele">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="MODEL-1-faire-l-ajustement.html" rel="prev" title="S1 — faire l'ajustement" aria-label="S1 — faire l'ajustement">&lsaquo;</a><a class="fleche" href="MODEL-3-jusqu-ou-aller.html" rel="next" title="S1 — jusqu'où aller" aria-label="S1 — jusqu'où aller">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/MODEL-2-choisir-le-modele">Marquer comme lu</button></div>
@@ -23,171 +31,327 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="MODEL-1-faire-l-ajustement.html">Obtenir les trois ajustements à la machine</a></b><span class="ou">S1 — faire l'ajustement</span><span class="car">cette page-ci explique ce que valent les coefficients qu'elle affiche.</span></li><li><b>Arrondir au millième</b><span class="car">les R² se comparent au troisième chiffre, et c'est souvent là que tout se joue.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#le-meme-nuage-quatre-modeles">Le même nuage, quatre modèles</a><a href="#ce-que-le-r2-est-exactement">Ce que le R² est, exactement</a><a href="#les-quatre-releves-de-la-sequence">Les quatre relevés de la séquence</a><a href="#quand-le-r2-ne-tranche-pas">Quand le R² ne tranche pas</a><a href="#les-trois-regles-d-arbitrage">Les trois règles d’arbitrage</a><a href="#vous-verifier">Vous vérifier</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
-<h2 id="le-meme-nuage-quatre-modeles">Le même nuage, quatre modèles</h2>
-<figure class="schema"><div class="dessin" data-schema="quatre-modeles-un-nuage"></div><figcaption>Le relevé de la vitesse, ajusté quatre fois. Mêmes points, même échelle.</figcaption></figure>
-<div class="cle">
-<p><strong>Regardez les quatre panneaux avant de lire les quatre nombres.</strong> L’affine coupe le nuage en deux ; le logarithmique fait pire ; le quadratique l’épouse. Le R² ne fait que chiffrer ce que l’œil voit déjà.</p>
-</div>
-<h2 id="ce-que-le-r2-est-exactement">Ce que le R² est, exactement</h2>
-<div class="formule">
-<p><strong>R² compare la courbe aux points, et rien d’autre.</strong></p>
-<ul>
-<li>il vaut au mieux <strong>1</strong></li>
-<li>au-dessus de <strong>0,9</strong> : le modèle décrit bien</li>
-<li>vers <strong>0,7</strong> : il donne une tendance</li>
-<li>sous <strong>0,5</strong> : il ne sert à rien</li>
-</ul>
-</div>
-<div class="etapes">
-<ol type="1">
-<li>Je regarde l’<strong>allure</strong> du nuage.</li>
-<li>Je saisis les points dans <strong>Régressions</strong> sur la NumWorks.</li>
-<li>Je demande <strong>deux ou trois</strong> modèles, jamais un seul.</li>
-<li>Je retiens celui dont le <strong>R² est le plus proche de 1</strong>.</li>
-<li>Je vérifie que la courbe obtenue <strong>ressemble</strong> à ce que je voyais.</li>
-</ol>
-</div>
-<div class="piege">
-<p><strong>R² ne dit pas que le modèle est le bon.</strong> Il dit qu’il passe près des points. Un exponentiel peut afficher un excellent R² sur un nuage parfaitement droit, et donner n’importe quoi dès qu’on sort de la plage. <strong>L’allure d’abord.</strong></p>
-</div>
-<h2 id="les-quatre-releves-de-la-sequence">Les quatre relevés de la séquence</h2>
-<p>Aucun des quatre n’a le même modèle gagnant, et c’est le tableau à relire avant le contrôle.</p>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 18%" />
-<col style="width: 13%" />
-</colgroup>
-<thead>
-<tr>
-<th>Relevé</th>
-<th style="text-align: right;">Affine</th>
-<th style="text-align: right;">Quadratique</th>
-<th style="text-align: right;">Exponentiel</th>
-<th style="text-align: right;">Logarithmique</th>
-<th>Retenu</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>charge → conso</td>
-<td style="text-align: right;"><strong>0,985</strong></td>
-<td style="text-align: right;">0,985</td>
-<td style="text-align: right;">0,979</td>
-<td style="text-align: right;">0,922</td>
-<td><strong>affine</strong></td>
-</tr>
-<tr>
-<td>vitesse → conso</td>
-<td style="text-align: right;">0,919</td>
-<td style="text-align: right;"><strong>0,998</strong></td>
-<td style="text-align: right;">0,966</td>
-<td style="text-align: right;">0,877</td>
-<td><strong>quadratique</strong></td>
-</tr>
-<tr>
-<td>âge → valeur</td>
-<td style="text-align: right;">0,954</td>
-<td style="text-align: right;">0,999</td>
-<td style="text-align: right;"><strong>1,000</strong></td>
-<td style="text-align: right;">0,991</td>
-<td><strong>exponentiel</strong></td>
-</tr>
-<tr>
-<td>tournée → coût au km</td>
-<td style="text-align: right;">0,774</td>
-<td style="text-align: right;">0,937</td>
-<td style="text-align: right;">0,839</td>
-<td style="text-align: right;"><strong>0,990</strong></td>
-<td><strong>logarithmique</strong></td>
-</tr>
-</tbody>
-</table></div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi chacun gagne là où il gagne</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>La charge</strong> : un camion plus lourd consomme davantage, et <strong>proportionnellement</strong>. Une tonne de plus coûte à peu près la même chose qu’elle soit la sixième ou la vingtième. Des écarts constants, donc une droite.</p>
-<p><strong>La vitesse</strong> : la résistance de l’air croît avec le <strong>carré</strong> de la vitesse. Passer de 60 à 65 coûte peu ; passer de 95 à 100 coûte beaucoup. Le quadratique n’est pas un choix esthétique, c’est de la physique.</p>
-<p><strong>L’âge</strong> : le tracteur perd <strong>un pourcentage</strong> de sa valeur chaque année, pas un nombre d’euros. Un pourcentage répété, c’est une multiplication répétée, donc un exponentiel. Le modèle s’écrit <strong>y = 95 176 × 0,80ˣ</strong> : ce <strong>0,80</strong> est la décote de 20 % par an, et vous le retrouverez en <strong>séquence 6</strong> par les suites géométriques, sans calculatrice.</p>
-<p><strong>La tournée</strong> : les frais fixes se diluent. Le premier doublement de distance fait beaucoup baisser le coût au kilomètre, le deuxième moins, le troisième encore moins. Une décroissance qui s’essouffle : logarithmique.</p>
-<p><strong>Un R² à 1,000 doit alerter, pas rassurer.</strong> Il signifie que la courbe passe exactement par les points. Sur un relevé de terrain c’est rare ; ici c’est parce que la décote a été calculée et non mesurée.</p></div></details>
-</div><h2 id="quand-le-r2-ne-tranche-pas">Quand le R² ne tranche pas</h2>
-<figure class="schema"><div class="dessin" data-schema="deux-modeles-qui-se-valent"></div><figcaption>Le relevé de la charge, ajusté par une droite et par une parabole.</figcaption></figure>
-<div class="cle">
-<p><strong>Le relevé complet va de 5 à 28 t</strong>, et c’est là-dessus que les R² se calculent. L’activité 1 n’en fait placer que les <strong>six premiers</strong> points à la main ; <strong>les dix sont dans le tableau de l’activité 4</strong>, et ce sont eux qu’on saisit dans la machine.</p>
-</div>
-<p>Sur ce relevé, l’affine et le quadratique donnent <strong>le même R², 0,985</strong>. La machine a fait son travail : elle ne peut pas départager.</p>
-<div class="cle">
-<p><strong>Deux R² égaux : on prend le plus simple.</strong> Donc l’affine. Une droite s’explique à un exploitant en une phrase ; une parabole, beaucoup moins. Et les deux donnent le même résultat là où l’on a des points.</p>
-</div>
-<div class="piege">
-<p><strong>Un R² égal ne veut jamais dire « prenez le plus compliqué ».</strong> Ajouter un terme à un modèle ne peut qu’améliorer son R², ou le laisser égal — jamais le dégrader. Un quadratique fera donc toujours <strong>au moins aussi bien</strong> qu’une droite, et cela ne prouve rien.</p>
-</div>
-<h2 id="les-trois-regles-d-arbitrage">Les trois règles d’arbitrage</h2>
-<div class="etapes">
-<ol type="1">
-<li><strong>L’allure d’abord.</strong> Si la courbe tracée ne ressemble pas au nuage, le R² n’y changera rien.</li>
-<li><strong>Le R² ensuite</strong>, pour départager deux modèles d’allure plausible.</li>
-<li><strong>La simplicité en dernier recours</strong>, quand les R² se valent.</li>
-</ol>
-</div>
-<h2 id="vous-verifier">Vous vérifier</h2>
-<section class="exo" id="MODEL-2-choisir-le-modele-e1" data-exo="MODEL-2-choisir-le-modele-e1" data-type="lecture" data-savoir="ST2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4NjU9OygzLjI3MysvP3h2eDY1PXh2eDc1Pj82P3o2NT07KDMuMjczKy8/eHZ4Nj96NjU9OygzLjI3MysvP3gHJw=="><p class="k">Exercice · ST2</p><h4>Le modèle à demander</h4><div class="enonce">
-
-<p>Sur un relevé, les points montent vite au début puis <strong>s’aplatissent</strong> progressivement, sans jamais redescendre. Quel modèle demandez-vous en premier ?</p>
-</div><div class="indice" hidden>Cherchez dans le tableau des quatre allures celle qui « monte en s’essoufflant ».</div></section>
-<section class="exo" id="MODEL-2-choisir-le-modele-e2" data-exo="MODEL-2-choisir-le-modele-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWJjYm50anZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · ST2</p><h4>La valeur dans quatre ans</h4><div class="enonce">
-
-<p>Le modèle du relevé « âge → valeur » s’écrit <strong>y = 95 176 × 0,80ˣ</strong>, avec <em>x</em> l’âge en années. Que vaudra le tracteur à <strong>4 ans</strong> ?</p>
-</div><div class="indice" hidden>Remplacez x par l’âge. La touche puissance de la NumWorks porte un accent circonflexe.</div></section>
-<section class="exo" id="MODEL-2-choisir-le-modele-e3" data-exo="MODEL-2-choisir-le-modele-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWxodGl2eC41NnhgaHRqdngveGB4DXgn"><p class="k">Exercice · ST2</p><h4>Le panneau solaire</h4><div class="enonce">
-
-<p>Le modèle affine d’un panneau donne <strong>y = 0,299 x + 3,5</strong>, avec <em>x</em> l’éclairement en W/m². Que prévoit-il pour <strong>1 200 W/m²</strong> ?</p>
-</div><div class="indice" hidden>Un simple remplacement de x. Attention à ne pas oublier le terme constant.</div></section>
-<section class="exo" id="MODEL-2-choisir-le-modele-e4" data-exo="MODEL-2-choisir-le-modele-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Deux R² identiques</h4><div class="enonce">
-
-<p>Sur le relevé « charge → conso », l’affine et le quadratique donnent tous les deux <strong>R² = 0,985</strong>. Dites lequel vous retenez, et pourquoi.</p>
-</div><div class="indice" hidden>Quand deux modèles décrivent aussi bien, ce n’est plus le R² qui décide. Demandez-vous lequel des deux vous sauriez expliquer à l’exploitant.</div><ul class="verifier" hidden><li>J’ai dit quel modèle je retiens</li><li>J’ai justifié par la simplicité, et non par le R²</li><li>J’ai dit ce que le R² permet de trancher, et ce qu’il ne tranche pas</li><li>J’ai dit que les deux donnent le même résultat dans la plage</li></ul></section>
-<h2 id="je-m-entraine">Je m’entraîne</h2>
-<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
-<section class="serie" id="MODEL-2-choisir-le-modele-s1" data-serie="MODEL-2-choisir-le-modele-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4Ozw8MzQ/eAcndiF4O3hgAXgrLzs+KDsuMysvP3gHJ3YheDt4YAF4PyIqNTQ/NC4zPzZ4Byd2IXg7eGABeDY1PTsoMy4yNzMrLz94Byd2IXg7eGABeD8iKjU0PzQuMz82eAcndiF4O3hgAXg7PDwzND94BycHJw=="><p class="k">Série · ST2</p><h4>Série 1 — le modèle retenu, relevé par relevé</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">charge → conso</span></li><li><span class="q">vitesse → conso</span></li><li><span class="q">âge → valeur</span></li><li><span class="q">tournée → coût au km</span></li><li><span class="q">une corrosion qui s’emballe</span></li><li><span class="q">un coût qui monte proportionnellement</span></li></ol><div class="indice" hidden>Le tableau des quatre relevés est plus haut dans la page. Les deux dernières lignes se déduisent de l’allure décrite.</div></section>
-<section class="serie" id="MODEL-2-choisir-le-modele-s2" data-serie="MODEL-2-choisir-le-modele-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4Nj96KT85NTQ+eAcndiF4O3hgAXg2P3oqKD83Mz8oeAcndiF4O3hgAXg2P3opPzk1ND54Byd2IXg7eGABeDY/eio2Lyl6KTM3KjY/eAcndiF4O3hgAXg2P3opPzk1ND54Byd2IXg7eGABeDY/eiooPzczPyh4BycHJw=="><p class="k">Série · ST2</p><h4>Série 2 — lequel des deux, d’après les R²</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">0,981 contre 0,999</span></li><li><span class="q">0,997 contre 0,912</span></li><li><span class="q">0,884 contre 0,996</span></li><li><span class="q">0,985 contre 0,985</span></li><li><span class="q">0,774 contre 0,990</span></li><li><span class="q">0,998 contre 0,919</span></li></ol><div class="indice" hidden>On retient le R² le plus proche de 1. Sauf quand ils sont égaux, et là c’est une autre règle qui s’applique.</div></section>
-<section class="serie" id="MODEL-2-choisir-le-modele-s3" data-serie="MODEL-2-choisir-le-modele-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YG5pdG0ndiF4LHhgYmt0byd2IXgseGBrbGt0aSd2IXgseGBtbGtua3RqJ3YheCx4YGxqY2tpdGondiF4LHhgaWJjYm50aicHJw=="><p class="k">Série · ST2</p><h4>Série 3 — se servir d’une équation</h4><div class="enonce">
-
-</div><ol class="items"><li><span class="q">y = 0,42 x + 18,5, pour x = 60</span></li><li><span class="q">la même, pour x = 150</span></li><li><span class="q">la même, pour x = 340</span></li><li><span class="q">y = 95 176 × 0,80ˣ, pour x = 1</span></li><li><span class="q">la même, pour x = 2</span></li><li><span class="q">la même, pour x = 4</span></li></ol><div class="indice" hidden>On remplace x, et rien d’autre. Pour l’exponentielle, la puissance se calcule avant la multiplication.</div></section>
-<section class="serie" id="MODEL-2-choisir-le-modele-s4" data-serie="MODEL-2-choisir-le-modele-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4NS8zeAcndiF4O3hgAXg0NTR4Byd2IXg7eGABeDQ1NHgHJ3YheDt4YAF4NS8zeAcndiF4O3hgAXg0NTR4Byd2IXg7eGABeDUvM3gHJwcn"><p class="k">Série · ST2</p><h4>Série 4 — lire un R² et le dire</h4><div class="enonce">
-
-</div><ol class="items larges"><li><span class="q">0,998, le modèle décrit-il bien ?</span></li><li><span class="q">0,877, est-ce le meilleur des quatre ?</span></li><li><span class="q">0,42, ce modèle sert-il à quelque chose ?</span></li><li><span class="q">1,000, la courbe passe-t-elle par les points ?</span></li><li><span class="q">deux R² égaux, le R² tranche-t-il ?</span></li><li><span class="q">0,990 contre 0,937, garde-t-on le premier ?</span></li></ol><div class="indice" hidden>Plus le R² est proche de 1, mieux la courbe colle. Mais « colle » ne veut pas dire « juste en dehors des points ».</div></section>
-<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td><strong>L’allure d’abord, le R² ensuite</strong></td>
-<td>une courbe qui ne ressemble pas au nuage est fausse</td>
-</tr>
-<tr>
-<td><strong>R² proche de 1 = colle aux points</strong></td>
-<td>et rien de plus que cela</td>
-</tr>
-<tr>
-<td><strong>R² égaux : le plus simple gagne</strong></td>
-<td>une droite s’explique, une parabole beaucoup moins</td>
-</tr>
-</tbody>
-</table></div>
+<h2 id="le-meme-nuage-quatre-modeles">Le même nuage, quatre modèles</h2>
+
+<figure class="schema"><div class="dessin" data-schema="quatre-modeles-un-nuage"></div><figcaption>Le relevé de la vitesse, ajusté quatre fois. Mêmes points, même échelle.</figcaption></figure>
+
+<div class="cle">
+
+<p><strong>Regardez les quatre panneaux avant de lire les quatre nombres.</strong> L’affine coupe le nuage en deux ; le logarithmique fait pire ; le quadratique l’épouse. Le R² ne fait que chiffrer ce que l’œil voit déjà.</p>
+
+</div>
+
+<h2 id="ce-que-le-r2-est-exactement">Ce que le R² est, exactement</h2>
+
+<div class="formule">
+
+<p><strong>R² compare la courbe aux points, et rien d’autre.</strong></p>
+
+<ul>
+
+<li>il vaut au mieux <strong>1</strong></li>
+
+<li>au-dessus de <strong>0,9</strong> : le modèle décrit bien</li>
+
+<li>vers <strong>0,7</strong> : il donne une tendance</li>
+
+<li>sous <strong>0,5</strong> : il ne sert à rien</li>
+
+</ul>
+
+</div>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Je regarde l’<strong>allure</strong> du nuage.</li>
+
+<li>Je saisis les points dans <strong>Régressions</strong> sur la NumWorks.</li>
+
+<li>Je demande <strong>deux ou trois</strong> modèles, jamais un seul.</li>
+
+<li>Je retiens celui dont le <strong>R² est le plus proche de 1</strong>.</li>
+
+<li>Je vérifie que la courbe obtenue <strong>ressemble</strong> à ce que je voyais.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p><strong>R² ne dit pas que le modèle est le bon.</strong> Il dit qu’il passe près des points. Un exponentiel peut afficher un excellent R² sur un nuage parfaitement droit, et donner n’importe quoi dès qu’on sort de la plage. <strong>L’allure d’abord.</strong></p>
+
+</div>
+
+<h2 id="les-quatre-releves-de-la-sequence">Les quatre relevés de la séquence</h2>
+
+<p>Aucun des quatre n’a le même modèle gagnant, et c’est le tableau à relire avant le contrôle.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 13%" />
+
+<col style="width: 18%" />
+
+<col style="width: 18%" />
+
+<col style="width: 18%" />
+
+<col style="width: 18%" />
+
+<col style="width: 13%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Relevé</th>
+
+<th style="text-align: right;">Affine</th>
+
+<th style="text-align: right;">Quadratique</th>
+
+<th style="text-align: right;">Exponentiel</th>
+
+<th style="text-align: right;">Logarithmique</th>
+
+<th>Retenu</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>charge → conso</td>
+
+<td style="text-align: right;"><strong>0,985</strong></td>
+
+<td style="text-align: right;">0,985</td>
+
+<td style="text-align: right;">0,979</td>
+
+<td style="text-align: right;">0,922</td>
+
+<td><strong>affine</strong></td>
+
+</tr>
+
+<tr>
+
+<td>vitesse → conso</td>
+
+<td style="text-align: right;">0,919</td>
+
+<td style="text-align: right;"><strong>0,998</strong></td>
+
+<td style="text-align: right;">0,966</td>
+
+<td style="text-align: right;">0,877</td>
+
+<td><strong>quadratique</strong></td>
+
+</tr>
+
+<tr>
+
+<td>âge → valeur</td>
+
+<td style="text-align: right;">0,954</td>
+
+<td style="text-align: right;">0,999</td>
+
+<td style="text-align: right;"><strong>1,000</strong></td>
+
+<td style="text-align: right;">0,991</td>
+
+<td><strong>exponentiel</strong></td>
+
+</tr>
+
+<tr>
+
+<td>tournée → coût au km</td>
+
+<td style="text-align: right;">0,774</td>
+
+<td style="text-align: right;">0,937</td>
+
+<td style="text-align: right;">0,839</td>
+
+<td style="text-align: right;"><strong>0,990</strong></td>
+
+<td><strong>logarithmique</strong></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi chacun gagne là où il gagne</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p><strong>La charge</strong> : un camion plus lourd consomme davantage, et <strong>proportionnellement</strong>. Une tonne de plus coûte à peu près la même chose qu’elle soit la sixième ou la vingtième. Des écarts constants, donc une droite.</p>
+
+<p><strong>La vitesse</strong> : la résistance de l’air croît avec le <strong>carré</strong> de la vitesse. Passer de 60 à 65 coûte peu ; passer de 95 à 100 coûte beaucoup. Le quadratique n’est pas un choix esthétique, c’est de la physique.</p>
+
+<p><strong>L’âge</strong> : le tracteur perd <strong>un pourcentage</strong> de sa valeur chaque année, pas un nombre d’euros. Un pourcentage répété, c’est une multiplication répétée, donc un exponentiel. Le modèle s’écrit <strong>y = 95 176 × 0,80ˣ</strong> : ce <strong>0,80</strong> est la décote de 20 % par an, et vous le retrouverez en <strong>séquence 6</strong> par les suites géométriques, sans calculatrice.</p>
+
+<p><strong>La tournée</strong> : les frais fixes se diluent. Le premier doublement de distance fait beaucoup baisser le coût au kilomètre, le deuxième moins, le troisième encore moins. Une décroissance qui s’essouffle : logarithmique.</p>
+
+<p><strong>Un R² à 1,000 doit alerter, pas rassurer.</strong> Il signifie que la courbe passe exactement par les points. Sur un relevé de terrain c’est rare ; ici c’est parce que la décote a été calculée et non mesurée.</p></div></details>
+
+</div><h2 id="quand-le-r2-ne-tranche-pas">Quand le R² ne tranche pas</h2>
+
+<figure class="schema"><div class="dessin" data-schema="deux-modeles-qui-se-valent"></div><figcaption>Le relevé de la charge, ajusté par une droite et par une parabole.</figcaption></figure>
+
+<div class="cle">
+
+<p><strong>Le relevé complet va de 5 à 28 t</strong>, et c’est là-dessus que les R² se calculent. L’activité 1 n’en fait placer que les <strong>six premiers</strong> points à la main ; <strong>les dix sont dans le tableau de l’activité 4</strong>, et ce sont eux qu’on saisit dans la machine.</p>
+
+</div>
+
+<p>Sur ce relevé, l’affine et le quadratique donnent <strong>le même R², 0,985</strong>. La machine a fait son travail : elle ne peut pas départager.</p>
+
+<div class="cle">
+
+<p><strong>Deux R² égaux : on prend le plus simple.</strong> Donc l’affine. Une droite s’explique à un exploitant en une phrase ; une parabole, beaucoup moins. Et les deux donnent le même résultat là où l’on a des points.</p>
+
+</div>
+
+<div class="piege">
+
+<p><strong>Un R² égal ne veut jamais dire « prenez le plus compliqué ».</strong> Ajouter un terme à un modèle ne peut qu’améliorer son R², ou le laisser égal — jamais le dégrader. Un quadratique fera donc toujours <strong>au moins aussi bien</strong> qu’une droite, et cela ne prouve rien.</p>
+
+</div>
+
+<h2 id="les-trois-regles-d-arbitrage">Les trois règles d’arbitrage</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li><strong>L’allure d’abord.</strong> Si la courbe tracée ne ressemble pas au nuage, le R² n’y changera rien.</li>
+
+<li><strong>Le R² ensuite</strong>, pour départager deux modèles d’allure plausible.</li>
+
+<li><strong>La simplicité en dernier recours</strong>, quand les R² se valent.</li>
+
+</ol>
+
+</div>
+
+<h2 id="vous-verifier">Vous vérifier</h2>
+
+<section class="exo" id="MODEL-2-choisir-le-modele-e1" data-exo="MODEL-2-choisir-le-modele-e1" data-type="lecture" data-savoir="ST2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4NjU9OygzLjI3MysvP3h2eDY1PXh2eDc1Pj82P3o2NT07KDMuMjczKy8/eHZ4Nj96NjU9OygzLjI3MysvP3gHJw=="><p class="k">Exercice · ST2</p><h4>Le modèle à demander</h4><div class="enonce">
+
+
+
+<p>Sur un relevé, les points montent vite au début puis <strong>s’aplatissent</strong> progressivement, sans jamais redescendre. Quel modèle demandez-vous en premier ?</p>
+
+</div><div class="indice" hidden>Cherchez dans le tableau des quatre allures celle qui « monte en s’essoufflant ».</div></section>
+
+<section class="exo" id="MODEL-2-choisir-le-modele-e2" data-exo="MODEL-2-choisir-le-modele-e2" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWJjYm50anZ4LjU2eGBodGp2eC94YHgGL2hqOzl4Jw=="><p class="k">Exercice · ST2</p><h4>La valeur dans quatre ans</h4><div class="enonce">
+
+
+
+<p>Le modèle du relevé « âge → valeur » s’écrit <strong>y = 95 176 × 0,80ˣ</strong>, avec <em>x</em> l’âge en années. Que vaudra le tracteur à <strong>4 ans</strong> ?</p>
+
+</div><div class="indice" hidden>Remplacez x par l’âge. La touche puissance de la NumWorks porte un accent circonflexe.</div></section>
+
+<section class="exo" id="MODEL-2-choisir-le-modele-e3" data-exo="MODEL-2-choisir-le-modele-e3" data-type="calcul" data-savoir="ST2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWxodGl2eC41NnhgaHRqdngveGB4DXgn"><p class="k">Exercice · ST2</p><h4>Le panneau solaire</h4><div class="enonce">
+
+
+
+<p>Le modèle affine d’un panneau donne <strong>y = 0,299 x + 3,5</strong>, avec <em>x</em> l’éclairement en W/m². Que prévoit-il pour <strong>1 200 W/m²</strong> ?</p>
+
+</div><div class="indice" hidden>Un simple remplacement de x. Attention à ne pas oublier le terme constant.</div></section>
+
+<section class="exo" id="MODEL-2-choisir-le-modele-e4" data-exo="MODEL-2-choisir-le-modele-e4" data-type="justification" data-savoir="ST2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ST2</p><h4>Deux R² identiques</h4><div class="enonce">
+
+
+
+<p>Sur le relevé « charge → conso », l’affine et le quadratique donnent tous les deux <strong>R² = 0,985</strong>. Dites lequel vous retenez, et pourquoi.</p>
+
+</div><div class="indice" hidden>Quand deux modèles décrivent aussi bien, ce n’est plus le R² qui décide. Demandez-vous lequel des deux vous sauriez expliquer à l’exploitant.</div><ul class="verifier" hidden><li>J’ai dit quel modèle je retiens</li><li>J’ai justifié par la simplicité, et non par le R²</li><li>J’ai dit ce que le R² permet de trancher, et ce qu’il ne tranche pas</li><li>J’ai dit que les deux donnent le même résultat dans la plage</li></ul></section>
+
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+
+<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
+
+<section class="serie" id="MODEL-2-choisir-le-modele-s1" data-serie="MODEL-2-choisir-le-modele-s1" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4Ozw8MzQ/eAcndiF4O3hgAXgrLzs+KDsuMysvP3gHJ3YheDt4YAF4PyIqNTQ/NC4zPzZ4Byd2IXg7eGABeDY1PTsoMy4yNzMrLz94Byd2IXg7eGABeD8iKjU0PzQuMz82eAcndiF4O3hgAXg7PDwzND94BycHJw=="><p class="k">Série · ST2</p><h4>Série 1 — le modèle retenu, relevé par relevé</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">charge → conso</span></li><li><span class="q">vitesse → conso</span></li><li><span class="q">âge → valeur</span></li><li><span class="q">tournée → coût au km</span></li><li><span class="q">une corrosion qui s’emballe</span></li><li><span class="q">un coût qui monte proportionnellement</span></li></ol><div class="indice" hidden>Le tableau des quatre relevés est plus haut dans la page. Les deux dernières lignes se déduisent de l’allure décrite.</div></section>
+
+<section class="serie" id="MODEL-2-choisir-le-modele-s2" data-serie="MODEL-2-choisir-le-modele-s2" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4Nj96KT85NTQ+eAcndiF4O3hgAXg2P3oqKD83Mz8oeAcndiF4O3hgAXg2P3opPzk1ND54Byd2IXg7eGABeDY/eio2Lyl6KTM3KjY/eAcndiF4O3hgAXg2P3opPzk1ND54Byd2IXg7eGABeDY/eiooPzczPyh4BycHJw=="><p class="k">Série · ST2</p><h4>Série 2 — lequel des deux, d’après les R²</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">0,981 contre 0,999</span></li><li><span class="q">0,997 contre 0,912</span></li><li><span class="q">0,884 contre 0,996</span></li><li><span class="q">0,985 contre 0,985</span></li><li><span class="q">0,774 contre 0,990</span></li><li><span class="q">0,998 contre 0,919</span></li></ol><div class="indice" hidden>On retient le R² le plus proche de 1. Sauf quand ils sont égaux, et là c’est une autre règle qui s’applique.</div></section>
+
+<section class="serie" id="MODEL-2-choisir-le-modele-s3" data-serie="MODEL-2-choisir-le-modele-s3" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YG5pdG0ndiF4LHhgYmt0byd2IXgseGBrbGt0aSd2IXgseGBtbGtua3RqJ3YheCx4YGxqY2tpdGondiF4LHhgaWJjYm50aicHJw=="><p class="k">Série · ST2</p><h4>Série 3 — se servir d’une équation</h4><div class="enonce">
+
+
+
+</div><ol class="items"><li><span class="q">y = 0,42 x + 18,5, pour x = 60</span></li><li><span class="q">la même, pour x = 150</span></li><li><span class="q">la même, pour x = 340</span></li><li><span class="q">y = 95 176 × 0,80ˣ, pour x = 1</span></li><li><span class="q">la même, pour x = 2</span></li><li><span class="q">la même, pour x = 4</span></li></ol><div class="indice" hidden>On remplace x, et rien d’autre. Pour l’exponentielle, la puissance se calcule avant la multiplication.</div></section>
+
+<section class="serie" id="MODEL-2-choisir-le-modele-s4" data-serie="MODEL-2-choisir-le-modele-s4" data-savoir="ST2" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4NS8zeAcndiF4O3hgAXg0NTR4Byd2IXg7eGABeDQ1NHgHJ3YheDt4YAF4NS8zeAcndiF4O3hgAXg0NTR4Byd2IXg7eGABeDUvM3gHJwcn"><p class="k">Série · ST2</p><h4>Série 4 — lire un R² et le dire</h4><div class="enonce">
+
+
+
+</div><ol class="items larges"><li><span class="q">0,998, le modèle décrit-il bien ?</span></li><li><span class="q">0,877, est-ce le meilleur des quatre ?</span></li><li><span class="q">0,42, ce modèle sert-il à quelque chose ?</span></li><li><span class="q">1,000, la courbe passe-t-elle par les points ?</span></li><li><span class="q">deux R² égaux, le R² tranche-t-il ?</span></li><li><span class="q">0,990 contre 0,937, garde-t-on le premier ?</span></li></ol><div class="indice" hidden>Plus le R² est proche de 1, mieux la courbe colle. Mais « colle » ne veut pas dire « juste en dehors des points ».</div></section>
+
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<tbody>
+
+<tr>
+
+<td><strong>L’allure d’abord, le R² ensuite</strong></td>
+
+<td>une courbe qui ne ressemble pas au nuage est fausse</td>
+
+</tr>
+
+<tr>
+
+<td><strong>R² proche de 1 = colle aux points</strong></td>
+
+<td>et rien de plus que cela</td>
+
+</tr>
+
+<tr>
+
+<td><strong>R² égaux : le plus simple gagne</strong></td>
+
+<td>une droite s’explique, une parabole beaucoup moins</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="MODEL-1-faire-l-ajustement.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">S1 — faire l'ajustement</span></a><a class="ap" href="MODEL-3-jusqu-ou-aller.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S1 — jusqu'où aller</span></a></div></nav>
 <p class="pied">Cette page détaille la séance 2 de la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=f9d9c6d1"></script>
-<script src="../assets/site.js?v=f9d9c6d1"></script>
-<script src="../assets/vivant.js?v=f9d9c6d1"></script>
-<script src="../assets/plan.js?v=f9d9c6d1"></script>
-<script src="../assets/doc.js?v=f9d9c6d1"></script>
+
