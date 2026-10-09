@@ -311,7 +311,10 @@ function nombre(s){
     if(d.v!==undefined){
       var v=nombre(txt);
       if(isNaN(v))return false;
-      return Math.abs(v-d.v)<=Math.abs(d.v)*(sec.tol/100)+1e-9;
+      /* La marge des arrondis de calcul est RELATIVE : une marge fixe de 1e-9
+         acceptait 0 pour 5,82e-30 attendu. Seul un zero attendu garde une marge
+         absolue. Releve le 7 octobre 2026, sur la physique de Tle STI2D. */
+      return Math.abs(v-d.v)<=Math.abs(d.v)*(sec.tol/100+1e-9)+(d.v===0?1e-9:0);
     }
     var cmp=(sec.m==="signes")?memeSignes:memeTexte;
     return !!txt.trim()&&(d.a||[]).some(function(a){return cmp(a,txt);});
@@ -545,6 +548,39 @@ function S(t,a,txt){
   return e;
 }
 function V(c){return "var(--"+c+")";}
+/* Un vecteur dans un schema porte sa fleche, comme dans le cours : on ecrit
+   VEC(svg, attrs, ["‖", ["AS"], "‖ = 2 m"]) — les morceaux en tableau sont des
+   noms de vecteur, poses dans un tspan.vec — puis FLECHES_VEC(svg) une fois le
+   svg dans la page : il mesure chaque tspan et trace une fleche au-dessus, de la
+   couleur du texte, et la retrace quand les polices sont chargees. Pose le
+   9 octobre 2026 avec les fleches des pages de la Tle CTRM. */
+function VEC(svg,a,parts){
+  var t=S("text",a);
+  parts.forEach(function(p){
+    if(typeof p==="string"){t.appendChild(document.createTextNode(p));}
+    else{var ts=S("tspan",{"class":"vec"});ts.textContent=p[0];t.appendChild(ts);}
+  });
+  svg.appendChild(t);
+  return t;
+}
+function FLECHES_VEC(svg){
+  [].forEach.call(svg.querySelectorAll(".vec-fleche"),function(e){e.parentNode.removeChild(e);});
+  [].forEach.call(svg.querySelectorAll("tspan.vec"),function(ts){
+    var b;
+    try{b=ts.getBBox();}catch(e){return;}
+    if(!b||!b.width)return;
+    var coul=ts.parentNode.getAttribute("fill")||"currentColor";
+    var y=b.y+b.height*0.14, x1=b.x+0.5, x2=b.x+b.width-0.5, h=2.6;
+    svg.appendChild(S("path",{"class":"vec-fleche",fill:"none",stroke:coul,
+      "stroke-width":"1.3","stroke-linecap":"round","stroke-linejoin":"round",
+      d:"M "+x1+" "+y+" L "+x2+" "+y+" M "+(x2-1.7*h)+" "+(y-h)+" L "+x2+" "+y+
+        " L "+(x2-1.7*h)+" "+(y+h)}));
+  });
+  if(document.fonts&&document.fonts.ready&&!svg._vecRe){
+    svg._vecRe=1;
+    document.fonts.ready.then(function(){FLECHES_VEC(svg);});
+  }
+}
 
 /* ─────────── coupe de paroi, avec le profil de temperature ─────────── */
 
@@ -1357,22 +1393,25 @@ OUTILS["chrono"] = {
   titre:"Dix minutes, chrono",
   intro:"Le temps d'une salve d'automatismes. On lance, on remplit les trois "+
         "séries de la page, on s'arrête quand la barre est vide.",
-  monte:function(d){
-    var duree=600, reste=600, fin=null, tic=null;
+  monte:function(d, el){
+    /* data-duree="5|10|15" choisit la duree de depart, data-fin le message de
+       fin : un QCM ne se verifie pas « serie par serie ». 8 octobre 2026. */
+    var m0=el&&+el.getAttribute("data-duree");
+    m0=(m0===5||m0===10||m0===15)?m0:10;
+    var finTexte=el&&el.getAttribute("data-fin");
+    var duree=m0*60, reste=duree, fin=null, tic=null;
 
     var ch=E("div",{"class":"champ"});
     ch.appendChild(E("label",{},"La durée"));
-    var vD=E("span",{"class":"v"},"10 minutes");
+    var vD=E("span",{"class":"v"},m0+" minutes");
     ch.appendChild(vD);
-    var sel=E("select",{},
-      '<option value="300">5 minutes</option>'+
-      '<option value="600" selected>10 minutes</option>'+
-      '<option value="900">15 minutes</option>');
+    var sel=E("select",{},[5,10,15].map(function(m){
+      return '<option value="'+m*60+'"'+(m===m0?" selected":"")+">"+m+" minutes</option>";}).join(""));
     ch.appendChild(sel); d.appendChild(ch);
 
     var cadran=E("div",{style:"font-family:'IBM Plex Mono',monospace;font-weight:700;"+
       "font-size:min(19vw,104px);line-height:1;letter-spacing:.02em;text-align:center;"+
-      "margin:14px 0 10px;font-variant-numeric:tabular-nums"},"10:00");
+      "margin:14px 0 10px;font-variant-numeric:tabular-nums"},(m0<10?"0":"")+m0+":00");
     d.appendChild(cadran);
 
     var piste=E("div",{style:"height:10px;border-radius:99px;overflow:hidden;"+
@@ -1401,7 +1440,8 @@ OUTILS["chrono"] = {
       reste=Math.round((fin-Date.now())/1000);
       if (reste<=0){
         reste=0; ecrire(0); arreter();
-        mot.innerHTML="<b>Temps écoulé.</b> On vérifie série par série — une case "+
+        if (finTexte) { mot.innerHTML="<b>Temps écoulé.</b> "; mot.appendChild(document.createTextNode(finTexte)); }
+        else mot.innerHTML="<b>Temps écoulé.</b> On vérifie série par série — une case "+
           "fausse garde ce qui a été tapé et ouvre l'indice.";
         return;
       }
@@ -2423,17 +2463,15 @@ SCHEMAS["deux-sangles-somme"]=function(el){
     fill:V("chaud")},"3,2 m"));
   /* cale sur S, cette etiquette passait sous le nom du point ; a droite de
      la fleche en pointille, elle est seule. */
-  svg.appendChild(S("text",{x:300,y:150,"class":"s-pet",fill:V("encre2")},
-    "BS reporté ici"));
+  VEC(svg,{x:300,y:150,"class":"s-pet",fill:V("encre2")},[["BS"]," reporté ici"]);
   /* le compte, a droite */
   svg.appendChild(S("rect",{x:436,y:112,width:268,height:158,rx:"6",
     fill:V("carte2"),stroke:V("chaud"),"stroke-width":"1.6"}));
-  [["‖AS‖ = 2 m","froid",146],
-   ["‖BS‖ = 2 m","froid",176],
-   ["2 + 2 = 4","encre2",214],
-   ["‖AS + BS‖ = 3,2 m","chaud",248]].forEach(function(b){
-    svg.appendChild(S("text",{x:570,y:b[2],"text-anchor":"middle","class":"s-lab",
-      fill:V(b[1])},b[0]));
+  [[["‖",["AS"],"‖ = 2 m"],"froid",146],
+   [["‖",["BS"],"‖ = 2 m"],"froid",176],
+   [["2 + 2 = 4"],"encre2",214],
+   [["‖",["AS"]," + ",["BS"],"‖ = 3,2 m"],"chaud",248]].forEach(function(b){
+    VEC(svg,{x:570,y:b[2],"text-anchor":"middle","class":"s-lab",fill:V(b[1])},b[0]);
   });
   svg.appendChild(S("line",{x1:470,y1:192,x2:670,y2:192,stroke:V("encre2"),
     "stroke-width":"1.4"}));
@@ -2444,6 +2482,7 @@ SCHEMAS["deux-sangles-somme"]=function(el){
       fill:V("chaud")},t[0]));
   });
   el.appendChild(svg);
+  FLECHES_VEC(svg);
   (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
     "Le dessin est <b>à l'échelle</b>, et c'est lui qui fait la preuve. On part de A, on "+
     "suit la première sangle jusqu'à S, puis on <b>reporte la seconde au bout de la "+
@@ -2482,25 +2521,25 @@ SCHEMAS["direction-et-sens"]=function(el){
   .forEach(function(m){ fl(P(m[0]),m[1],m[2]); });
   /* k = 2 posait son etiquette la ou passe le verdict du haut : elle passe
      SOUS la pointe. */
-  [[2,"k = 2",8,22,"start"],[1,"u",6,-14,"start"],
-   [-1,"k = −1",-10,30,"end"],[-2,"k = −2",-10,18,"end"]]
+  [[2,["k = 2"],8,22,"start"],[1,[["u"]],6,-14,"start"],
+   [-1,["k = −1"],-10,30,"end"],[-2,["k = −2"],-10,18,"end"]]
   .forEach(function(m){
     var p=P(m[0]);
-    svg.appendChild(S("text",{x:p[0]+m[2],y:p[1]+m[3],"text-anchor":m[4],
-      "class":"s-lab",fill:m[0]>0?V("chaud"):V("froid")},m[1]));
+    VEC(svg,{x:p[0]+m[2],y:p[1]+m[3],"text-anchor":m[4],
+      "class":"s-lab",fill:m[0]>0?V("chaud"):V("froid")},m[1]);
   });
   svg.appendChild(S("circle",{cx:OX,cy:OY,r:"6",fill:V("encre")}));
   /* les deux verdicts */
   /* les deux verdicts vont dans les deux coins libres, loin des pointes
      et de la droite support. */
-  [["k > 0 : même sens que u","chaud",700,208,"end"],
-   ["k < 0 : sens contraire","froid",60,130,"start"]].forEach(function(b){
-    svg.appendChild(S("text",{x:b[2],y:b[3],"text-anchor":b[4],"class":"s-lab",
-      fill:V(b[1])},b[0]));
+  [[["k > 0 : même sens que ",["u"]],"chaud",700,208,"end"],
+   [["k < 0 : sens contraire"],"froid",60,130,"start"]].forEach(function(b){
+    VEC(svg,{x:b[2],y:b[3],"text-anchor":b[4],"class":"s-lab",fill:V(b[1])},b[0]);
   });
-  svg.appendChild(S("text",{x:W-16,y:338,"text-anchor":"end","class":"s-pet",
-    fill:V("encre2")},"u(2 ; −1 ; 4)  →  2u(4 ; −2 ; 8)  →  −2u(−4 ; 2 ; −8)"));
+  VEC(svg,{x:W-16,y:338,"text-anchor":"end","class":"s-pet",fill:V("encre2")},
+    [["u"],"(2 ; −1 ; 4)  →  2",["u"],"(4 ; −2 ; 8)  →  −2",["u"],"(−4 ; 2 ; −8)"]);
   el.appendChild(svg);
+  FLECHES_VEC(svg);
   (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
     "Les quatre vecteurs sont <b>colinéaires</b> : chacun est le précédent multiplié par "+
     "un nombre, et tous portent <b>la même droite</b>. C'est cela, la direction. Le "+
@@ -2584,11 +2623,11 @@ SCHEMAS["troisieme-coordonnee"]=function(el){
     "stroke-width":"1.6","stroke-dasharray":"6 4"}));
   fl(T,R,"chaud","3.4");
   svg.appendChild(S("text",{x:T[0]+12,y:232,"class":"s-pet",fill:V("chaud")},"−1,0"));
-  svg.appendChild(S("text",{x:B+112,y:212,"text-anchor":"end","class":"s-pet",
-    fill:V("chaud")},"P₄R"));
+  VEC(svg,{x:B+112,y:212,"text-anchor":"end","class":"s-pet",fill:V("chaud")},[["P₄R"]]);
   note(B+165,"l'ancrage est 1,0 m plus bas");
   verdict(B+165,"z = −1,0","chaud","la sangle plaque la charge");
   el.appendChild(svg);
+  FLECHES_VEC(svg);
   (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
     "À gauche, les trois points sont <b>à la même hauteur</b> — c'est le cas du problème 1, "+
     "où les quatre palettes sont identiques. Les deux sangles restent à plat, et leur somme "+
@@ -3448,9 +3487,11 @@ var FONCTIONS_DEUX_CHAINES=[
   el.innerHTML="";
   var t=E("div",{"class":"tete-outil"});
   t.appendChild(E("p",{"class":"k"},"Outil"));
-  t.appendChild(E("h4",{},o.titre));
+  /* data-titre et data-intro sur le bloc remplacent ceux de l'outil : le meme
+     chronometre sert une salve d'automatismes et un QCM. 8 octobre 2026. */
+  t.appendChild(E("h4",{},el.getAttribute("data-titre")||o.titre));
   if(o.chaine)t.appendChild(E("p",{"class":"chaine"},"↳ "+o.chaine));
-  t.appendChild(E("p",{},o.intro));
+  t.appendChild(E("p",{},el.getAttribute("data-intro")||o.intro));
   el.appendChild(t);
   var d=E("div",{"class":"dedans"});
   el.appendChild(d);
