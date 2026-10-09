@@ -410,6 +410,17 @@ h3.form-titre{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;colo
 .form-ici .form-entete::after{content:"cette page";margin-left:auto;font-size:.7rem;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:var(--accent,var(--froid,#2c6da6))}
 
+/* Un vecteur porte sa fleche : <span class='vec'>AB</span>, ecrit par le contenu du jeu
+   (Tle CTRM, sequence 3). Ici parce que cette feuille est chargee par la page du jeu ET
+   par les sites de classe, ou le formulaire s'ouvre. Pose le 9 octobre 2026. */
+span.vec{position:relative;display:inline-block;line-height:1}
+span.vec::before{content:"";position:absolute;left:.04em;right:.08em;top:-.07em;border-top:.085em solid currentColor}
+span.vec::after{content:"";position:absolute;right:.02em;top:-.165em;width:.19em;height:.19em;
+  border-top:.085em solid currentColor;border-right:.085em solid currentColor;transform:rotate(45deg)}
+/* une minuscule n'a que la hauteur d'x : la fleche descend d'autant */
+span.vec.min::before{top:.15em}
+span.vec.min::after{top:.05em}
+
 /* habillage : charte « chronotachygraphe » */
 @font-face{font-family:'Chivo';font-style:normal;font-weight:400 900;font-display:swap;src:url(../assets/polices/chivo-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Chivo';font-style:normal;font-weight:400 900;font-display:swap;src:url(../assets/polices/chivo-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -2087,14 +2098,14 @@ var Generateurs = (function () {
     do { A = pt(12, 2.4, 2.6); B = pt(12, 2.4, 2.6); if (Math.random() < 0.5) B[2] = 0; ab = [0, 1, 2].map(function (i) { return net(B[i] - A[i]); }); }
     while (ab.some(function (c) { return c === 0; }) || A.every(function (c) { return c === 0; }));
     var ctx = "A" + tri(A) + " et B" + tri(B) + ", en mètres.";
-    if (niveau === 1) return choix("Les coordonnées du vecteur AB ?", tri(ab),
-      [[tri(ab.map(function (c) { return -c; })), "Sens inversé : A − B", "AB = B − A : l'arrivée moins le départ."],
+    if (niveau === 1) return choix("Les coordonnées du vecteur <span class='vec'>AB</span> ?", tri(ab),
+      [[tri(ab.map(function (c) { return -c; })), "Sens inversé : A − B", "<span class='vec'>AB</span> = B − A : l'arrivée moins le départ."],
        [tri([0, 1, 2].map(function (i) { return A[i] + B[i]; })), "Additionné", "On soustrait : B − A, coordonnée par coordonnée."],
        [tri([ab[0], ab[1], -ab[2]]), "Signe de la troisième coordonnée", "zB − zA, avec son signe : il dit si le vecteur monte ou descend."]],
-      "AB = B − A, coordonnée par coordonnée.", ctx);
-    return { contexte: ctx, enonce: "La troisième coordonnée de AB ?", unite: "m", reponse: ab[2], tolerance: 1e-9,
+      "<span class='vec'>AB</span> = B − A, coordonnée par coordonnée.", ctx);
+    return { contexte: ctx, enonce: "La troisième coordonnée de <span class='vec'>AB</span> ?", unite: "m", reponse: ab[2], tolerance: 1e-9,
       methode: "zB − zA : l'arrivée moins le départ, avec son signe.",
-      erreurs: [err(-ab[2], { nom: "Sens inversé : A − B", explication: "AB = B − A." }), err(A[2] + B[2], { nom: "Additionné", explication: "On soustrait : zB − zA." }), err(ab[0], { nom: "Mauvaise coordonnée", explication: "La troisième coordonnée est la hauteur, z." })] };
+      erreurs: [err(-ab[2], { nom: "Sens inversé : A − B", explication: "<span class='vec'>AB</span> = B − A." }), err(A[2] + B[2], { nom: "Additionné", explication: "On soustrait : zB − zA." }), err(ab[0], { nom: "Mauvaise coordonnée", explication: "La troisième coordonnée est la hauteur, z." })] };
   });
 
   var TRIPLES = [[3, 4, 5], [6, 8, 10], [5, 12, 13], [8, 15, 17], [0.6, 0.8, 1], [1.5, 2, 2.5], [9, 12, 15], [2.4, 1.8, 3]];
@@ -2111,52 +2122,52 @@ var Generateurs = (function () {
     }
     var somme = c.reduce(function (s, x) { return s + x; }, 0), carres = c.reduce(function (s, x) { return s + x * x; }, 0);
     var abs = c.reduce(function (s, x) { return s + Math.abs(x); }, 0);
-    var errs = [err(carres, { nom: "Racine oubliée", explication: "‖u‖ = √(…) : les carrés, leur somme, puis la racine." }),
+    var errs = [err(carres, { nom: "Racine oubliée", explication: "‖<span class='vec min'>u</span>‖ = √(…) : les carrés, leur somme, puis la racine." }),
                 err(abs, { nom: "Coordonnées additionnées", explication: "La norme n'est pas la somme des coordonnées : les carrés d'abord." })];
     if (Math.abs(somme - abs) > 1e-9 && somme > 0) errs.push(err(somme, { nom: "Coordonnées additionnées, avec leurs signes", explication: "La norme passe par les carrés : un carré n'est jamais négatif." }));
     else errs.push(err(Math.sqrt(abs), { nom: "Carrés oubliés", explication: "On élève chaque coordonnée au carré avant d'additionner." }));
-    return { contexte: (c.length === 2 ? "Un vecteur de composantes " : "Le vecteur u") + tri(c) + (c.length === 3 ? ", en mètres." : "."), enonce: "Sa norme ?", unite: c.length === 3 ? "m" : "",
-      reponse: n, tolerance: niveau === 3 ? 0.005 : 1e-9, methode: "‖u‖ = √(x² + y²" + (c.length === 3 ? " + z²" : "") + ") : les carrés d'abord, la racine à la fin.", erreurs: errs };
+    return { contexte: (c.length === 2 ? "Un vecteur de composantes " : "Le vecteur <span class='vec min'>u</span>") + tri(c) + (c.length === 3 ? ", en mètres." : "."), enonce: "Sa norme ?", unite: c.length === 3 ? "m" : "",
+      reponse: n, tolerance: niveau === 3 ? 0.005 : 1e-9, methode: "‖<span class='vec min'>u</span>‖ = √(x² + y²" + (c.length === 3 ? " + z²" : "") + ") : les carrés d'abord, la racine à la fin.", erreurs: errs };
   });
 
   function vec(ent) { return [0, 1, 2].map(function () { var x = ent ? entier(-6, 6) : plage([-3, 3, 0.2]); return x === 0 ? 1 : x; }); }
   definir("vecteur-somme", function (spec, niveau) {
     var u = vec(true), w = vec(true), s = [0, 1, 2].map(function (i) { return u[i] + w[i]; });
     if (s.some(function (x) { return x === 0; })) { w = w.map(function (x, i) { return s[i] === 0 ? x + 1 : x; }); s = [0, 1, 2].map(function (i) { return u[i] + w[i]; }); }
-    var ctx = "u" + tri(u) + " et v" + tri(w) + ".";
-    if (niveau === 1) return choix("Le vecteur u + v ?", tri(s),
+    var ctx = "<span class='vec min'>u</span>" + tri(u) + " et <span class='vec min'>v</span>" + tri(w) + ".";
+    if (niveau === 1) return choix("Le vecteur <span class='vec min'>u</span> + <span class='vec min'>v</span> ?", tri(s),
       [[d(s[0] + s[1] + s[2]), "Un nombre au lieu d'un vecteur", "Une somme de vecteurs est un vecteur : trois coordonnées."],
        [tri([0, 1, 2].map(function (i) { return u[i] - w[i]; })), "Soustrait", "On additionne coordonnée par coordonnée."],
-       [tri([0, 1, 2].map(function (i) { return u[i] * w[i]; })), "Multiplié", "u + v : x + x', y + y', z + z'."]],
-      "u + v = (x + x' ; y + y' ; z + z').", ctx);
-    if (niveau === 2) return { contexte: ctx, enonce: "La troisième coordonnée de u + v ?", unite: "", reponse: s[2], tolerance: 1e-9,
+       [tri([0, 1, 2].map(function (i) { return u[i] * w[i]; })), "Multiplié", "<span class='vec min'>u</span> + <span class='vec min'>v</span> : x + x', y + y', z + z'."]],
+      "<span class='vec min'>u</span> + <span class='vec min'>v</span> = (x + x' ; y + y' ; z + z').", ctx);
+    if (niveau === 2) return { contexte: ctx, enonce: "La troisième coordonnée de <span class='vec min'>u</span> + <span class='vec min'>v</span> ?", unite: "", reponse: s[2], tolerance: 1e-9,
       methode: "z + z', avec les signes.",
-      erreurs: [err(u[2] - w[2], { nom: "Soustrait", explication: "On additionne : z + z'." }), err(u[2] * w[2], { nom: "Multiplié", explication: "u + v : on additionne." }), err(s[0], { nom: "Mauvaise coordonnée", explication: "La troisième coordonnée est z." })] };
+      erreurs: [err(u[2] - w[2], { nom: "Soustrait", explication: "On additionne : z + z'." }), err(u[2] * w[2], { nom: "Multiplié", explication: "<span class='vec min'>u</span> + <span class='vec min'>v</span> : on additionne." }), err(s[0], { nom: "Mauvaise coordonnée", explication: "La troisième coordonnée est z." })] };
     var k = un([2, 3, -2, -1, 0.5, -0.5, 1.5]), ku = u.map(function (x) { return k * x; });
-    return choix("Le vecteur " + d(k) + " × u, avec u" + tri(u) + " ?", tri(ku),
+    return choix("Le vecteur " + d(k) + " × <span class='vec min'>u</span>, avec <span class='vec min'>u</span>" + tri(u) + " ?", tri(ku),
       [[tri([ku[0], u[1], u[2]]), "k sur une seule coordonnée", "k multiplie les trois coordonnées."],
-       [tri(u.map(function (x) { return x + k; })), "k ajouté", "k × u : on multiplie chaque coordonnée par k."],
+       [tri(u.map(function (x) { return x + k; })), "k ajouté", "k × <span class='vec min'>u</span> : on multiplie chaque coordonnée par k."],
        [tri(ku.map(function (x) { return -x; })), "Signe de k", "k garde son signe : il multiplie avec."]],
-      "k × u = (k x ; k y ; k z).");
+      "k × <span class='vec min'>u</span> = (k x ; k y ; k z).");
   });
 
   definir("colineaires", function (spec, niveau) {
     var u = vec(true).map(function (x) { return Math.abs(x) === 1 ? x * 2 : x; });
     var k = un([2, 3, -2, -3, 0.5, -0.5, 1.5, -1.5]), w = u.map(function (x) { return net(k * x); });
-    if (niveau === 1) return { contexte: "u" + tri(u) + " et v" + tri(w) + ".", enonce: "Le nombre k tel que v = k × u ?", unite: "", reponse: k, tolerance: 1e-9,
-      methode: "k = la coordonnée de v ÷ celle de u, la même sur les trois.",
-      erreurs: [err(1 / k, { nom: "Rapport renversé", explication: "v = k × u : k = coordonnée de v ÷ coordonnée de u." }), err(-k, { nom: "Signe de k", explication: "Les signes comptent : k négatif si les coordonnées changent de signe." }), err(net(w[0] - u[0]), { nom: "Différence au lieu du rapport", explication: "Colinéaires : on multiplie par k, on ne retranche pas." })] };
+    if (niveau === 1) return { contexte: "<span class='vec min'>u</span>" + tri(u) + " et <span class='vec min'>v</span>" + tri(w) + ".", enonce: "Le nombre k tel que <span class='vec min'>v</span> = k × <span class='vec min'>u</span> ?", unite: "", reponse: k, tolerance: 1e-9,
+      methode: "k = la coordonnée de <span class='vec min'>v</span> ÷ celle de <span class='vec min'>u</span>, la même sur les trois.",
+      erreurs: [err(1 / k, { nom: "Rapport renversé", explication: "<span class='vec min'>v</span> = k × <span class='vec min'>u</span> : k = coordonnée de <span class='vec min'>v</span> ÷ coordonnée de <span class='vec min'>u</span>." }), err(-k, { nom: "Signe de k", explication: "Les signes comptent : k négatif si les coordonnées changent de signe." }), err(net(w[0] - u[0]), { nom: "Différence au lieu du rapport", explication: "Colinéaires : on multiplie par k, on ne retranche pas." })] };
     if (niveau === 2) {
       var piege = Math.random() < 0.5, w2 = w.slice();
       if (piege) w2[2] = net(w2[2] + un([-2, -1, 1, 2]));
       var juste = piege ? "non : le troisième rapport ne vaut pas " + d(k) : "oui, avec k = " + d(k);
-      return choix("u" + tri(u) + " et v" + tri(w2) + " sont-ils colinéaires ?", juste,
+      return choix("<span class='vec min'>u</span>" + tri(u) + " et <span class='vec min'>v</span>" + tri(w2) + " sont-ils colinéaires ?", juste,
         [[piege ? "oui, avec k = " + d(k) : "non : les rapports ne sont pas tous égaux", piege ? "Deux rapports seulement" : "Rapports mal calculés", piege ? "Il faut vérifier les trois coordonnées : deux qui collent ne prouvent rien." : "Les trois rapports valent " + d(k) + "."],
          ["on ne peut pas savoir sans dessin", "Dessin attendu", "Le calcul des trois rapports suffit."],
-         ["oui, avec k = " + N.ecrire(1 / k, 3), "Rapport renversé", "k = coordonnée de v ÷ coordonnée de u."]],
-        "v = k × u sur les trois coordonnées, avec le même k.");
+         ["oui, avec k = " + N.ecrire(1 / k, 3), "Rapport renversé", "k = coordonnée de <span class='vec min'>v</span> ÷ coordonnée de <span class='vec min'>u</span>."]],
+        "<span class='vec min'>v</span> = k × <span class='vec min'>u</span> sur les trois coordonnées, avec le même k.");
     }
-    return choix("v = " + d(k) + " × u. Les deux vecteurs ont :", k > 0 ? "la même direction et le même sens" : "la même direction, des sens contraires",
+    return choix("<span class='vec min'>v</span> = " + d(k) + " × <span class='vec min'>u</span>. Les deux vecteurs ont :", k > 0 ? "la même direction et le même sens" : "la même direction, des sens contraires",
       [[k > 0 ? "la même direction, des sens contraires" : "la même direction et le même sens", "Signe de k lu à l'envers", "k > 0 : même sens ; k < 0 : sens contraire."],
        ["des directions différentes", "Direction et sens confondus", "Tous les multiples d'un vecteur portent la même droite."],
        ["la même longueur", "Longueur inchangée", "La longueur est multipliée par k, sans son signe."]],
@@ -2171,12 +2182,12 @@ var Generateurs = (function () {
     function lecture(zz) { return zz < 0 ? "elle plaque la charge au plancher" : zz === 0 ? "elle ne retient que sur les côtés" : "elle soulève la charge"; }
     var juste = "z = " + d(z) + " : " + lecture(z);
     var faux = [
-      ["z = " + d(-z) + " : " + lecture(-z), "Vecteur pris dans l'autre sens", "De la charge vers l'ancrage : SA = A − S."],
+      ["z = " + d(-z) + " : " + lecture(-z), "Vecteur pris dans l'autre sens", "De la charge vers l'ancrage : <span class='vec'>SA</span> = A − S."],
       ["z = " + d(z) + " : " + (z < 0 ? "elle soulève la charge" : z === 0 ? "elle plaque la charge au plancher" : "elle plaque la charge au plancher"), "Signe lu à l'envers", "z < 0 : le vecteur descend, la sangle plaque ; z > 0 : elle soulève."],
       ["z = " + d(z) + " : " + (z === 0 ? "elle soulève la charge" : "elle ne retient que sur les côtés"), "Lecture de z", "z = 0 : à l'horizontale, la sangle ne retient que sur les côtés."]
     ];
-    return choix("La sangle va du sommet S" + tri(S) + " à l'ancrage A" + tri(A) + ". La troisième coordonnée de SA, et ce que fait la sangle ?",
-      juste, faux, "SA = A − S ; son z dit tout : négatif, la sangle plaque ; nul, elle retient sur les côtés ; positif, elle soulève.");
+    return choix("La sangle va du sommet S" + tri(S) + " à l'ancrage A" + tri(A) + ". La troisième coordonnée de <span class='vec'>SA</span>, et ce que fait la sangle ?",
+      juste, faux, "<span class='vec'>SA</span> = A − S ; son z dit tout : négatif, la sangle plaque ; nul, elle retient sur les côtés ; positif, elle soulève.");
   });
 
   /* ═══════════════════════════════════════════ les deux problemes au format du CCF */
@@ -3008,7 +3019,7 @@ var Entrainement = (function () {
         return h("a", { classe: "carte carte-lien", href: "#/" + c.id + "/chrono/" + a.id }, [
           a.pastille ? h("span", { classe: "surtitre" }, [h("span", { classe: "pastille accent", texte: a.pastille })]) : null,
           h("span", { classe: "titre-carte", texte: a.titre }),
-          a.detail ? h("span", { classe: "detail", texte: a.detail }) : null,
+          a.detail ? h("span", /<span class=.vec/.test(a.detail) ? { classe: "detail", html: a.detail } : { classe: "detail", texte: a.detail }) : null,
           h("span", { classe: "carte-pied" }, [
             h("span", { classe: "pastille mono", texte: (a.duree || 90) + " s" }),
             h("span", { classe: r ? "record" : "detail", texte: r ? "Record : " + N.ecrire(r.score, 9) : "Jamais joué" })
@@ -3727,23 +3738,23 @@ var Entrainement = (function () {
       [["rien : on ne l'écrit pas", "Zéro oublié", "Un point de l'espace a trois coordonnées ; zéro en est une."],
        ["la hauteur de la remorque", "Plancher et toit confondus", "Le plancher est à z = 0."]],
       "Zéro est une coordonnée, pas une absence."),
-    qc("Les coordonnées du vecteur AB se calculent par :", "B − A",
+    qc("Les coordonnées du vecteur <span class='vec'>AB</span> se calculent par :", "B − A",
       [["A − B", "Sens inversé", "On va de A à B : l'arrivée moins le départ."],
        ["A + B", "Additionné", "Un vecteur est une différence de positions."]],
       "Écrivez « B − A » au-dessus du calcul, à chaque fois."),
     qc("La norme d'un vecteur se calcule :", "les carrés, leur somme, puis la racine",
       [["en additionnant les coordonnées", "Coordonnées additionnées", "Pour (0 ; 1,2 ; 1,6), la norme vaut 2, pas 2,8."],
        ["les carrés et leur somme, sans racine", "Racine oubliée", "Sans la racine, on a le carré de la longueur."]],
-      "‖u‖ = √(x² + y² + z²)."),
+      "‖<span class='vec min'>u</span>‖ = √(x² + y² + z²)."),
     qc("La somme de deux vecteurs est :", "un vecteur : trois coordonnées",
       [["un nombre", "Un nombre au lieu d'un vecteur", "On additionne les deux vecteurs coordonnée par coordonnée, pas les coordonnées entre elles."],
        ["la somme de leurs normes", "Normes additionnées", "Deux sangles de 2 m peuvent faire une somme de 3,2 m : les normes ne s'ajoutent pas."]],
-      "u + v = (x + x' ; y + y' ; z + z')."),
-    qc("u(2 ; 1 ; 3) et v(6 ; 3 ; 8) sont-ils colinéaires ?", "non : 6 ÷ 2 = 3 ÷ 1 = 3, mais 8 ÷ 3 ne vaut pas 3",
+      "<span class='vec min'>u</span> + <span class='vec min'>v</span> = (x + x' ; y + y' ; z + z')."),
+    qc("<span class='vec min'>u</span>(2 ; 1 ; 3) et <span class='vec min'>v</span>(6 ; 3 ; 8) sont-ils colinéaires ?", "non : 6 ÷ 2 = 3 ÷ 1 = 3, mais 8 ÷ 3 ne vaut pas 3",
       [["oui, k = 3", "Deux rapports seulement", "Il faut vérifier les trois coordonnées : deux qui collent ne prouvent rien."],
        ["oui, ils vont dans le même sens", "Sens pris pour la colinéarité", "Colinéaires veut dire même direction, vérifiée par un même k."]],
-      "v = k × u sur les trois coordonnées."),
-    qc("v = −2 × u. Les deux vecteurs ont :", "la même direction, des sens contraires",
+      "<span class='vec min'>v</span> = k × <span class='vec min'>u</span> sur les trois coordonnées."),
+    qc("<span class='vec min'>v</span> = −2 × <span class='vec min'>u</span>. Les deux vecteurs ont :", "la même direction, des sens contraires",
       [["la même direction et le même sens", "Signe de k ignoré", "k < 0 : sens contraire."],
        ["des directions différentes", "Direction et sens confondus", "Tous les multiples d'un vecteur portent la même droite."]],
       "k > 0 : même sens ; k < 0 : sens contraire."),
@@ -3832,9 +3843,9 @@ var Entrainement = (function () {
         generateurs: [{ nom: "autonomie" }, { nom: "energie-massique" }] },
       { id: "s2-cours", theme: S2, titre: "Questions de cours", detail: "Oxydoréduction, pile, accumulateur, ampère-heure", duree: 120,
         generateurs: [{ nom: "banque", questions: BATTERIE }] },
-      { id: "s3-coordonnees", theme: S3, titre: "Coordonnées, somme, colinéarité", detail: "AB = B − A · u + v · v = k × u", duree: 150,
+      { id: "s3-coordonnees", theme: S3, titre: "Coordonnées, somme, colinéarité", detail: "<span class='vec'>AB</span> = B − A · <span class='vec min'>u</span> + <span class='vec min'>v</span> · <span class='vec min'>v</span> = k × <span class='vec min'>u</span>", duree: 150,
         generateurs: [{ nom: "vecteur-ab" }, { nom: "vecteur-somme" }, { nom: "colineaires" }] },
-      { id: "s3-norme", theme: S3, titre: "La longueur de sangle", detail: "‖u‖ = √(x² + y² + z²)", duree: 120,
+      { id: "s3-norme", theme: S3, titre: "La longueur de sangle", detail: "‖<span class='vec min'>u</span>‖ = √(x² + y² + z²)", duree: 120,
         generateurs: [{ nom: "vecteur-norme" }] },
       { id: "s3-cours", theme: S3, titre: "Questions de cours", detail: "Le repère de la remorque, le signe de z", duree: 120,
         generateurs: [{ nom: "banque", questions: ARRIMAGE }, { nom: "troisieme-coordonnee" }] },
@@ -3955,14 +3966,14 @@ var Entrainement = (function () {
           { seance: "S3", titre: "Coordonnées et norme",
             formules: [
               ["A(x ; y ; z)", "longueur, largeur, hauteur ; un point au plancher a z = 0"],
-              ["AB = B − A", "coordonnée par coordonnée"],
-              ["‖u‖ = √(x² + y² + z²)", "les carrés d'abord, la racine à la fin"]
+              ["<span class='vec'>AB</span> = B − A", "coordonnée par coordonnée"],
+              ["‖<span class='vec min'>u</span>‖ = √(x² + y² + z²)", "les carrés d'abord, la racine à la fin"]
             ],
             piege: "La norme n'est pas la somme des coordonnées." },
           { seance: "S3", titre: "Somme et colinéarité",
             formules: [
-              ["u + v = (x + x' ; y + y' ; z + z')", "une somme de vecteurs est un vecteur"],
-              ["v = k × u", "colinéaires : le même k sur les trois coordonnées"]
+              ["<span class='vec min'>u</span> + <span class='vec min'>v</span> = (x + x' ; y + y' ; z + z')", "une somme de vecteurs est un vecteur"],
+              ["<span class='vec min'>v</span> = k × <span class='vec min'>u</span>", "colinéaires : le même k sur les trois coordonnées"]
             ],
             reperes: ["k > 0 : même sens ; k < 0 : sens contraire.",
                       "Troisième coordonnée de la charge vers l'ancrage : négative, la sangle plaque ; nulle, elle retient sur les côtés ; positive, elle soulève."],
