@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>Séquence 4 — transporter l'énergie</title>
+<link rel="stylesheet" href="../assets/kit.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/site.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/vivant.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/doc.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/calculette.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/formulaire.css?v=b1ef5f40">
+<link rel="stylesheet" href="../assets/impression.css?v=b1ef5f40">
+<script src="../assets/kit.js?v=b1ef5f40-833345" defer></script>
+<script src="../assets/site.js?v=b1ef5f40" defer></script>
+<script src="../assets/vivant.js?v=b1ef5f40" defer></script>
+<script src="../assets/plan.js?v=b1ef5f40" defer></script>
+<script src="../assets/doc.js?v=b1ef5f40" defer></script>
+<script src="../assets/nombres.js?v=b1ef5f40" defer></script>
+<script src="../assets/calculette.js?v=b1ef5f40" defer></script>
+<script src="../assets/formulaire.js?v=b1ef5f40" defer></script>
+<script src="../assets/formulaire-donnees.js?v=b1ef5f40" defer></script>
+<script src="../assets/outils-page.js?v=b1ef5f40" defer></script>
+
+<div class="page" data-site="ctrm" data-page="cours/S4">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="S3.html" rel="prev" title="Séquence 3 — l'arrimage" aria-label="Séquence 3 — l'arrimage">&lsaquo;</a><a class="fleche" href="S5.html" rel="next" title="Séquence 5 — les trois modes" aria-label="Séquence 5 — les trois modes">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/S4">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">Tle Bac Pro CTRM</p>
+    <h1>De la centrale<span>à la borne</span></h1>
+  </div>
+  <p class="accroche">Le dépôt installe quatre bornes de 150 kW, raccordées en 20 000 V. Pourquoi si haut, quand les camions chargent en 400 ? Toute la réponse tient dans un carré.</p>
+  <p class="contenu">2 exercices · 39 items d'entraînement · 1 simulation · 3 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag">ELEC Électricité — transport, effet Joule, accumulateurs</span><span class="tag">AU Automatismes</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="S2.html">La puissance P = U × I</a></b><span class="ou">S 2 · La batterie du camion électrique</span><span class="car">la séquence la retourne pour trouver une intensité, I = P ÷ U, à chaque étape.</span></li><li><b>Calculer un carré et un pourcentage</b><span class="car">les pertes sont un carré, et on les compare à la puissance transportée.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#la-question-a-laquelle-il-faut-repondre">La question à laquelle il faut répondre</a><a href="#le-chemin-de-l-electricite">Le chemin de l’électricité</a><a href="#ce-que-la-ligne-perd-en-route">Ce que la ligne perd en route</a><a href="#le-transformateur">Le transformateur</a><a href="#revenir-au-depot">Revenir au dépôt</a><a href="#ce-qu-il-faut-savoir-faire-en-sortant">Ce qu’il faut savoir faire en sortant</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a><a href="#la-sequence-en-quelques-gestes">La séquence en quelques gestes</a><a href="#le-sujet-la-baladeuse-de-l-atelier">Le sujet — la baladeuse de l’atelier</a></div></nav>
+<h2 id="la-question-a-laquelle-il-faut-repondre">La question à laquelle il faut répondre</h2>
+<blockquote>
+<p>Le dépôt installe <strong>quatre bornes de recharge</strong> pour poids lourds, de <strong>150 kW</strong> chacune. Le gestionnaire du réseau annonce un raccordement en <strong>20 000 volts</strong>, avec un transformateur à installer sur place.</p>
+<p>Un collègue s’étonne : « <em>pourquoi 20 000 volts pour des camions qui chargent en 400 ?</em> »</p>
+</blockquote>
+<div class="cle">
+<p><strong>Transporter de l’électricité coûte de l’énergie.</strong> Les câbles chauffent, et ce qui chauffe est perdu. Toute la séquence revient à comprendre ce qui fait chauffer un câble — et pourquoi la haute tension le fait moins chauffer.</p>
+</div>
+<h2 id="le-chemin-de-l-electricite">Le chemin de l’électricité</h2>
+<p>Entre la centrale et la borne, la tension <strong>monte</strong>, voyage, puis <strong>redescend</strong>, parfois en plusieurs fois. Ce qui la fait monter et ce qui la fait descendre porte le même nom : <strong>un transformateur</strong>.</p>
+<figure>
+<img src="img/S4/fig1-reseau.png" alt="Le réseau, de la centrale à la borne du dépôt." />
+<figcaption aria-hidden="true">Le réseau, de la centrale à la borne du dépôt.</figcaption>
+</figure>
+<div class="cle">
+<p><strong>Élévateur et abaisseur sont le même appareil</strong>, branché dans un sens ou dans l’autre. Ce n’est pas l’appareil qui change, c’est le rapport de ses deux bobines.</p>
+</div>
+<section class="serie" id="S4-s1" data-serie="S4-s1" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4Bi9qaj9jNgYvamo/Yyw7Lj8vKHgHJ3YheDt4YAF4Ozg7MykpPy8oeAcndiF4O3hgAXg7ODszKSk/Lyh4Byd2IXg7eGABeDs4OzMpKT8vKHgHJwcn"><p class="k">Série · ELEC</p><h4>Élévateur ou abaisseur ?</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">à la sortie de la centrale, vers la ligne très haute tension</span></li><li><span class="q">à l’entrée du poste de quartier</span></li><li><span class="q">entre le poste de quartier et une maison</span></li><li><span class="q">au dépôt, entre 20 000 V et 400 V</span></li></ol><div class="indice" hidden>Vers la ligne de transport, la tension monte. Partout ailleurs, elle redescend vers ce que les appareils acceptent.</div></section>
+<h2 id="ce-que-la-ligne-perd-en-route">Ce que la ligne perd en route</h2>
+<p>Un câble a une <strong>résistance</strong>. Le courant qui le traverse le fait chauffer, et cette chaleur est perdue : c’est l’<strong>effet Joule</strong>.</p>
+<div class="formule">
+<p><strong>P = R × I²</strong></p>
+<ul>
+<li><strong>P</strong><span>la puissance perdue en chaleur, en watts</span></li>
+<li><strong>R</strong><span>la résistance du câble, en ohms</span></li>
+<li><strong>I</strong><span>l’intensité qui le traverse, en ampères</span></li>
+</ul>
+<blockquote>
+<p><strong>L’intensité est au carré.</strong> Doubler l’intensité ne double pas les pertes : il les <strong>quadruple</strong>.</p>
+</blockquote>
+</div>
+<p>Pour transporter une <strong>même puissance</strong>, on peut jouer sur la tension : <strong>I = P ÷ U</strong>. Plus la tension est haute, plus l’intensité est basse — et avec elle, son carré.</p>
+<figure class="schema"><div class="dessin" data-schema="pertes-en-ligne"></div><figcaption>Dix mégawatts sur la même ligne, sous deux tensions.</figcaption></figure>
+<div class="piege">
+<p><strong>Oublier le carré.</strong> Diviser l’intensité par 20 ne divise pas les pertes par 20, mais par <strong>400</strong>. C’est l’erreur qui fait croire que la haute tension ne rapporte « qu’un peu ».</p>
+</div>
+<section class="serie" id="S4-s2" data-serie="S4-s2" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBudGp2eDN4YAEheCx4YG9qanRqJ3YheCx4YGtob2pqamp0aid2IXgseGBraHRvJ3YheCx4YGhvdGondiF4LHhgaWtob3RqJ3YheCx4YGp0amknByc="><p class="k">Série · ELEC</p><h4>10 MW sur une ligne de 5 Ω</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">sous 20 000 V, l’intensité, en ampères</span></li><li><span class="q">sous 20 000 V, les pertes, en watts</span></li><li><span class="q">sous 20 000 V, la part perdue, en %</span></li><li><span class="q">sous 400 000 V, l’intensité, en ampères</span></li><li><span class="q">sous 400 000 V, les pertes, en watts</span></li><li><span class="q">sous 400 000 V, la part perdue, en %</span></li></ol><div class="indice" hidden>D’abord I = P ÷ U, avec P en watts : 10 MW font 10 000 000 W. Ensuite R × I², en élevant l’intensité au carré avant de multiplier.</div></section>
+<section class="serie" id="S4-s3" data-serie="S4-s3" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGhqanRqJ3YheCx4YGJqanRqJ3YheCx4YGlraG90aicHJw=="><p class="k">Série · ELEC</p><h4>L’effet Joule, trois fois</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">R = 2 Ω et I = 10 A, en watts</span></li><li><span class="q">R = 0,5 Ω et I = 40 A, en watts</span></li><li><span class="q">R = 5 Ω et I = 25 A, en watts</span></li></ol><div class="indice" hidden>Le carré s’applique à l’intensité seule, pas au produit R × I.</div></section>
+<section class="serie" id="S4-s4" data-serie="S4-s4" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGltb3RqJ3YheCx4YGtuamxob3RqJ3YheCx4YGlqdGondiF4LHhgY2pqdGondiF4LHhgaG90aid2IXgseGBsaG90aicHJw=="><p class="k">Série · ELEC</p><h4>L’intensité d’abord, les pertes ensuite — avec R = 1 Ω</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">150 kW sous 400 V, l’intensité, en ampères</span></li><li><span class="q">150 kW sous 400 V, les pertes, en watts</span></li><li><span class="q">600 kW sous 20 000 V, l’intensité, en ampères</span></li><li><span class="q">600 kW sous 20 000 V, les pertes, en watts</span></li><li><span class="q">10 MW sous 400 000 V, l’intensité, en ampères</span></li><li><span class="q">10 MW sous 400 000 V, les pertes, en watts</span></li></ol><div class="indice" hidden>Les kilowatts et les mégawatts se convertissent en watts avant la division. La dernière ligne transporte le plus, et perd le moins.</div></section>
+<h2 id="le-transformateur">Le transformateur</h2>
+<p>Deux bobines enroulées sur un même noyau de fer. La tension de chaque côté est <strong>proportionnelle à son nombre de spires</strong>.</p>
+<div class="formule">
+<p><strong>U₂ ÷ U₁ = N₂ ÷ N₁</strong></p>
+<ul>
+<li><strong>U₁, N₁</strong><span>la tension et le nombre de spires du <strong>primaire</strong>, côté alimentation</span></li>
+<li><strong>U₂, N₂</strong><span>ceux du <strong>secondaire</strong>, côté utilisation</span></li>
+</ul>
+<blockquote>
+<p>Il ne fonctionne qu’en <strong>courant alternatif</strong> : c’est la variation du courant qui fait passer l’énergie d’une bobine à l’autre.</p>
+</blockquote>
+</div>
+<figure class="schema"><div class="dessin" data-schema="transfo-spires"></div><figcaption>Le transformateur du TP, et celui du dépôt.</figcaption></figure>
+<div class="piege">
+<p><strong>Abaisser la tension n’abaisse pas l’intensité — c’est l’inverse.</strong> La puissance se conserve à peu près : si la tension est divisée par 50, l’intensité est multipliée par 50. Côté 400 V, le dépôt appelle cinquante fois plus d’ampères que côté 20 000 V.</p>
+</div>
+<section class="serie" id="S4-s5" data-serie="S4-s5" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGhpdGondiF4LHhgbmJ0aid2IXgseGBuamp0aid2IXgseGBobHRqJwcn"><p class="k">Série · ELEC</p><h4>Le rapport de transformation</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">N₁ = 1 000, N₂ = 100, U₁ = 230 V, la tension U₂ en volts</span></li><li><span class="q">N₁ = 200, N₂ = 800, U₁ = 12 V, la tension U₂ en volts</span></li><li><span class="q">N₁ = 10 000, N₂ = 200, U₁ = 20 000 V, la tension U₂ en volts</span></li><li><span class="q">N₁ = 500, U₁ = 230 V, U₂ = 12 V, le nombre de spires N₂</span></li></ol><div class="indice" hidden>U₂ = U₁ × N₂ ÷ N₁. Pour la dernière ligne, c’est N₂ qu’on cherche : N₂ = N₁ × U₂ ÷ U₁, et un nombre de spires s’arrondit à l’unité.</div></section>
+<section class="serie" id="S4-s6" data-serie="S4-s6" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4PDsvIngHJ3YheDt4YAF4PDsvIngHJ3YheDt4YAF4LCg7M3gHJ3YheDt4YAF4PDsvIngHJwcn"><p class="k">Série · ELEC</p><h4>Vrai ou faux ?</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">un transformateur fonctionne en courant continu</span></li><li><span class="q">doubler l’intensité double les pertes en ligne</span></li><li><span class="q">un transformateur peut élever ou abaisser selon le sens</span></li><li><span class="q">un transformateur qui abaisse la tension abaisse aussi l’intensité</span></li></ol><div class="indice" hidden>Deux de ces affirmations oublient un carré ou un sens. Relisez les deux pièges de la page.</div></section>
+<h2 id="revenir-au-depot">Revenir au dépôt</h2>
+<p>Les quatre bornes de 150 kW fonctionnent en même temps. Le transformateur du dépôt abaisse <strong>20 000 V</strong> en <strong>400 V</strong> ; son primaire compte <strong>10 000 spires</strong>. Le câble entre le transformateur et les bornes présente <strong>0,02 Ω</strong>.</p>
+<section class="serie" id="S4-s7" data-serie="S4-s7" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGxqanRqJ3YheCx4YGp0amgndiF4LHhgaGpqdGondiF4LHhga29qanRqJ3YheCx4YGlqdGondiF4LHhgbm9qamp0aicHJw=="><p class="k">Série · ELEC</p><h4>Le raccordement des quatre bornes</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">la puissance totale appelée, en kilowatts</span></li><li><span class="q">le rapport U₂ ÷ U₁</span></li><li><span class="q">le nombre de spires du secondaire</span></li><li><span class="q">l’intensité côté 400 V, en ampères</span></li><li><span class="q">l’intensité côté 20 000 V, en ampères</span></li><li><span class="q">les pertes dans le câble côté 400 V, en watts</span></li></ol><div class="indice" hidden>La même puissance traverse les deux côtés du transformateur : c’est l’intensité qui change. Les pertes se calculent là où l’intensité est grande.</div></section>
+<section class="exo" id="S4-e1" data-exo="S4-e1" data-type="justification" data-savoir="ELEC" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ELEC</p><h4>Ce qu’on répond au collègue</h4><div class="enonce">
+
+<p>Répondre à la question « <em>pourquoi 20 000 volts ?</em> » en deux phrases, <strong>avec un chiffre</strong>.</p>
+</div><div class="indice" hidden>La réponse se trouve dans le tableau des 10 MW : 12,5 % d’un côté, 0,03 % de l’autre. Une phrase sans chiffre ne convainc personne.</div><ul class="verifier" hidden><li>J’ai dit que monter la tension fait baisser l’intensité</li><li>J’ai dit que les pertes suivent le carré de l’intensité</li><li>J’ai donné un chiffre de pertes pour appuyer la réponse</li></ul></section>
+<h2 id="ce-qu-il-faut-savoir-faire-en-sortant">Ce qu’il faut savoir faire en sortant</h2>
+<div class="etapes">
+<ol type="1">
+<li><strong>Retrouver une intensité</strong> à partir d’une puissance et d’une tension : I = P ÷ U.</li>
+<li><strong>Calculer des pertes</strong> par effet Joule, P = R × I², sans oublier le carré.</li>
+<li><strong>Comparer</strong> deux pertes en pourcentage de la puissance transportée.</li>
+<li><strong>Calculer une tension ou un nombre de spires</strong> avec U₂ ÷ U₁ = N₂ ÷ N₁.</li>
+</ol>
+</div>
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr>
+<td><strong>P = R × I²</strong></td>
+<td>l’intensité au carré : ÷ 20 sur I, ÷ 400 sur les pertes</td>
+</tr>
+<tr>
+<td><strong>Haute tension = faible intensité</strong></td>
+<td>c’est pour ça qu’on transporte à 400 000 V</td>
+</tr>
+<tr>
+<td><strong>U₂ ÷ U₁ = N₂ ÷ N₁</strong></td>
+<td>en alternatif seulement ; élévateur et abaisseur, même appareil</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="la-sequence-en-quelques-gestes">La séquence en quelques gestes</h2>
+<p>Ce qu’il faut retenir de la séquence, à manipuler : quelques étapes, un geste à chacune, et un défi pour finir.</p>
+<figure class="simulation"><iframe src="sim/tres-haute-tension.html" title="La simulation : Pourquoi 400 000 V sur les lignes ?" loading="lazy"></iframe><figcaption><a href="sim/tres-haute-tension.html" target="_blank" rel="noopener">l’ouvrir seule, en plein écran</a></figcaption></figure>
+<p><strong>La simulation de la ligne</strong> : <a href="https://forneris.fr/labo-pc/html/ligne-atelier.html">l’atelier au bout du terrain</a>, relié à la maison par un long câble. On y mesure à la pince et au voltmètre ce qui n’arrive pas à l’atelier, puis on pose un transformateur à chaque bout.</p>
+<h1 id="entraînement-au-format-du-ccf">Entraînement au format du CCF</h1>
+<p><em>Un sujet entier, bâti comme l’épreuve de sciences : quatre parties cotées séparément, deux appels au professeur. Le format complet est détaillé sur la <a href="../aide/BATT-5-au-format-du-ccf.html">fiche de la séquence 2</a>.</em></p>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>APP</th>
+<th>ANA</th>
+<th>REA</th>
+<th>VAL</th>
+<th>COM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s’approprier</td>
+<td>analyser</td>
+<td>réaliser</td>
+<td>valider</td>
+<td>communiquer, aux appels</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="le-sujet-la-baladeuse-de-l-atelier">Le sujet — la baladeuse de l’atelier</h2>
+<p>À l’atelier de maintenance, la baladeuse d’inspection des fosses fonctionne en <strong>24 V</strong>, pour la sécurité. Elle est alimentée par un <strong>transformateur</strong> branché sur le <strong>230 V</strong>, dont le primaire compte <strong>1 150 spires</strong>. La lampe fait <strong>60 W</strong> ; son câble de <strong>10 m</strong> présente une résistance de <strong>0,4 Ω</strong>.</p>
+<blockquote>
+<p><strong>Problématique</strong> : « <em>Combien de spires au secondaire, et que coûte en pertes le choix du 24 V plutôt que du 230 V ?</em> »</p>
+</blockquote>
+<p><strong>Partie 1 · APP</strong> — Relever les deux tensions et le nombre de spires donné. Dire pourquoi une baladeuse de fosse travaille en très basse tension.</p>
+<p><strong>Partie 2 · ANA</strong> — Proposer un protocole qui permette de vérifier, au TP, le rapport des tensions d’un transformateur.</p>
+<blockquote>
+<p><strong>APPEL 1</strong> — présenter le protocole au professeur avant de brancher.</p>
+</blockquote>
+<p><strong>Partie 3 · REA</strong> — Calculer le nombre de spires du secondaire, puis l’intensité dans le câble et les pertes, sous 24 V puis sous 230 V.</p>
+<blockquote>
+<p><strong>APPEL 2</strong> — réaliser la mesure des deux tensions devant le professeur.</p>
+</blockquote>
+<p><strong>Partie 4 · VAL</strong> — Comparer les deux pertes et répondre à la problématique.</p>
+<section class="serie" id="S4-s8" data-serie="S4-s8" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBpdGp2eDN4YAEheCx4YGtoanRqJ3YheCx4YGh0byd2IXgseGBodG8ndiF4LHhgbnRoJ3YheCx4YGp0aGwndiF4LHhgY2h0aicHJw=="><p class="k">Série · ELEC</p><h4>Les calculs du sujet</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">le nombre de spires du secondaire</span></li><li><span class="q">l’intensité sous 24 V, en ampères</span></li><li><span class="q">les pertes dans le câble sous 24 V, en watts</span></li><li><span class="q">ces pertes, en % de la puissance de la lampe</span></li><li><span class="q">l’intensité sous 230 V, en ampères</span></li><li><span class="q">combien de fois plus de pertes sous 24 V que sous 230 V</span></li></ol><div class="indice" hidden>Le rapport des spires suit celui des tensions. Pour les pertes, l’intensité d’abord, au carré ensuite ; le rapport des pertes est celui des tensions, au carré.</div></section>
+<section class="exo" id="S4-e2" data-exo="S4-e2" data-type="justification" data-savoir="ELEC" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ELEC</p><h4>La phrase de conclusion</h4><div class="enonce">
+
+<p>Répondre à la problématique en deux phrases : <strong>le nombre de spires</strong>, et <strong>ce que coûte le choix du 24 V</strong>, en le justifiant.</p>
+</div><div class="indice" hidden>La sécurité et les pertes tirent en sens contraire. La conclusion doit dire lequel l’emporte, et pourquoi c’est acceptable ici.</div><ul class="verifier" hidden><li>J’ai donné le nombre de spires du secondaire</li><li>J’ai dit que le 24 V fait perdre davantage dans le câble</li><li>J’ai dit que ce prix est accepté pour la sécurité des personnes</li></ul></section>
+<div class="remise">
+
+</div>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="S3.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Séquence 3 — l'arrimage</span></a><a class="ap" href="S5.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Séquence 5 — les trois modes</span></a></div></nav>
+<p class="pied">Cette page rappelle la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+
