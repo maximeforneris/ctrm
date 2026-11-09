@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>S4 — l'effet Joule</title>
+<link rel="stylesheet" href="../assets/kit.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/site.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/chronotachygraphe.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/vivant.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/doc.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/calculette.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/formulaire.css?v=a5f158bf">
+<link rel="stylesheet" href="../assets/impression.css?v=a5f158bf">
+<script src="../assets/kit.js?v=a5f158bf-605215" defer></script>
+<script src="../assets/site.js?v=a5f158bf" defer></script>
+<script src="../assets/vivant.js?v=a5f158bf" defer></script>
+<script src="../assets/plan.js?v=a5f158bf" defer></script>
+<script src="../assets/doc.js?v=a5f158bf" defer></script>
+<script src="../assets/nombres.js?v=a5f158bf" defer></script>
+<script src="../assets/calculette.js?v=a5f158bf" defer></script>
+<script src="../assets/formulaire.js?v=a5f158bf" defer></script>
+<script src="../assets/formulaire-donnees.js?v=a5f158bf" defer></script>
+<script src="../assets/outils-page.js?v=a5f158bf" defer></script>
+
+<div class="page" data-site="ctrm" data-page="aide/LIGNE-2-l-effet-joule">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">Maths et physique-chimie — Tle Bac Pro CTRM</a><span class="fleches"><a class="fleche" href="LIGNE-1-le-chemin-de-l-electricite.html" rel="prev" title="S4 — le chemin de l'électricité" aria-label="S4 — le chemin de l'électricité">&lsaquo;</a><a class="fleche" href="LIGNE-3-le-transformateur.html" rel="next" title="S4 — le transformateur" aria-label="S4 — le transformateur">&rsaquo;</a></span><button type="button" class="lu" data-lu="aide/LIGNE-2-l-effet-joule">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">Tle Bac Pro CTRM</p>
+    <h1>L'effet Joule<span>et son carré</span></h1>
+  </div>
+  <p class="accroche">Un câble chauffe, et ce qui chauffe est perdu. La formule tient en trois lettres, mais l'une d'elles est au carré, et c'est elle qui fait toute la différence.</p>
+  <p class="contenu">3 exercices · 30 items d'entraînement · 1 repli · 2 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag">ELEC Électricité — transport, effet Joule, accumulateurs</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="LIGNE-1-le-chemin-de-l-electricite.html">I = P ÷ U</a></b><span class="ou">S4 — le chemin de l'électricité</span><span class="car">les pertes se calculent à partir de l'intensité, qu'il faut d'abord trouver.</span></li><li><b>Calculer un carré et un pourcentage</b><span class="car">les pertes sont un carré, et on les compare à la puissance transportée.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#une-formule-et-une-lettre-au-carre">Une formule, et une lettre au carré</a><a href="#le-calcul-se-fait-en-deux-temps">Le calcul se fait en deux temps</a><a href="#ce-que-le-carre-fait-sur-une-vraie-ligne">Ce que le carré fait sur une vraie ligne</a><a href="#vous-verifier">Vous vérifier</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#a-retenir-en-trois-lignes">À retenir en trois lignes</a></div></nav>
+<h2 id="une-formule-et-une-lettre-au-carre">Une formule, et une lettre au carré</h2>
+<p>Un câble a une <strong>résistance</strong>. Le courant qui le traverse le fait chauffer : c’est l’<strong>effet Joule</strong>, et cette chaleur est perdue pour l’utilisateur.</p>
+<div class="formule">
+<p><strong>P = R × I²</strong></p>
+<ul>
+<li><strong>P</strong><span>la puissance perdue en chaleur, en watts (W)</span></li>
+<li><strong>R</strong><span>la résistance du câble, en ohms (Ω)</span></li>
+<li><strong>I</strong><span>l’intensité qui le traverse, en ampères (A)</span></li>
+</ul>
+<blockquote>
+<p>La tension n’apparaît pas dans la formule. Elle agit <strong>à travers l’intensité</strong>, par I = P ÷ U.</p>
+</blockquote>
+</div>
+<figure class="schema"><div class="dessin" data-schema="carre-intensite"></div><figcaption>Le même câble, trois intensités : les pertes suivent le carré.</figcaption></figure>
+<div class="cle">
+<p><strong>Les pertes dépendent de la résistance une fois, et de l’intensité deux fois.</strong> Diviser la résistance par 2 divise les pertes par 2. Diviser l’intensité par 2 les divise par 4. C’est pour cela qu’on s’attaque à l’intensité.</p>
+</div>
+<h2 id="le-calcul-se-fait-en-deux-temps">Le calcul se fait en deux temps</h2>
+<div class="etapes">
+<ol type="1">
+<li>Je convertis la puissance transportée <strong>en watts</strong>.</li>
+<li>Je calcule l’intensité : <strong>I = P ÷ U</strong>.</li>
+<li>J’élève l’intensité <strong>au carré</strong> : I × I, ou la touche x².</li>
+<li>Je multiplie par la résistance : <strong>R × I²</strong>, en watts.</li>
+<li>Pour une part, je divise les pertes par la puissance transportée, et je multiplie par 100.</li>
+</ol>
+</div>
+<div class="formule">
+<p><strong>Un parc solaire envoie 2 MW sur une ligne de 4 Ω</strong></p>
+<ul>
+<li>sous <strong>10 000 V</strong> : I = 2 000 000 ÷ 10 000 = <strong>200 A</strong> ; pertes = 4 × 200² = <strong>160 000 W</strong>, soit <strong>8 %</strong></li>
+<li>sous <strong>20 000 V</strong> : I = <strong>100 A</strong> ; pertes = 4 × 100² = <strong>40 000 W</strong>, soit <strong>2 %</strong></li>
+</ul>
+<blockquote>
+<p>La tension a doublé, l’intensité a été divisée par 2, et les pertes par <strong>4</strong>.</p>
+</blockquote>
+</div>
+<div class="piege">
+<p><strong>R × I², ce n’est pas (R × I)².</strong> Avec R = 4 Ω et I = 100 A : 4 × 100² fait 40 000 W, mais (4 × 100)² ferait 160 000 W, quatre fois trop. Seule l’intensité est au carré : on fait le carré <strong>d’abord</strong>, la multiplication ensuite.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">D&#39;où vient le carré</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La loi d’Ohm de la seconde dit qu’un câble de résistance R, traversé par l’intensité I, a une tension à ses bornes : <strong>U = R × I</strong>. Ce n’est pas la tension du réseau, c’est la petite chute de tension <strong>le long du câble</strong>.</p>
+<p>La puissance qu’il reçoit, et qu’il transforme en chaleur, vaut tension × intensité : (R × I) × I, soit <strong>R × I²</strong>.</p>
+<p>Le carré a donc une raison simple : <strong>doubler l’intensité double le courant, et double aussi la chute de tension le long du câble.</strong> Deux fois plus de courant, chacun poussé deux fois plus fort : quatre fois plus de chaleur.</p></div></details>
+</div><h2 id="ce-que-le-carre-fait-sur-une-vraie-ligne">Ce que le carré fait sur une vraie ligne</h2>
+<figure class="schema"><div class="dessin" data-schema="pertes-en-ligne"></div><figcaption>La même puissance, la même ligne, deux tensions.</figcaption></figure>
+<p>Monter la tension divise l’intensité, et le carré fait le reste : <strong>c’est tout l’intérêt de la très haute tension</strong>.</p>
+<h2 id="vous-verifier">Vous vérifier</h2>
+<section class="exo" id="LIGNE-2-l-effet-joule-e1" data-exo="LIGNE-2-l-effet-joule-e1" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhga2JqdGp2eC41Nnhga3RqdngveGB4DXgn"><p class="k">Exercice · ELEC</p><h4>Le câble de la pompe</h4><div class="enonce">
+
+<p>Un câble de <strong>0,8 Ω</strong> est traversé par <strong>15 A</strong>. Quelles pertes par effet Joule ?</p>
+</div><div class="indice" hidden>Le carré de l’intensité d’abord, puis la multiplication par la résistance.</div></section>
+<section class="exo" id="LIGNE-2-l-effet-joule-e2" data-exo="LIGNE-2-l-effet-joule-e2" data-type="calcul" data-savoir="ELEC" data-a="IXgueGB4OTs2OS82eHZ4LHhga2piamp0anZ4LjU2eGBrdGp2eC94YHgNeCc="><p class="k">Exercice · ELEC</p><h4>La ligne de la carrière</h4><div class="enonce">
+
+<p>Une ligne de <strong>3 Ω</strong> transporte <strong>900 kW</strong> sous <strong>15 000 V</strong>. Quelles pertes, en watts ?</p>
+</div><div class="indice" hidden>Deux temps : I = P ÷ U avec P en watts, puis R × I². Les kilowatts se convertissent avant la division.</div></section>
+<section class="exo" id="LIGNE-2-l-effet-joule-e3" data-exo="LIGNE-2-l-effet-joule-e3" data-type="justification" data-savoir="ELEC" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · ELEC</p><h4>Le raisonnement du camarade</h4><div class="enonce">
+
+<p>Un camarade affirme : « <em>on a divisé l’intensité par 4, donc les pertes sont divisées par 4</em> ». Que lui répondre ?</p>
+</div><div class="indice" hidden>Prenez un câble de 1 Ω, calculez les pertes à 40 A puis à 10 A, et comparez les deux résultats.</div><ul class="verifier" hidden><li>J’ai dit par combien les pertes sont vraiment divisées</li><li>J’ai relié ce nombre au carré de la formule P = R × I²</li><li>J’ai appuyé ma réponse sur un exemple chiffré</li></ul></section>
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+<p><em>On remplit chaque case, puis on vérifie la série entière d’un coup.</em></p>
+<section class="serie" id="LIGNE-2-l-effet-joule-s1" data-serie="LIGNE-2-l-effet-joule-s1" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YGtubnRqJ3YheCx4YGxob3RqJ3YheCx4YGtsamp0aid2IXgseGBoaG9qanRqJ3YheCx4YGp0aG8ndiF4LHhgaHRobycHJw=="><p class="k">Série · ELEC</p><h4>Série 1 — le carré d’abord</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">12²</span></li><li><span class="q">25²</span></li><li><span class="q">40²</span></li><li><span class="q">150²</span></li><li><span class="q">0,5²</span></li><li><span class="q">1,5²</span></li></ol><div class="indice" hidden>Un carré, c’est le nombre multiplié par lui-même. Le carré d’un nombre plus petit que 1 est encore plus petit.</div></section>
+<section class="serie" id="LIGNE-2-l-effet-joule-s2" data-serie="LIGNE-2-l-effet-joule-s2" data-savoir="ELEC" data-a="IXgveGB4DXh2eC41Nnhga3RqdngzeGABIXgseGBpamp0aid2IXgseGBvamp0aid2IXgseGBjamp0aid2IXgseGBtaGp0aid2IXgseGBsamp0aid2IXgseGBodG8nByc="><p class="k">Série · ELEC</p><h4>Série 2 — l’effet Joule, P = R × I²</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">R = 3 Ω et I = 10 A</span></li><li><span class="q">R = 0,2 Ω et I = 50 A</span></li><li><span class="q">R = 4 Ω et I = 15 A</span></li><li><span class="q">R = 0,05 Ω et I = 120 A</span></li><li><span class="q">R = 1,5 Ω et I = 20 A</span></li><li><span class="q">R = 10 Ω et I = 0,5 A</span></li></ol><div class="indice" hidden>Le carré s’applique à l’intensité seule. Une intensité inférieure à 1 A donne un carré encore plus petit.</div></section>
+<section class="serie" id="LIGNE-2-l-effet-joule-s3" data-serie="LIGNE-2-l-effet-joule-s3" data-savoir="ELEC" data-a="IXgveGB4G3h2eC41Nnhga3RqdngzeGABIXgseGBramp0aid2IXgseGBoamp0aid2IXgseGBoamp0aid2IXgseGBraG90aid2IXgseGBramp0aid2IXgseGBranRqJwcn"><p class="k">Série · ELEC</p><h4>Série 3 — l’intensité d’abord, I = P ÷ U</h4><div class="enonce">
+
+</div><ol class="items"><li><span class="q">2 MW sous 20 000 V</span></li><li><span class="q">2 MW sous 10 000 V</span></li><li><span class="q">46 kW sous 230 V</span></li><li><span class="q">50 kW sous 400 V</span></li><li><span class="q">9 MW sous 90 000 V</span></li><li><span class="q">2,3 kW sous 230 V</span></li></ol><div class="indice" hidden>La puissance en watts avant de diviser : 2 MW font 2 000 000 W, 46 kW font 46 000 W.</div></section>
+<section class="serie" id="LIGNE-2-l-effet-joule-s4" data-serie="LIGNE-2-l-effet-joule-s4" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBodGp2eDN4YAEheCx4YGtqanRqJ3YheCx4YGhqampqdGondiF4LHhgbnRqJ3YheCx4YGhqdGondiF4LHhgYmpqdGondiF4LHhganRrbCcHJw=="><p class="k">Série · ELEC</p><h4>Série 4 — 500 kW sur une ligne de 2 Ω</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">sous 5 000 V, l’intensité, en A</span></li><li><span class="q">sous 5 000 V, les pertes, en W</span></li><li><span class="q">sous 5 000 V, la part perdue, en %</span></li><li><span class="q">sous 25 000 V, l’intensité, en A</span></li><li><span class="q">sous 25 000 V, les pertes, en W</span></li><li><span class="q">sous 25 000 V, la part perdue, en %</span></li></ol><div class="indice" hidden>500 kW font 500 000 W. La part perdue : les pertes divisées par 500 000, puis multipliées par 100.</div></section>
+<section class="serie" id="LIGNE-2-l-effet-joule-s5" data-serie="LIGNE-2-l-effet-joule-s5" data-savoir="ELEC" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheCx4YG50aid2IXgseGBjdGondiF4LHhgaHRobyd2IXgseGBqdGhvJ3YheCx4YGp0amsndiF4LHhganRqbicHJw=="><p class="k">Série · ELEC</p><h4>Série 5 — par combien les pertes sont-elles multipliées ?</h4><div class="enonce">
+
+</div><ol class="items larges"><li><span class="q">l’intensité multipliée par 2</span></li><li><span class="q">l’intensité multipliée par 3</span></li><li><span class="q">l’intensité multipliée par 1,5</span></li><li><span class="q">l’intensité multipliée par 0,5</span></li><li><span class="q">l’intensité divisée par 10, les pertes multipliées par</span></li><li><span class="q">l’intensité divisée par 5, les pertes multipliées par</span></li></ol><div class="indice" hidden>Ce qui arrive à l’intensité arrive deux fois aux pertes : on élève le facteur au carré. Diviser par 5, c’est multiplier par 0,2.</div></section>
+<h2 id="a-retenir-en-trois-lignes">À retenir en trois lignes</h2>
+<div class="enveloppe-tbl"><table>
+<tbody>
+<tr>
+<td><strong>P = R × I²</strong></td>
+<td>en watts ; seule l’intensité est au carré</td>
+</tr>
+<tr>
+<td><strong>Intensité × 2 → pertes × 4</strong></td>
+<td>intensité ÷ 10 → pertes ÷ 100</td>
+</tr>
+<tr>
+<td><strong>D’abord I = P ÷ U</strong></td>
+<td>puis le carré, puis la résistance</td>
+</tr>
+</tbody>
+</table></div>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="LIGNE-1-le-chemin-de-l-electricite.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">S4 — le chemin de l'électricité</span></a><a class="ap" href="LIGNE-3-le-transformateur.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">S4 — le transformateur</span></a></div></nav>
+<p class="pied">Cette page détaille la séance 2 de la séquence. Elle ne remplace pas les documents distribués et ne donne aucun corrigé.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+

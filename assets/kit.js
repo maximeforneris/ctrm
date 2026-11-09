@@ -3234,6 +3234,413 @@ SCHEMAS["derive-caisse"]=function(el){
     "impossible. <b>Prolonger une hausse, c'est supposer que rien ne change.</b>"));
 };
 
+/* ─────────── TLE · fiches S4 : la tension le long du chemin ─────────── */
+SCHEMAS["tension-le-long"]=function(el){
+  var W=724,H=352;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"La tension de la centrale a la borne : elle monte jusqu'a la tres haute tension, puis redescend en deux fois jusqu'a 400 V"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "LA TENSION LE LONG DU CHEMIN : ELLE MONTE, VOYAGE, PUIS REDESCEND"));
+  var defs=S("defs",{});
+  [["fl-tl-c","chaud"],["fl-tl-f","froid"]].forEach(function(m){
+    var mk=S("marker",{id:m[0],viewBox:"0 0 10 10",refX:"9",refY:"5",
+      markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"});
+    mk.appendChild(S("path",{d:"M 0 0 L 10 5 L 0 10 z",fill:V(m[1])}));
+    defs.appendChild(mk);
+  });
+  svg.appendChild(defs);
+  /* trois niveaux, PAS a l'echelle : la legende le dit */
+  var YT=74,YH=164,YB=244,XG=124;
+  [[YT,"400 000 V"],[YH,"20 000 V"],[YB,"400 V"]].forEach(function(n){
+    svg.appendChild(S("line",{x1:XG,y1:n[0],x2:706,y2:n[0],stroke:V("trait2"),
+      "stroke-width":"1","stroke-dasharray":"2 4"}));
+    svg.appendChild(S("text",{x:XG-12,y:n[0]+4,"text-anchor":"end","class":"s-lab"},n[1]));
+  });
+  var X=[144,232,430,582,684];
+  function trait(x1,x2,y){
+    svg.appendChild(S("line",{x1:x1,y1:y,x2:x2,y2:y,stroke:V("encre"),"stroke-width":"4",
+      "stroke-linecap":"round"}));
+  }
+  trait(X[0],X[1],YH); trait(X[1],X[2],YT); trait(X[2],X[3],YH); trait(X[3],X[4],YB);
+  function marche(x,y1,y2,coul,fl,mot,gauche){
+    svg.appendChild(S("line",{x1:x,y1:y1,x2:x,y2:y2+(y2<y1?6:-6),stroke:V(coul),
+      "stroke-width":"3","marker-end":"url(#"+fl+")"}));
+    svg.appendChild(S("text",{x:gauche?x-9:x+9,y:(y1+y2)/2+4,"text-anchor":gauche?"end":"start",
+      "class":"s-lab",fill:V(coul)},mot));
+  }
+  marche(X[1],YH,YT,"chaud","fl-tl-c","élévateur",true);
+  marche(X[2],YT,YH,"froid","fl-tl-f","abaisseur");
+  marche(X[3],YH,YB,"froid","fl-tl-f","abaisseur");
+  /* ce que fait chaque troncon, sous son trait */
+  [[(X[1]+X[2])/2,YT,"très haute tension","des centaines de km"],
+   [(X[2]+X[3])/2,YH,"réseau de distribution","quelques km"],
+   [(X[3]+X[4])/2,YB,"câble du dépôt","dizaines de m"]].forEach(function(t){
+    svg.appendChild(S("text",{x:t[0],y:t[1]+20,"text-anchor":"middle","class":"s-pet"},t[2]));
+    svg.appendChild(S("text",{x:t[0],y:t[1]+35,"text-anchor":"middle","class":"s-pet"},t[3]));
+  });
+  [[X[0],YH,"la centrale"],[X[2],YH,"le poste source"],[X[3],YB,"le poste du dépôt"],[X[4],YB,"la borne"]]
+  .forEach(function(p){
+    svg.appendChild(S("circle",{cx:p[0],cy:p[1],r:"5",fill:V("encre")}));
+    svg.appendChild(S("text",{x:p[0],y:304,"text-anchor":"middle","class":"s-nom"},p[2]));
+  });
+  svg.appendChild(S("text",{x:20,y:338,"class":"s-pet"},
+    "Hauteurs pas à l'échelle : 400 000 V, c'est mille fois 400 V."));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Le dépôt n'est pas branché sur la très haute tension : il est raccordé au "+
+    "<b>réseau de distribution, en 20 000 V</b>. Le poste source fait redescendre la tension "+
+    "une première fois, le transformateur du dépôt une seconde, <b>à quelques dizaines de "+
+    "mètres des bornes</b>. Plus le trajet qui reste est court, plus la tension peut être basse."));
+};
+
+/* ─────────── TLE · fiches S4 : doubler l'intensite, quadrupler les pertes ─────────── */
+SCHEMAS["carre-intensite"]=function(el){
+  var W=724,H=318,U=46,Y0=246;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Trois carres de cote 1, 2 et 3 : les pertes sont multipliees par 1, 4 et 9"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "DOUBLER L'INTENSITÉ, C'EST QUADRUPLER LES PERTES"));
+  [{n:1,x:40,i:"I = 10 A",p:"300 W",c:"1 carré"},
+   {n:2,x:134,i:"I = 20 A",p:"1 200 W",c:"4 carrés"},
+   {n:3,x:276,i:"I = 30 A",p:"2 700 W",c:"9 carrés"}].forEach(function(q){
+    for(var a=0;a<q.n;a++)for(var b=0;b<q.n;b++){
+      svg.appendChild(S("rect",{x:q.x+a*U,y:Y0-(b+1)*U,width:U,height:U,fill:V("chaud"),
+        opacity:".28",stroke:V("chaud"),"stroke-width":"1.5"}));
+    }
+    svg.appendChild(S("rect",{x:q.x,y:Y0-q.n*U,width:q.n*U,height:q.n*U,fill:"none",
+      stroke:V("encre"),"stroke-width":"2"}));
+    var cx=q.x+q.n*U/2;
+    svg.appendChild(S("text",{x:cx,y:Y0-q.n*U-10,"text-anchor":"middle","class":"s-pet"},q.c));
+    svg.appendChild(S("text",{x:cx,y:Y0+24,"text-anchor":"middle","class":"s-lab"},q.i));
+    svg.appendChild(S("text",{x:cx,y:Y0+44,"text-anchor":"middle","class":"s-pet",
+      fill:V("chaud")},"pertes : "+q.p));
+  });
+  var XR=462;
+  svg.appendChild(S("rect",{x:XR,y:70,width:244,height:176,rx:"8",fill:V("carte2"),
+    stroke:V("trait"),"stroke-width":"1.5"}));
+  svg.appendChild(S("text",{x:XR+122,y:104,"text-anchor":"middle","class":"s-lab",
+    style:"font-size:17px"},"P = R × I²"));
+  svg.appendChild(S("text",{x:XR+122,y:126,"text-anchor":"middle","class":"s-pet"},
+    "un câble de R = 3 Ω"));
+  [["I × 2","pertes × 4",162],["I × 3","pertes × 9",190],["I ÷ 10","pertes ÷ 100",218]]
+  .forEach(function(r){
+    svg.appendChild(S("text",{x:XR+24,y:r[2],"class":"s-lab"},r[0]));
+    svg.appendChild(S("text",{x:XR+96,y:r[2],"class":"s-pet"},"→"));
+    svg.appendChild(S("text",{x:XR+122,y:r[2],"class":"s-lab",fill:V("chaud")},r[1]));
+  });
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Chaque petit carré, ce sont les pertes à 10 A dans le même câble. Doubler l'intensité "+
+    "double le côté du carré : il en contient <b>quatre</b>. La tripler : <b>neuf</b>. "+
+    "C'est ce que veut dire « au carré », et c'est pourquoi on fait baisser l'intensité "+
+    "plutôt que la résistance."));
+};
+
+/* ─────────── TLE · fiches S4 : le banc du transformateur, d'autres bobines ─────────── */
+SCHEMAS["banc-transfo"]=function(el){
+  var W=724,H=344;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Le banc du transformateur : 1 000 et 250 spires, 12,0 V au primaire, 2,8 V au secondaire"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "LE BANC, AVEC D'AUTRES BOBINES QUE CELLES DU TP"));
+  /* le generateur */
+  svg.appendChild(S("rect",{x:20,y:96,width:96,height:128,rx:"6",fill:V("carte2"),
+    stroke:V("encre"),"stroke-width":"2"}));
+  svg.appendChild(S("text",{x:68,y:132,"text-anchor":"middle","class":"s-nom"},"générateur"));
+  svg.appendChild(S("text",{x:68,y:152,"text-anchor":"middle","class":"s-lab"},"TBT ~"));
+  svg.appendChild(S("text",{x:68,y:172,"text-anchor":"middle","class":"s-pet"},"alternatif"));
+  /* le noyau */
+  var CG=244,CD=394;
+  svg.appendChild(S("rect",{x:CG,y:92,width:CD-CG,height:136,fill:"none",
+    stroke:V("trait"),"stroke-width":"16",rx:"4"}));
+  svg.appendChild(S("text",{x:(CG+CD)/2,y:164,"text-anchor":"middle","class":"s-pet"},"noyau"));
+  function bobine(x,y0,y1,n,coul){
+    var h=(y1-y0)/n;
+    for(var i=0;i<n;i++){
+      svg.appendChild(S("ellipse",{cx:x,cy:y0+h*(i+.5),rx:"22",ry:Math.max(h/2-1,3),
+        fill:"none",stroke:V(coul),"stroke-width":"2.5"}));
+    }
+  }
+  bobine(CG,110,210,8,"froid");
+  bobine(CD,136,184,2,"chaud");
+  /* fils du primaire, et V1 en derivation */
+  function fil(d,coul){svg.appendChild(S("path",{d:d,fill:"none",stroke:V(coul),
+    "stroke-width":"2"}));}
+  fil("M 116 120 H "+(CG-22),"froid"); fil("M 116 200 H "+(CG-22),"froid");
+  fil("M 172 120 V 144","froid"); fil("M 172 176 V 200","froid");
+  [[172,120],[172,200]].forEach(function(p){
+    svg.appendChild(S("circle",{cx:p[0],cy:p[1],r:"3.5",fill:V("froid")}));});
+  function voltm(x,y){
+    svg.appendChild(S("circle",{cx:x,cy:y,r:"16",fill:V("carte"),stroke:V("encre"),
+      "stroke-width":"2"}));
+    svg.appendChild(S("text",{x:x,y:y+5,"text-anchor":"middle","class":"s-lab"},"V"));
+  }
+  voltm(172,160);
+  /* fils du secondaire, et V2 */
+  fil("M "+(CD+22)+" 140 H 486 V 144","chaud"); fil("M "+(CD+22)+" 180 H 486 V 176","chaud");
+  voltm(486,160);
+  svg.appendChild(S("text",{x:172,y:252,"text-anchor":"middle","class":"s-lab",
+    fill:V("froid")},"U₁ = 12,0 V"));
+  svg.appendChild(S("text",{x:486,y:252,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"U₂ = 2,8 V"));
+  svg.appendChild(S("text",{x:CG,y:276,"text-anchor":"middle","class":"s-lab",
+    fill:V("froid")},"N₁ = 1 000"));
+  svg.appendChild(S("text",{x:CD,y:276,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"N₂ = 250"));
+  svg.appendChild(S("text",{x:CG,y:294,"text-anchor":"middle","class":"s-pet"},"primaire"));
+  svg.appendChild(S("text",{x:CD,y:294,"text-anchor":"middle","class":"s-pet"},"secondaire"));
+  /* le releve */
+  var XR=540;
+  svg.appendChild(S("rect",{x:XR,y:80,width:166,height:164,rx:"8",fill:V("carte2"),
+    stroke:V("trait"),"stroke-width":"1.5"}));
+  svg.appendChild(S("text",{x:XR+14,y:108,"class":"s-pet"},"rapport des spires"));
+  svg.appendChild(S("text",{x:XR+14,y:130,"class":"s-lab"},"N₂ ÷ N₁ = 0,25"));
+  svg.appendChild(S("text",{x:XR+14,y:166,"class":"s-pet"},"rapport mesuré"));
+  svg.appendChild(S("text",{x:XR+14,y:188,"class":"s-lab"},"U₂ ÷ U₁ ≈ 0,23"));
+  svg.appendChild(S("text",{x:XR+14,y:224,"class":"s-nom",fill:V("vert")},"presque égaux"));
+  svg.appendChild(S("text",{x:20,y:330,"class":"s-pet"},
+    "Les deux voltmètres en mode alternatif (~ ou AC) : réglés en continu, ils afficheraient 0."));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "On lit les deux tensions, puis on calcule <b>deux rapports</b> et on les compare. "+
+    "Le rapport mesuré tombe un peu sous celui des spires : un vrai transformateur perd un "+
+    "peu dans son fer et ses fils. On écrit que les deux rapports sont <b>presque égaux</b>, "+
+    "et la relation du cours en sort."));
+};
+
+/* ─────────── TLE · fiches S4 : la meme puissance des deux cotes ─────────── */
+SCHEMAS["deux-cotes-transfo"]=function(el){
+  var W=724,H=322,YF=150;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Un transformateur traverse par 400 kW : 40 A cote 10 000 V, 1 000 A cote 400 V"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "LA MÊME PUISSANCE TRAVERSE LES DEUX CÔTÉS DU TRANSFORMATEUR"));
+  /* fil fin a gauche, gros cable a droite */
+  svg.appendChild(S("line",{x1:30,y1:YF,x2:318,y2:YF,stroke:V("froid"),"stroke-width":"2.5"}));
+  svg.appendChild(S("line",{x1:406,y1:YF,x2:694,y2:YF,stroke:V("chaud"),"stroke-width":"12",
+    "stroke-linecap":"round",opacity:".85"}));
+  svg.appendChild(S("circle",{cx:344,cy:YF,r:"30",fill:"none",stroke:V("encre"),"stroke-width":"2.5"}));
+  svg.appendChild(S("circle",{cx:380,cy:YF,r:"30",fill:"none",stroke:V("encre"),"stroke-width":"2.5"}));
+  svg.appendChild(S("text",{x:362,y:YF-46,"text-anchor":"middle","class":"s-nom"},"le transformateur"));
+  svg.appendChild(S("text",{x:174,y:YF-40,"text-anchor":"middle","class":"s-lab",
+    fill:V("froid")},"côté 10 000 V"));
+  svg.appendChild(S("text",{x:174,y:YF+34,"text-anchor":"middle","class":"s-lab"},"I = 40 A"));
+  svg.appendChild(S("text",{x:174,y:YF+54,"text-anchor":"middle","class":"s-pet"},
+    "400 000 ÷ 10 000"));
+  svg.appendChild(S("text",{x:550,y:YF-40,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"côté 400 V"));
+  svg.appendChild(S("text",{x:550,y:YF+38,"text-anchor":"middle","class":"s-lab"},"I = 1 000 A"));
+  svg.appendChild(S("text",{x:550,y:YF+58,"text-anchor":"middle","class":"s-pet"},
+    "400 000 ÷ 400"));
+  /* l'accolade des pertes sous le gros cable */
+  svg.appendChild(S("path",{d:"M 420 "+(YF+76)+" Q 420 "+(YF+88)+" 550 "+(YF+88)+
+    " Q 680 "+(YF+88)+" 680 "+(YF+76),fill:"none",stroke:V("chaud"),"stroke-width":"1.5"}));
+  svg.appendChild(S("text",{x:550,y:YF+110,"text-anchor":"middle","class":"s-nom",
+    fill:V("chaud")},"c'est ici que le câble chauffe"));
+  svg.appendChild(S("line",{x1:20,y1:282,x2:W-20,y2:282,stroke:V("trait2"),"stroke-width":"1"}));
+  svg.appendChild(S("text",{x:20,y:306,"class":"s-lab"},"400 kW des deux côtés"));
+  svg.appendChild(S("text",{x:W-20,y:306,"text-anchor":"end","class":"s-lab"},
+    "tension ÷ 25  →  intensité × 25"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Le transformateur ne fabrique pas d'énergie : <b>la même puissance passe des deux "+
+    "côtés</b>, aux pertes près. Ce qu'il retire à la tension, il le rend à l'intensité. "+
+    "Côté 400 V passent vingt-cinq fois plus d'ampères : <b>c'est là que se calculent "+
+    "les pertes</b>."));
+};
+
+/* ─────────── TLE · fiches S5 : deux questions pour trouver le mode ─────────── */
+SCHEMAS["trois-questions-mode"]=function(el){
+  var W=724,H=360;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Deux questions : y a-t-il contact, puis la matiere se deplace-t-elle ? Rayonnement, convection ou conduction"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "QUEL MODE ? DEUX QUESTIONS, DANS CET ORDRE"));
+  var defs=S("defs",{}),mk=S("marker",{id:"fl-qm",viewBox:"0 0 10 10",refX:"9",refY:"5",
+    markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"});
+  mk.appendChild(S("path",{d:"M 0 0 L 10 5 L 0 10 z",fill:V("encre2")}));
+  defs.appendChild(mk); svg.appendChild(defs);
+  function question(x,y,w,h,l1,l2){
+    svg.appendChild(S("rect",{x:x,y:y,width:w,height:h,rx:"22",fill:V("carte2"),
+      stroke:V("encre"),"stroke-width":"2"}));
+    svg.appendChild(S("text",{x:x+w/2,y:y+(l2?h/2-3:h/2+5),"text-anchor":"middle",
+      "class":"s-lab"},l1));
+    if(l2)svg.appendChild(S("text",{x:x+w/2,y:y+h/2+15,"text-anchor":"middle",
+      "class":"s-lab"},l2));
+  }
+  function feuille(x,y,nom,l1,l2,ex){
+    svg.appendChild(S("rect",{x:x,y:y,width:196,height:98,rx:"6",fill:V("carte"),
+      stroke:V("chaud"),"stroke-width":"2"}));
+    svg.appendChild(S("text",{x:x+98,y:y+24,"text-anchor":"middle","class":"s-lab",
+      fill:V("chaud")},nom));
+    svg.appendChild(S("text",{x:x+98,y:y+46,"text-anchor":"middle","class":"s-pet"},l1));
+    svg.appendChild(S("text",{x:x+98,y:y+62,"text-anchor":"middle","class":"s-pet"},l2));
+    svg.appendChild(S("text",{x:x+98,y:y+86,"text-anchor":"middle","class":"s-nom"},ex));
+  }
+  function fleche(x1,y1,x2,y2,mot,xm,ym,ancre){
+    svg.appendChild(S("line",{x1:x1,y1:y1,x2:x2,y2:y2,stroke:V("encre2"),"stroke-width":"2",
+      "marker-end":"url(#fl-qm)"}));
+    svg.appendChild(S("text",{x:xm,y:ym,"text-anchor":ancre||"middle","class":"s-lab"},mot));
+  }
+  question(232,44,260,44,"Y a-t-il contact ?");
+  fleche(290,88,140,148,"non",196,112);
+  fleche(434,88,520,138,"oui",500,108);
+  feuille(36,150,"RAYONNEMENT","des ondes,","même dans le vide","ex. : la lampe chauffante");
+  question(380,140,284,58,"La matière qui touche","se déplace-t-elle ?");
+  fleche(462,198,420,248,"oui",424,226,"end");
+  fleche(586,198,616,248,"non",614,226,"start");
+  feuille(312,250,"CONVECTION","un fluide qui bouge,","air ou liquide","ex. : souffler sur la soupe");
+  feuille(520,250,"CONDUCTION","de proche en proche,","la matière reste en place","ex. : la cuillère dans le thé");
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Sans contact, c'est le <b>rayonnement</b>, le seul qui traverse le vide. Avec contact, "+
+    "on regarde si la matière bouge : un fluide qui se déplace emporte la chaleur avec lui, "+
+    "c'est la <b>convection</b> ; une matière qui reste en place la passe de proche en "+
+    "proche, c'est la <b>conduction</b>."));
+};
+
+/* ─────────── TLE · fiches S5 : la glace fondue sous quatre habillages ─────────── */
+SCHEMAS["fonte-isolants"]=function(el){
+  var W=724,H=318,X0=196,ECH=1.9;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"Glace fondue en une heure : 180 g sans habillage, 130 g sous un torchon, 70 g sous la laine, 50 g sous le polystyrene"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "UNE HEURE, LA MÊME GLACE : CE QUI A FONDU DANS CHAQUE BOÎTE"));
+  var R=[["aucun habillage",180,"rang 4"],["un torchon",130,"rang 3"],
+         ["de la laine",70,"rang 2"],["du polystyrène",50,"rang 1"]];
+  R.forEach(function(r,i){
+    var y=62+i*50, w=r[1]*ECH, top=i===R.length-1;
+    svg.appendChild(S("text",{x:X0-14,y:y+20,"text-anchor":"end","class":"s-lab"},r[0]));
+    svg.appendChild(S("rect",{x:X0,y:y,width:w,height:30,fill:V(top?"vert":"froid"),
+      opacity:top?".75":".45",stroke:V(top?"vert":"froid"),"stroke-width":"1.5"}));
+    svg.appendChild(S("text",{x:X0+w+10,y:y+20,"class":"s-lab"},r[1]+" g"));
+    svg.appendChild(S("text",{x:612,y:y+20,"class":"s-lab",fill:V(top?"vert":"encre2")},r[2]));
+  });
+  svg.appendChild(S("text",{x:612,y:276,"class":"s-nom",fill:V("vert")},"le meilleur"));
+  svg.appendChild(S("text",{x:612,y:292,"class":"s-nom",fill:V("vert")},"isolant"));
+  svg.appendChild(S("line",{x1:20,y1:262,x2:590,y2:262,stroke:V("trait2"),"stroke-width":"1"}));
+  svg.appendChild(S("text",{x:20,y:286,"class":"s-lab"},
+    "moins ça fond, moins la chaleur est entrée :"));
+  svg.appendChild(S("text",{x:20,y:304,"class":"s-lab",fill:V("vert")},"mieux ça isole"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Même glace, mêmes boîtes, même durée : <b>seul l'habillage change</b>. La glace fond "+
+    "parce que la chaleur entre ; là où elle fond le moins, la chaleur est le moins entrée. "+
+    "Le classement se lit donc <b>à l'envers des barres</b> : la plus courte est le meilleur "+
+    "isolant."));
+};
+
+/* ─────────── TLE · fiches S5 : l'air isole tant qu'il ne bouge pas ─────────── */
+SCHEMAS["air-piege"]=function(el){
+  var W=724,H=330;
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"A gauche, l'air enferme dans les bulles d'une mousse ; a droite, le meme air qui tourne entre deux parois"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "L'AIR ISOLE… TANT QU'IL NE BOUGE PAS"));
+  var defs=S("defs",{}),mk=S("marker",{id:"fl-ap",viewBox:"0 0 10 10",refX:"9",refY:"5",
+    markerWidth:"6",markerHeight:"6",orient:"auto-start-reverse"});
+  mk.appendChild(S("path",{d:"M 0 0 L 10 5 L 0 10 z",fill:V("chaud")}));
+  defs.appendChild(mk); svg.appendChild(defs);
+  /* a gauche : la mousse, des bulles fermees */
+  svg.appendChild(S("text",{x:186,y:56,"text-anchor":"middle","class":"s-nom"},
+    "la mousse, vue à la loupe"));
+  svg.appendChild(S("rect",{x:70,y:70,width:232,height:150,fill:V("carte2"),
+    stroke:V("encre"),"stroke-width":"2"}));
+  for(var a=0;a<7;a++)for(var b=0;b<4;b++){
+    svg.appendChild(S("circle",{cx:88+a*31+(b%2?8:0),cy:90+b*37,r:"13",fill:V("carte"),
+      stroke:V("froid"),"stroke-width":"1.5"}));
+  }
+  svg.appendChild(S("line",{x1:24,y1:145,x2:96,y2:145,stroke:V("chaud"),"stroke-width":"2",
+    "marker-end":"url(#fl-ap)"}));
+  svg.appendChild(S("text",{x:24,y:136,"class":"s-pet",fill:V("chaud")},"chaleur"));
+  svg.appendChild(S("text",{x:186,y:244,"text-anchor":"middle","class":"s-pet"},
+    "de l'air enfermé, qui ne peut pas bouger"));
+  svg.appendChild(S("text",{x:186,y:260,"text-anchor":"middle","class":"s-pet"},
+    "la chaleur avance mal, de bulle en bulle"));
+  /* a droite : le meme air, libre de tourner */
+  svg.appendChild(S("text",{x:548,y:56,"text-anchor":"middle","class":"s-nom"},
+    "le même air, entre deux parois"));
+  svg.appendChild(S("rect",{x:420,y:70,width:12,height:150,fill:V("chaud"),opacity:".6"}));
+  svg.appendChild(S("rect",{x:664,y:70,width:12,height:150,fill:V("froid"),opacity:".6"}));
+  svg.appendChild(S("text",{x:412,y:150,"text-anchor":"end","class":"s-pet",
+    fill:V("chaud")},"chaud"));
+  svg.appendChild(S("text",{x:684,y:150,"class":"s-pet",
+    fill:V("froid")},"froid"));
+  svg.appendChild(S("path",{d:"M 460 196 C 450 120 460 92 548 92 C 636 92 646 120 636 150",
+    fill:"none",stroke:V("chaud"),"stroke-width":"2.5","marker-end":"url(#fl-ap)"}));
+  svg.appendChild(S("path",{d:"M 636 150 C 628 200 620 204 548 204 C 486 204 470 202 462 198",
+    fill:"none",stroke:V("froid"),"stroke-width":"2.5","marker-end":"url(#fl-ap)"}));
+  svg.appendChild(S("text",{x:548,y:146,"text-anchor":"middle","class":"s-pet"},"l'air tourne"));
+  svg.appendChild(S("text",{x:548,y:252,"text-anchor":"middle","class":"s-pet"},
+    "réchauffé, il monte ; refroidi, il descend :"));
+  svg.appendChild(S("text",{x:548,y:268,"text-anchor":"middle","class":"s-pet"},
+    "il emporte la chaleur d'une paroi à l'autre"));
+  svg.appendChild(S("line",{x1:20,y1:286,x2:W-20,y2:286,stroke:V("trait2"),"stroke-width":"1"}));
+  svg.appendChild(S("text",{x:186,y:312,"text-anchor":"middle","class":"s-lab",
+    fill:V("froid")},"conduction seule : ça isole"));
+  svg.appendChild(S("text",{x:548,y:312,"text-anchor":"middle","class":"s-lab",
+    fill:V("chaud")},"la convection reprend la main"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Ce n'est pas le plastique de la mousse qui isole, c'est <b>l'air enfermé dans ses "+
+    "bulles</b>. L'air immobile conduit très mal la chaleur. Laissé libre entre deux parois, "+
+    "le même air se met à tourner et <b>transporte</b> la chaleur au lieu de la freiner."));
+};
+
+/* ─────────── TLE · fiches S5 : une hausse moyenne, prolongee depuis le depart ─────────── */
+SCHEMAS["hausse-moyenne"]=function(el){
+  var W=724,H=326,X0=76,X1=460,Y0=270,Y1=56,TM=6,TMAX=24;
+  function fx(t){return X0+t/TM*(X1-X0);}
+  function fy(T){return Y0-T/TMAX*(Y0-Y1);}
+  var svg=S("svg",{viewBox:"0 0 "+W+" "+H,role:"img",
+    "aria-label":"De 4 degres a 10 degres en 3 heures : 2 degres par heure, donc 14 degres a 5 heures"});
+  svg.appendChild(S("text",{x:20,y:26,"class":"s-tit"},
+    "UNE HAUSSE PAR HEURE, PROLONGÉE DEPUIS LE DÉPART"));
+  [0,4,8,12,16,20,24].forEach(function(T){
+    svg.appendChild(S("line",{x1:X0,y1:fy(T),x2:X1,y2:fy(T),stroke:V("trait2"),
+      "stroke-width":"1",opacity:".45"}));
+    svg.appendChild(S("text",{x:X0-10,y:fy(T)+4,"text-anchor":"end","class":"s-pet"},T+" °C"));
+  });
+  [0,1,2,3,4,5,6].forEach(function(t){
+    svg.appendChild(S("text",{x:fx(t),y:Y0+20,"text-anchor":"middle","class":"s-pet"},t+" h"));
+  });
+  svg.appendChild(S("line",{x1:X0,y1:Y0,x2:X1,y2:Y0,stroke:V("encre"),"stroke-width":"2"}));
+  svg.appendChild(S("line",{x1:X0,y1:Y0,x2:X0,y2:Y1,stroke:V("encre"),"stroke-width":"2"}));
+  /* l'escalier : deux degres par heure */
+  svg.appendChild(S("path",{d:"M "+fx(0)+" "+fy(4)+" H "+fx(1)+" V "+fy(6)+" H "+fx(2)+
+    " V "+fy(8)+" H "+fx(3)+" V "+fy(10)+" H "+fx(4)+" V "+fy(12)+" H "+fx(5)+" V "+fy(14),
+    fill:"none",stroke:V("vert"),"stroke-width":"2"}));
+  [1,2,3,4,5].forEach(function(t){
+    svg.appendChild(S("text",{x:fx(t)+6,y:fy(4+2*t)+20,"class":"s-pet",fill:V("vert")},"+ 2"));
+  });
+  svg.appendChild(S("line",{x1:fx(0),y1:fy(4),x2:fx(3),y2:fy(10),stroke:V("froid"),
+    "stroke-width":"2.5"}));
+  svg.appendChild(S("line",{x1:fx(3),y1:fy(10),x2:fx(5),y2:fy(14),stroke:V("froid"),
+    "stroke-width":"2.5","stroke-dasharray":"6 4"}));
+  svg.appendChild(S("circle",{cx:fx(0),cy:fy(4),r:"5",fill:V("encre")}));
+  svg.appendChild(S("circle",{cx:fx(3),cy:fy(10),r:"5",fill:V("encre")}));
+  svg.appendChild(S("circle",{cx:fx(5),cy:fy(14),r:"6",fill:"none",stroke:V("froid"),
+    "stroke-width":"2.5"}));
+  svg.appendChild(S("text",{x:fx(0)+10,y:fy(4)+22,"class":"s-pet"},"mesuré : 4 °C"));
+  svg.appendChild(S("text",{x:fx(3)-12,y:fy(10)-12,"text-anchor":"end","class":"s-pet"},
+    "mesuré : 10 °C"));
+  var XR=490;
+  svg.appendChild(S("text",{x:XR,y:84,"class":"s-nom"},"deux mesures"));
+  svg.appendChild(S("text",{x:XR,y:104,"class":"s-pet"},"4 °C → 10 °C en 3 h"));
+  svg.appendChild(S("text",{x:XR,y:140,"class":"s-nom"},"la hausse par heure"));
+  svg.appendChild(S("text",{x:XR,y:160,"class":"s-pet"},"(10 − 4) ÷ 3 = 2 °C/h"));
+  svg.appendChild(S("text",{x:XR,y:196,"class":"s-nom",fill:V("vert")},"à 5 h, depuis le départ"));
+  svg.appendChild(S("text",{x:XR,y:216,"class":"s-pet",fill:V("vert")},"4 + 2 × 5 = 14 °C"));
+  svg.appendChild(S("text",{x:XR,y:252,"class":"s-nom",fill:V("chaud")},"le piège"));
+  svg.appendChild(S("text",{x:XR,y:272,"class":"s-pet",fill:V("chaud")},"10 + 2 × 5 = 20 °C : faux,"));
+  svg.appendChild(S("text",{x:XR,y:288,"class":"s-pet",fill:V("chaud")},"trois heures comptées deux fois"));
+  el.appendChild(svg);
+  (el.parentNode||el).appendChild(E("p",{"class":"leg-schema"},
+    "Deux mesures donnent <b>une hausse par heure</b> : l'écart divisé par la durée. Pour "+
+    "prolonger, on repart <b>de la température de départ</b>, et chaque heure ajoute la "+
+    "même hausse. Repartir de la dernière mesure compte en double les heures déjà passées."));
+};
+
 /* ─────────── TLE · retirer toujours pareil, ou multiplier toujours pareil ─────────── */
 
 
