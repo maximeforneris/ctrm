@@ -3647,7 +3647,9 @@ var Entrainement = (function () {
     };
   }
   var CCF = "Au format du CCF · les séquences 1 à 3", S1 = "Séquence 1 · ajuster et choisir le modèle",
-      S2 = "Séquence 2 · la batterie", S3 = "Séquence 3 · l'arrimage", SALVES = "Les salves et les fiches d'aide";
+      S2 = "Séquence 2 · la batterie", S3 = "Séquence 3 · l'arrimage", SALVES = "Les salves et les fiches d'aide",
+      /* S4 et S5 : le formulaire seulement, depuis le 16 novembre 2026 (pas encore de lecon ni de salve) */
+      S4 = "Séquence 4 · de la centrale à la borne", S5 = "Séquence 5 · la chaîne du froid";
 
   /* ─────────── séquence 1 · MODEL-1 à 3 ─────────── */
   var MODELE = [
@@ -3841,11 +3843,11 @@ var Entrainement = (function () {
     chercher: "rang, autonomie, norme, A·h",
     /* Sur le site, les pages d'aide BATT, ARRIM et MODEL ouvrent le formulaire sur leur
        sequence : elles ne portent pas son nom. */
-    formulairePages: { MODEL: "S1", BATT: "S2", ARRIM: "S3" },
+    formulairePages: { MODEL: "S1", BATT: "S2", ARRIM: "S3", LIGNE: "S4", FROID: "S5" },
     /* La calculatrice a cote de chaque question ; les salves, sans calculatrice comme en
        classe, portent calculatrice: false. */
     calculatrice: true,
-    themes: [CCF, S1, S2, S3, SALVES],
+    themes: [CCF, S1, S2, S3, S4, S5, SALVES],
     rangs: [
       { points: 0, titre: "Permis en poche" },
       { points: 1500, titre: "Conducteur" },
@@ -3936,8 +3938,9 @@ var Entrainement = (function () {
         ]
       }
     ],
-    /* Le formulaire : releve sur S1-WEB a S3-WEB, les pages MODEL, BATT, ARRIM et les
-       fiches d'aide 01 a 04 ; memes formules, memes unites. */
+    /* Le formulaire : releve sur S1-WEB a S5-WEB, les pages MODEL, BATT, ARRIM, LIGNE, FROID
+       et les fiches d'aide 01 a 04 ; memes formules, memes unites. S4 et S5 ajoutees le
+       16 novembre 2026 (« mettre en ligne formulaire sequence 4 5 »). */
     formulaire: [
       {
         theme: S1, titre: "Séquence 1 · ajuster et choisir le modèle",
@@ -4003,6 +4006,62 @@ var Entrainement = (function () {
             reperes: ["k > 0 : même sens ; k < 0 : sens contraire.",
                       "Troisième coordonnée de la charge vers l'ancrage : négative, la sangle plaque ; nulle, elle retient sur les côtés ; positive, elle soulève."],
             piege: "Deux rapports qui collent ne suffisent pas : le troisième aussi." }
+        ]
+      },
+      {
+        theme: S4, titre: "Séquence 4 · de la centrale à la borne",
+        sections: [
+          { seance: "S4", titre: "Le chemin de l'électricité",
+            formules: [
+              ["centrale 20 kV → élévateur → ligne 400 kV", "le transport : la tension monte pour voyager"],
+              ["abaisseur → réseau 20 kV → abaisseur → borne 400 V", "la distribution : elle redescend en deux fois"]
+            ],
+            reperes: ["Élévateur et abaisseur sont le même appareil, un transformateur, branché dans un sens ou dans l'autre.",
+                      "Le dépôt est raccordé au réseau de distribution : d'où ses 20 000 V."] },
+          { seance: "S4", titre: "Ce que la ligne perd en route",
+            formules: [
+              ["I = P ÷ U", "I en A, P en W, U en V"],
+              ["P = R × I²", "la puissance perdue en chaleur, en W ; R en Ω, I en A"],
+              ["pertes en % = pertes ÷ puissance transportée × 100", ""]
+            ],
+            reperes: ["Tension × 20 → intensité ÷ 20 → pertes ÷ 400.",
+                      "Les kW et les MW se convertissent en W avant de diviser."],
+            piege: "Le carré porte sur l'intensité seule : doubler I quadruple les pertes." },
+          { seance: "S4", titre: "Le transformateur",
+            formules: [
+              ["U₂ ÷ U₁ = N₂ ÷ N₁", "1 : le primaire, côté alimentation · 2 : le secondaire, côté utilisation"],
+              ["U₂ = U₁ × N₂ ÷ N₁", "N₂ = N₁ × U₂ ÷ U₁, un nombre de spires s'arrondit à l'unité"]
+            ],
+            reperes: ["En courant alternatif seulement : en continu, le secondaire reste à 0 V.",
+                      "La puissance se conserve à peu près : tension ÷ 50, intensité × 50."],
+            piege: "Abaisser la tension n'abaisse pas l'intensité : c'est l'inverse." }
+        ]
+      },
+      {
+        theme: S5, titre: "Séquence 5 · la chaîne du froid",
+        sections: [
+          { seance: "S5", titre: "Trois chemins pour la chaleur",
+            formules: [
+              ["conduction", "dans la matière, de proche en proche, avec contact"],
+              ["convection", "transportée par un fluide qui bouge, air ou liquide"],
+              ["rayonnement", "par des ondes, sans contact, même dans le vide"]
+            ],
+            reperes: ["La chaleur va toujours du corps le plus chaud vers le plus froid.",
+                      "Trois parades : toit blanc contre le rayonnement, mousse épaisse contre la conduction, portes fermées contre la convection."],
+            piege: "On ne dit pas « le froid entre » : c'est la chaleur qui entre." },
+          { seance: "S5", titre: "Conducteurs et isolants",
+            formules: [
+              ["bon conducteur", "les métaux : cuivre, acier, aluminium"],
+              ["bon isolant", "de l'air immobile piégé : mousse, laine, polystyrène"]
+            ],
+            piege: "La couverture de survie agit contre le rayonnement, presque pas contre la conduction." },
+          { seance: "S5", titre: "Prolonger une hausse",
+            formules: [
+              ["écart = température d'arrivée − température de départ", "− 13 − (− 22) = + 9 °C"],
+              ["hausse moyenne = écart ÷ durée", "en °C par heure"]
+            ],
+            reperes: ["La hausse ralentit à mesure que l'écart avec l'extérieur fond : on ne prolonge la droite que près des relevés."],
+            piege: "Retirer un nombre négatif, c'est l'ajouter." }
         ]
       },
       {
